@@ -1,0 +1,28 @@
+@import "./common/styles/sass/variables.scss";
+
+
+.App {
+    margin: 0 auto;
+    display: grid;
+    min-height: 100vh;
+  width: auto;
+    grid-template-areas:
+      "n h"
+      "n c";
+  
+    grid-template-rows: 150px 2fr;
+    grid-template-columns: 250px 2fr;
+    @media screen and (max-width: 600px) { 
+      grid-template-areas:
+      "h h"
+      "c c";
+    }
+   
+  }
+  
+  .Content {
+    grid-area: c;
+    display: flex;
+  justify-content: center;
+  }
+

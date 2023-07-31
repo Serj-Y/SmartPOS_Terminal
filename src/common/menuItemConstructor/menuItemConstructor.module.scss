@@ -1,0 +1,40 @@
+@import "../styles/sass/variables.scss";
+
+.itemContainer {
+    width: 250px;
+    padding: 20px;
+    padding: 20px;
+    background-color: $bgColor;
+    border-radius: 15%;
+    box-shadow:
+        0 -10px 20px rgba(0, 0, 0, 0.1),
+        5px 5px 10px rgba(0, 0, 0, 0.2);
+
+
+    .item {
+        text-align: center;
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .itemName {
+            font-size: xx-large;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .itemWeight {
+            color: $secondTextColor;
+            font-weight: 600;
+        }
+
+        .itemPrice {
+            color: $accentColor ;
+            font-size: xx-large;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+    }
+}
