@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
-import { useSelector } from "react-redux";
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor /extraMenuItemConstructor";
-import { match } from "assert";
 
 
-
-export const MenuContainer = (props: { stateMenu: any; title: string; }) => {
+export  const MenuContainer = (props: { stateMenu: any; title: string; }) => {
     const menu = props.stateMenu;
 
     const [secondMenu, setSecondMenu] = useState(props.stateMenu)
@@ -16,43 +13,139 @@ export const MenuContainer = (props: { stateMenu: any; title: string; }) => {
 
     const [pricer, setPricer] = useState(secondMenu.price)
 
-    const [isAddOption, setIsAddOption] = useState(0)
+    const [isAddOption, setIsAddOption] = useState(false)
+    const [isAddOption2, setIsAddOption2] = useState(false)
+    const [isAddOption3, setIsAddOption3] = useState(false)
+
+
+    const [isOnBag, setIsOnBag] = useState(null)
+
 
     function onClickHandler(i: any) {
         setIsOpen(true)
         setSecondMenu(i)
         setPricer(i.price)
-        setIsAddOption(0)
-        console.log(i);
+        
     }
 
-    function onHandlerAddOption() {
-        if (isAddOption >= 0) {
-            setPricer(((prev: any) => prev + secondMenu.option[0]?.price))
-            setIsAddOption(prev => prev + 1)
-        }
 
+    function onCloseExtraMenu () {
+        setIsAddOption(false)
+        setIsAddOption2(false)
+        setIsAddOption3(false)
+        setIsOnBag(null) 
+        setIsOpen(false)
     }
 
-    function onHandlerRemoveOption() {
-        if (isAddOption > 0) {
-            setPricer(pricer - secondMenu.option[0]?.price)
-            setIsAddOption(prev => prev - 1)
-        }
-
-    }
 
     const Option1 = () => {
+
+        function onHandlerAddOption(extra: any) {
+            if (!isAddOption) {
+                setPricer(((prev: any) => prev + extra.price))
+                setIsAddOption(true)
+                setIsOnBag(extra)
+            } else {
+                setPricer(pricer - extra.price)
+                setIsAddOption(false)
+                setIsOnBag(null)
+            }
+        }
         return (
-            <div>
+            <div key={secondMenu.option[0].id} >
                 {secondMenu.option[0].name}
-                <button onClick={onHandlerRemoveOption}>-</button>
-                {isAddOption}
-                <button onClick={onHandlerAddOption} >+</button>
+                <input type="checkbox" checked={isAddOption} onChange={() => onHandlerAddOption(secondMenu.option[0])} />
                 ${secondMenu.option[0].price}
             </div>
         )
+
     }
+    const Option2 = () => {
+
+        function onHandlerAddOption(extra: any) {
+            if (!isAddOption2) {
+                setPricer(((prev: any) => prev + extra.price))
+                setIsAddOption2(true)
+                setIsOnBag(extra)
+            } else {
+                setPricer(pricer - extra.price)
+                setIsAddOption2(false)
+                setIsOnBag(null)
+            }
+          
+
+        }
+        return (
+            <div key={secondMenu.option[1].id} >
+                {secondMenu.option[1].name}
+                <input type="checkbox" checked={isAddOption2} onChange={() => onHandlerAddOption(secondMenu.option[1])} />
+                ${secondMenu.option[1].price}
+            </div>
+        )
+
+    }
+    const Option3 = () => {
+
+        function onHandlerAddOption(extra: any) {
+            if (!isAddOption3) {
+                setPricer(((prev: any) => prev + extra.price))
+                setIsAddOption3(true)
+                setIsOnBag(extra)
+            } else {
+                setPricer(pricer - extra.price)
+                setIsAddOption3(false)
+                setIsOnBag(null)
+            }
+ 
+
+        }
+        console.log(isOnBag)
+        return (
+            <div key={secondMenu.option[2].id} >
+                {secondMenu.option[2].name}
+                <input type="checkbox" checked={isAddOption3} onChange={() => onHandlerAddOption(secondMenu.option[2])} />
+                ${secondMenu.option[2].price}
+            </div>
+        )
+
+    }
+
+
+
+    // const Option = () => {
+
+    //     function onHandlerAddOption(m: any) {
+    //       if (isAddOption <= 2 ) {
+    //             setPricer(((prev: any) => prev + m.price))
+    //             setIsAddOption(prev => prev + 1)
+    //      console.log(m)
+    //         }
+
+    //     }
+
+    //     function onHandlerRemoveOption(m: any) {
+    //         if (isAddOption >= 1 )   {
+    //             setPricer(pricer - m.price)
+    //             setIsAddOption((prev: number) => prev - 1)
+
+    //         }
+
+    //     }
+
+    //     return (
+    //         secondMenu.option.map((m: any) => <div key={m.id} >
+    //             {m.name}
+    //             <button onClick={() => onHandlerRemoveOption(m)}>-</button>
+    //             {isAddOption}
+    //             <button onClick={() => onHandlerAddOption(m)} >+</button>
+    //             ${m.price}
+    //         </div>
+
+
+
+    //         )
+    //     )
+    // }
 
     return (
         <div className={styles.food}>
@@ -68,10 +161,21 @@ export const MenuContainer = (props: { stateMenu: any; title: string; }) => {
                     )}
                 </div>
                 : <div className={styles.extraOption} >
-                    <ExtraMenuItemConstructor name={secondMenu.name || ""} weight={secondMenu.weight || ""} price={pricer || ""} OnClick={() => setIsOpen(false)} option1={secondMenu.option ? <Option1 /> : ""} img={""}
+                    <ExtraMenuItemConstructor name={secondMenu.name || ""} weight={secondMenu.weight || ""} price={pricer || ""}
+                        OnClick={onCloseExtraMenu}
+                        option1={secondMenu.option ? <Option1 /> : ""}
+                        option2={secondMenu.option ? <Option2 /> : ""}
+                        option3={secondMenu.option ? <Option3 /> : ""} img={""}
                     />
+                    <div>
+                       <h2>Add to Bag</h2>
+                       <button onClick={ () => {}} >+</button> 
+                    </div>
                 </div>
+                
             }
         </div>
     );
 };
+
+

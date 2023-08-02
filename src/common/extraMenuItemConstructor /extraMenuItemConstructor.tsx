@@ -6,8 +6,8 @@ import burgerIcon from "../assets/svg/hamburger.svg"
 
 type PropsType = {
     option1?: any
-    option2?: string
-    option3?: string
+    option2?:any
+    option3?: any
     OnClick: any
     name: string
     weight: number
@@ -26,9 +26,10 @@ export const ExtraMenuItemConstructor: React.FC<PropsType> = (props) => {
                 <p className={styles.itemName} >{props.name}</p>
                 <p className={styles.itemWeight} >{props.weight} g</p>
                 <p className={styles.itemPrice} >${props.price}</p>
+                <div>Extra Option</div>
                 {props.option1}
-                <p>{props.option2}</p>
-                <p>{props.option3}</p>
+                {props.option2}
+                {props.option3}
                 <button onClick={props.OnClick} >X</button>
             </div>
         </div>
