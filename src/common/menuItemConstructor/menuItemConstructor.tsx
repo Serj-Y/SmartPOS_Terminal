@@ -8,18 +8,10 @@ type PropsType = {
     name: string
     weight: number
     price: number
-    alt: string
     img: string
-    extraInfo?: any
-    id?: any
- 
 }
 
-function  onClickHandler (id: any)  {
 
-    console.log(id)
-        
-    }
 
 export const MenuItemConstructor: React.FC<PropsType> = (props) => {
 
@@ -28,7 +20,7 @@ export const MenuItemConstructor: React.FC<PropsType> = (props) => {
     return (
         <div className={styles.itemContainer}>
           <div className={styles.item}>
-                    <img src={props.img || burgerIcon} alt={props.alt || burgerIcon} />
+                    <img src={props.img || burgerIcon} alt={props.name} />
                     <p className={styles.itemName} >{props.name}</p>
                     <p className={styles.itemWeight} >{props.weight} g</p>
                     <p className={styles.itemPrice} >${props.price}</p>
