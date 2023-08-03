@@ -4,7 +4,7 @@ import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor"
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor /extraMenuItemConstructor";
 
 
-export  const MenuContainer = (props: { stateMenu: any; title: string; }) => {
+export  const MenuContainer = (props: { stateMenu: any; title: string; icon?: any }) => {
     const menu = props.stateMenu;
 
     const [secondMenu, setSecondMenu] = useState(props.stateMenu)
@@ -149,12 +149,13 @@ export  const MenuContainer = (props: { stateMenu: any; title: string; }) => {
 
     return (
         <div className={styles.food}>
-            <h2>{props.title}</h2>
+            <h2>{props.title} {props.icon}</h2>
+
             {!isOpen
                 ? <div className={styles.items}>
                     {menu.map((i: any) => <div key={i.id}>
                         <label form="Btn">
-                            <MenuItemConstructor name={i.name} weight={i.weight} price={i.price} img={""} />
+                            <MenuItemConstructor name={i.name} weight={i.weight} price={i.price} img={i.img} />
                             <button id="Btn" style={{ display: "none" }} onClick={() => onClickHandler(i)}></button>
                         </label>
                     </div>
@@ -165,7 +166,7 @@ export  const MenuContainer = (props: { stateMenu: any; title: string; }) => {
                         OnClick={onCloseExtraMenu}
                         option1={secondMenu.option ? <Option1 /> : ""}
                         option2={secondMenu.option ? <Option2 /> : ""}
-                        option3={secondMenu.option ? <Option3 /> : ""} img={""}
+                        option3={secondMenu.option ? <Option3 /> : ""} img={secondMenu.img || ""}
                     />
                     <div>
                        <h2>Add to Bag</h2>

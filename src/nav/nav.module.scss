@@ -4,37 +4,76 @@
     grid-area: n;
 
 
-    .items {
-        padding-top: 40px;
-        gap: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .fullScreen {
+        @media screen and (max-width: 950px) { 
+            display: none;
+            
+        }
+        .items {
+            padding-top: 40px;
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
+            .item {
+                width: 80%;
 
+                .isPending {
+                    padding-left: 20px;
+                    text-align: start;
+                    border-radius: 15px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: black;
+                    font-weight: 600;
+                }
 
-        .item {
-            width: 80%;
-
-            .isPending {
-                padding-left: 20px;
-                text-align: start;
-                border-radius: 15px;
-                height: 50px;
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: black;
-                font-weight: 600;
-            }
-
-            .isActive {
-                @extend .isPending;
-                background-color: $accentColor ;
+                .isActive {
+                    @extend .isPending;
+                    background-color: $accentColor ;
+                }
             }
         }
-
-
     }
 
+    .mobileDevice {
+        @media screen and (min-width: 950px) { 
+            display: none;
+            
+        }
+
+        .items {
+            padding-top: 40px;
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding-left: 10px;
+
+                .isPending {
+                    padding-left: 24px;
+                    border-radius: 15px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: black;
+                    font-weight: 600;
+                }
+
+                .isActive {
+                    @extend .isPending;
+                    background-color: $accentColor ;
+                }
+            }
+        }
+    }
 }

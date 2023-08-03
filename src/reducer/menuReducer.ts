@@ -1,6 +1,13 @@
 import { v1 } from "uuid";
 import { InferActionsTypes } from "../redux/store";
-
+import Cola from "../common/assets/png/cupCola.png"
+import Sprite from "../common/assets/png/cupSprite.png"
+import Fanta from "../common/assets/png/cupFanta.png";
+import AquaMineral from "../common/assets/png/butleAquaMinerale.png";
+import Espresso from "../common/assets/png/mugEspresso.png"
+import Cappuccino from "../common/assets/png/mugCappuccino.png"
+import Latte from "../common/assets/png/cupLatte.png"
+import Tea from "../common/assets/png/mugTea.png"
 
 let initialState = {
     foodMenu: {
@@ -37,17 +44,17 @@ let initialState = {
     },
     drinksMenu: {
         cold: [
-            { id: v1(), name: "CocaCola", weight: 330, price: 0.99, img: "", },
-            { id: v1(), name: "Sprite", weight: 330, price: 0.99, img: "", },
-            { id: v1(), name: "Fanta", weight: 330, price: 0.99, img: "", },
-            { id: v1(), name: "Aypa", weight: 0.5, price: 0.99, img: "", },
+            { id: v1(), name: "CocaCola", weight: 500, price: 1.5, img: Cola , },
+            { id: v1(), name: "Sprite", weight: 500, price: 1.5, img: Sprite, },
+            { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Fanta, },
+            { id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral, },
         ],
 
         hot: [
-            { id: v1(), name: "Espresso", weight: 50, price: 1.5, img: "", },
-            { id: v1(), name: "Cappuccino", weight: 200, price: 2, img: "", },
-            { id: v1(), name: "Latte", weight: 300, price: 4.30, img: "", },
-            { id: v1(), name: "Tea", weight: 350, price: 1.5, img: "", },
+            { id: v1(), name: "Espresso", weight: 50, price: 1.5, img: Espresso, },
+            { id: v1(), name: "Cappuccino", weight: 200, price: 2, img: Cappuccino, },
+            { id: v1(), name: "Latte", weight: 300, price: 4.30, img: Latte, },
+            { id: v1(), name: "Tea", weight: 350, price: 1.5, img: Tea, },
         ]
     },
     orders: {
@@ -65,7 +72,7 @@ export  const menuReducer = (state = initialState, action: ActionsTypes) => {
             let newOrder = {
                 id: v1(),
                 name: action.newOrderForm,
-                likesCount: 0,
+              
             };
             return {
                 ...state,

@@ -3,6 +3,8 @@ import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
 import { MenuContainer } from "../common/menuContainerConstructor/menuContainer";
 import { MenuItemConstructor } from "../common/menuItemConstructor/menuItemConstructor";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBurger } from "@fortawesome/free-solid-svg-icons";
 // import  styles  from "./food.module.scss";
 
 
@@ -13,7 +15,7 @@ export const Food = () => {
     const BurgerMenu = useSelector((state: RootState) => state.Menu.foodMenu.burger)
 
     return (
-        <MenuContainer stateMenu={BurgerMenu} title="Burgers" />
+        <MenuContainer stateMenu={BurgerMenu} title= "Burgers"  icon={<FontAwesomeIcon icon={faBurger}/>} />
     )}
 
 // export const Food = (props:any) => {
