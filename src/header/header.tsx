@@ -16,7 +16,7 @@ const onHandleSubmit = (e: any) => {
     return(
 <div className={styles.header} >
     <div className={styles.items} >
-        <div>BreadCrumbs/</div>
+        <div></div>
         <form onSubmit={onHandleSubmit} >
             <input type="search" placeholder="search" value={searchValue} onChange={onHandleChange}/>
             <button type="submit" >search</button>

@@ -26,10 +26,10 @@ export const ExtraMenuItemConstructor: React.FC<PropsType> = (props) => {
                 <p className={styles.itemName} >{props.name}</p>
                 <p className={styles.itemWeight} >{props.weight} g</p>
                 <p className={styles.itemPrice} >${props.price}</p>
-                <div>Extra Option</div>
-                {props.option1}
-                {props.option2}
-                {props.option3}
+              <p className={styles.optionItem} >{props.option1}</p>  
+              <p className={styles.optionItem}> {props.option2}</p>
+               <p className={styles.optionItem}> {props.option3}</p>
+               
                 <button onClick={props.OnClick} >X</button>
             </div>
         </div>

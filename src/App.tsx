@@ -8,6 +8,7 @@ import { Header } from './header/header';
 import { Food } from './food/food';
 import { HotDrinks } from './hotDrinks/hotDrinks';
 import { ColdDrinks } from "./coldDrinks/coldDrinks"
+import { CartPage } from './cartPage/cart';
 
 
 
@@ -23,6 +24,7 @@ function App() {
 <Route path="/food" element={ <Food/>}  />
 <Route path="/coldDrinks" element={ <ColdDrinks/>}  />
 <Route path="/hotDrinks" element={ <HotDrinks/>}  />
+<Route path="/cartPage" element={ <CartPage/>}  />
 </Routes>
 </div>
     </div>

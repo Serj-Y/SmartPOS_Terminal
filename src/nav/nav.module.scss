@@ -2,13 +2,14 @@
 
 .nav {
     grid-area: n;
-
+    position: fixed;
 
     .fullScreen {
-        @media screen and (max-width: 950px) { 
+        @media screen and (max-width: 950px) {
             display: none;
-            
+
         }
+
         .items {
             padding-top: 40px;
             gap: 20px;
@@ -40,9 +41,9 @@
     }
 
     .mobileDevice {
-        @media screen and (min-width: 950px) { 
+        @media screen and (min-width: 950px) {
             display: none;
-            
+
         }
 
         .items {
@@ -59,7 +60,7 @@
                 padding-left: 10px;
 
                 .isPending {
-                    padding-left: 24px;
+                    padding-left: 15px;
                     border-radius: 15px;
                     height: 50px;
                     display: flex;

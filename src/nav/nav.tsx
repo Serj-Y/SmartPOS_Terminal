@@ -23,7 +23,7 @@ export const Nav = () => {
                         <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/hotDrinks"}> <FontAwesomeIcon icon={faMugHot} /> HotDrinks</NavLink>
                     </div>
                     <div className={styles.item} >
-                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/rest"}>Rest</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/cartPage"}>...</NavLink>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@ export const Nav = () => {
                         <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/hotDrinks"}><FontAwesomeIcon icon={faMugHot} /></NavLink>
                     </div>
                     <div className={styles.item} >
-                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/rest"}>...</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/cartPage"}>...</NavLink>
                     </div>
                 </div>
             </div>

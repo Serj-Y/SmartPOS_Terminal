@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { menuReducer }  from '../reducer/menuReducer'
+import { cartReducer } from '../reducer/cartReducer'
 
 
 
 
 export const store = configureStore({
   reducer: {
-    //@ts-ignore
   Menu: menuReducer,
+     //@ts-ignore
+  Cart: cartReducer,
   },
 
 })
