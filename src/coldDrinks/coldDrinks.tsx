@@ -1,7 +1,7 @@
 import React from "react";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
-import { MenuContainer } from "../common/menuContainerConstructor/menuContainer";
+import  MenuContainer  from "../common/menuContainerConstructor/menuContainer";
 import styles from "./coldDrinks.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBottleWater } from "@fortawesome/free-solid-svg-icons";

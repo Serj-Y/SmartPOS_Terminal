@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { RootState } from "../redux/store";
-import { useSelector } from "react-redux";
-import { MenuContainer } from "../common/menuContainerConstructor/menuContainer";
+import { useDispatch, useSelector } from "react-redux";
+import  MenuContainer  from "../common/menuContainerConstructor/menuContainer";
 import { MenuItemConstructor } from "../common/menuItemConstructor/menuItemConstructor";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBurger } from "@fortawesome/free-solid-svg-icons";
+
 // import  styles  from "./food.module.scss";
 
 
@@ -13,9 +14,10 @@ import { faBurger } from "@fortawesome/free-solid-svg-icons";
 
 export const Food = () => {
     const BurgerMenu = useSelector((state: RootState) => state.Menu.foodMenu.burger)
+    const Cart = useSelector((state: RootState)=> state.Cart.order)
 
     return (
-        <MenuContainer stateMenu={BurgerMenu} title= "Burgers"  icon={<FontAwesomeIcon icon={faBurger}/>} />
+        <MenuContainer  cart={Cart} stateMenu={BurgerMenu} title= "Burgers"  icon={<FontAwesomeIcon icon={faBurger}/>} />
     )}
 
 // export const Food = (props:any) => {

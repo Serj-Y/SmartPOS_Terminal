@@ -67,7 +67,7 @@ let initialState = {
 };
 
 
-export  const menuReducer = (state = initialState ) => {
+  const menuReducer = (state = initialState ) => {
 
 
         
@@ -75,4 +75,4 @@ export  const menuReducer = (state = initialState ) => {
 
     }
 
-
+export default menuReducer

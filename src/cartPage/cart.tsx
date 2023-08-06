@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { CartContainer } from "../common/cartContainerConstructor/cartContainer";
-import { OrderType } from "../reducer/cartReducer";
+
 
 
 
@@ -14,19 +14,21 @@ type PropsType = {
 
 }
 
-export const CartPage: React.FC<PropsType> = () => {
-    const order = useSelector((state: RootState) => state.Cart.orders.order)
+export const CartPage: React.FC<PropsType> = (props: any) => {
+    const order = useSelector((state: RootState) => state.Cart.order)
     console.log(order)
 
-
+  
 
 
    
     return (
         <div>
-    <CartContainer stateMenu={order} title={"Cart"}/>
+    <CartContainer  cartOrder={order}  stateMenu={order} title={"Cart"}/>
            
             </div>
         
     )
 }
+
+

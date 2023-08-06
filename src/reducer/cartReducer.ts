@@ -1,8 +1,10 @@
 
 import { v1 } from "uuid";
-import { InferActionsTypes } from "../redux/store";
+import { InferActionsTypes, RootState } from "../redux/store";
+import { Action, ThunkAction } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 
-export type OrderType= {
+export type OrderType = {
     orders: {
         order: [
             {
@@ -15,33 +17,30 @@ export type OrderType= {
 }
 
 
+
+
 let initialState = {
-    orders: {
+    
         order: [
             {
-                id: "1", name: "test", weight: 1, price: 1, img: "", option: [
-                    { id: "1", name: "test", price: 0.20, isAdd: 0 },
+                id: v1(), name: "test", weight: 1, price: 1, img: "", option: [
+                    { id: v1(), name: "test", price: 0.20, isAdd: 1 },
                 ],
             },
         ],
-    },
-
-};
+    };
 
 type ActionsTypes = InferActionsTypes<typeof actions>
-export  const cartReducer = (state = initialState, action: ActionsTypes) => {
+const CartReducer = (state = initialState, action: ActionsTypes) => {
+debugger
+
     switch (action.type) {
-        case "ADD-ORDER": {
-            let newOrder = {
-                id: v1(),
-                name: action.newOrderForm,
-              
-            };
+        case "ADD_ORDER": {
             return {
-                ...state,
-                order: [newOrder, ...state.orders.order]
+              ...state,
+              order: [ action.newOrderForm, ...state.order, ]
             };
-        }
+        } 
 
         default:
             return state
@@ -50,8 +49,16 @@ export  const cartReducer = (state = initialState, action: ActionsTypes) => {
 }
 
 export const actions = {
-    addOrderActionCreator: (newOrderForm:  string) => ({ type: "ADD-ORDER", newOrderForm } as const),
+    addOrderActionCreator: (newOrderForm: any) => ({ type: "ADD_ORDER", newOrderForm } as const),
+
 }
 
 
- 
+
+
+export default CartReducer
+
+
+
+
+

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor /extraMenuItemConstructor";
+import cartReducer, {  actions } from "../../reducer/cartReducer";
+import { useDispatch } from "react-redux";
+
 ;
 
 
@@ -9,13 +12,11 @@ export type SecondMenuType = {
 
     id: string, name: string, weight: number, price: number, img: string, option: [
         { id: string, name: string, price: number, isAdd: number },
-        { id: string, name: string, price: number, isAdd: number },
-        { id: string, name: string, price: number, isAdd: number },
     ],
 
 }
 
-export const MenuContainer = (props: { stateMenu: any; title: string; icon?: any }) => {
+const MenuContainer = (props: any) => {
     const menu = props.stateMenu;
     const [secondMenu, setSecondMenu] = useState(menu)
     const [isOpen, setIsOpen] = useState(false)
@@ -24,7 +25,16 @@ export const MenuContainer = (props: { stateMenu: any; title: string; icon?: any
     const [isAddOption2, setIsAddOption2] = useState(false)
     const [isAddOption3, setIsAddOption3] = useState(false)
 
+    const dispatch = useDispatch()
 
+  
+
+
+    const addToCart = (newOrderForm: any) => {
+    
+        dispatch(actions.addOrderActionCreator(newOrderForm));
+
+    }
 
     const [isOnBag, setIsOnBag] = useState(null)
 
@@ -42,10 +52,6 @@ export const MenuContainer = (props: { stateMenu: any; title: string; icon?: any
         setIsAddOption3(false)
         setIsOnBag(null)
         setIsOpen(false)
-    }
-
-    function onAddCart(secondMenu: SecondMenuType) {
-
     }
 
     const Option1 = () => {
@@ -120,43 +126,6 @@ export const MenuContainer = (props: { stateMenu: any; title: string; icon?: any
 
     }
 
-
-
-    // const Option = () => {
-
-    //     function onHandlerAddOption(m: any) {
-    //       if (isAddOption <= 2 ) {
-    //             setPricer(((prev: any) => prev + m.price))
-    //             setIsAddOption(prev => prev + 1)
-    //      console.log(m)
-    //         }
-
-    //     }
-
-    //     function onHandlerRemoveOption(m: any) {
-    //         if (isAddOption >= 1 )   {
-    //             setPricer(pricer - m.price)
-    //             setIsAddOption((prev: number) => prev - 1)
-
-    //         }
-
-    //     }
-
-    //     return (
-    //         secondMenu.option.map((m: any) => <div key={m.id} >
-    //             {m.name}
-    //             <button onClick={() => onHandlerRemoveOption(m)}>-</button>
-    //             {isAddOption}
-    //             <button onClick={() => onHandlerAddOption(m)} >+</button>
-    //             ${m.price}
-    //         </div>
-
-
-
-    //         )
-    //     )
-    // }
-
     return (
         <div className={styles.food}>
             <h2>{props.title} {props.icon}</h2>
@@ -179,15 +148,19 @@ export const MenuContainer = (props: { stateMenu: any; title: string; icon?: any
                         option2={secondMenu.option ? <Option2 /> : ""}
                         option3={secondMenu.option ? <Option3 /> : ""} img={secondMenu.img || ""}
                     />
-                    {/* <div>
-                       <h2>Add to Bag</h2>
-                       <button onClick={ () => onAddCart(secondMenu)} >+</button> 
-                    </div> */}
+                    <div>
+                        <h2>Add to Bag</h2>
+                        <button onClick={() => addToCart(secondMenu)} >+</button>
+                    </div>
+
                 </div>
 
             }
         </div>
     );
 };
+
+
+export default MenuContainer
 
 

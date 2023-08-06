@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { menuReducer }  from '../reducer/menuReducer'
-import { cartReducer } from '../reducer/cartReducer'
+import  menuReducer   from '../reducer/menuReducer'
+import  cartReducer  from '../reducer/cartReducer'
 
 
 
