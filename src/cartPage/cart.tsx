@@ -16,7 +16,7 @@ type PropsType = {
 
 export const CartPage: React.FC<PropsType> = (props: any) => {
     const order = useSelector((state: RootState) => state.Cart.order)
-    console.log(order)
+
 
   
 
@@ -24,7 +24,7 @@ export const CartPage: React.FC<PropsType> = (props: any) => {
    
     return (
         <div>
-    <CartContainer  cartOrder={order}  stateMenu={order} title={"Cart"}/>
+    <CartContainer  stateMenu={order} />
            
             </div>
         

@@ -1,68 +1,54 @@
 import React, { useState } from "react";
-import styles from "./cartContainer.module.scss"
-import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor /extraMenuItemConstructor";
-import { RootState } from "../../redux/store";
+import style from "./cartContainer.module.scss"
+import styles from "../extraMenuItemConstructor/extraMenuItemConstructor.module.scss"
 
-export type SecondMenuType = {
-    id: string, name: string, weight: number, price: number, img: string, option: [
-        { id: string, name: string, price: number, isAdd: number },
-    ],
+type PropsType = {
+    option?: any
+    OnClick: any
+    name: string
+    weight: number
+    price: any
+    img: string
 }
 
 export const CartContainer = (props: any) => {
     const menu = props.stateMenu
-
     return (
-        <div className={styles.food}>
+        <div className={style.food}>
             <h2>{props.title} {props.icon}</h2>
             {menu.map((i: any) =>
-                <div className={styles.extraOption} >
-                    <ExtraMenuItemConstructor name={i.name} weight={i.weight} price={i.price}
+                <div className={style.extraOption} >
+                    <MenuItem name={i.name} weight={i.weight} price={i.price}
                         OnClick={() => { }}
                         img={i.img}
-                        option1={<Option option={i.option} parentPrice={i.price} />}
                     />
                 </div>
             )}
         </div>)
 }
 
-const Option = ({ option, parentPrice }: any) => {
-    const [isAddOption, setIsAddOption] = useState(0)
-    const [pricer, setPricer] = useState(parentPrice)
-
-    function onHandlerAddOption(m: any) {
-
-        console.log(m.isAdd)
-        if (isAddOption >= 0) {
-            setPricer(((prev: any) => prev + m.price))
-            setIsAddOption(m.isAdd + 1)
-        }
-
-    }
-
-    function onHandlerRemoveOption(m: any) {
-        if (isAddOption >= 1) {
-            setPricer(pricer - m.price)
-            setIsAddOption((prev: number) => prev - 1)
-        }
-    }
-
-    return (
-        <div>
-            {option.map((m: any) => <div key={m.id} >
-                {m.name}
-                <button onClick={() => onHandlerRemoveOption(m)}>-</button>
-                {m.isAdd}
-                <button onClick={() => onHandlerAddOption(m)} >+</button>
-                ${m.price}
-                ____id {m.id}
+const MenuItem = (props: PropsType) => {
+    if (props.name) {
+            return (
+          <div className={styles.itemContainer}>
+            <div className={styles.item}>
+                <img src={props.img } alt={props.name} />
+                <p className={styles.itemName} >{props.name}</p>
+                <p className={styles.itemWeight} >{props.weight} g</p>
+                <p className={styles.itemPrice} >${props.price}</p>
+                <p className={styles.optionItem} >{props.option}</p>
+                <button onClick={props.OnClick} >X</button>
             </div>
-            )}
-
-
-
         </div>
     )
+    } else {
+        return(
+                   <></> 
+        )
+
+    }
+
+
 }
+
 

@@ -18,43 +18,38 @@ let initialState = {
     foodMenu: {
         burger: [
             {
-                id: v1(), name: "Hamburger", weight: 250, price: 2.45, img: Hamburger, option: [
-                    { id: v1(), name: "Cheese", price: 0.20, isAdd: 0 },
-                    { id: v1(), name: "Meat", price: 0.50, isAdd: 0 },
-                    { id: v1(), name: "Bacon", price: 0.30, isAdd: 0 }
-                ],
+                id: v1(), name: "Hamburger", weight: 250, price: 2.45, img: Hamburger,option: [   ],
             },
             {
-                id: v1(), name: "Hamburger XL", weight: 350, price: 3.45, img: HamburgerXL, option: [
-                    { id: v1(), name: "Cheese", price: 0.25 },
-                    { id: v1(), name: "Meat", price: 0.55 },
-                    { id: v1(), name: "Bacon", price: 0.35 }
-                ],
+                id: v1(), name: "Hamburger XL", weight: 350, price: 3.45, img: HamburgerXL,option: [   ], 
             },
             {
                 id: v1(), name: "Cheeseburger", weight: 300, price: 3, img: Cheeseburger, option: [
-                    { id: v1(), name: "Cheese", price: 0.25 },
-                    { id: v1(), name: "Meat", price: 0.55 },
-                    { id: v1(), name: "Bacon", price: 0.35 }
+                
                 ],
             },
             {
-                id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, option: [
-                    { id: v1(), name: "Cheese", price: 0.25 },
-                    { id: v1(), name: "Meat", price: 0.55 },
-                    { id: v1(), name: "Bacon", price: 0.35 }
-                ],
+                id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, option: [   ],
             },
-        ]
+
+        ],
+        option: [
+            { id: v1(), name: "Cheese", price: 0.20, isAdd: 0 },
+            { id: v1(), name: "Meat", price: 0.50, isAdd: 0 },
+            { id: v1(), name: "Bacon", price: 0.30, isAdd: 0 }
+        ],
     },
     drinksMenu: {
         cold: [
-            { id: v1(), name: "CocaCola", weight: 500, price: 1.5, img: Cola ,option: [
-                { id: v1(), name: "Cheese", price: 0.20, isAdd: 0 },] },
-            { id: v1(), name: "Sprite", weight: 500, price: 1.5, img: Sprite, },
-            { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Fanta, },
-            { id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral, },
+            { id: v1(), name: "CocaCola", weight: 500, price: 1.5, img: Cola },
+            { id: v1(), name: "Sprite", weight: 500, price: 1.5, img: Sprite },
+            { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Fanta },
+            { id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral },
         ],
+        coldOption: [
+            { id: v1(), name:"1l", price: 0.20, isAdd: 0 },
+            { id: v1(), name:"1.5l", price: 0.50, isAdd: 0 },
+            { id: v1(), name:"2l", price: 1, isAdd: 0 },],
 
         hot: [
             { id: v1(), name: "Espresso", weight: 50, price: 1.5, img: Espresso, },
@@ -63,16 +58,16 @@ let initialState = {
             { id: v1(), name: "Tea", weight: 350, price: 1.5, img: Tea, },
         ]
     },
-   
+
 };
 
 
-  const menuReducer = (state = initialState ) => {
+const menuReducer = (state = initialState) => {
 
 
-        
-            return state
 
-    }
+    return state
+
+}
 
 export default menuReducer

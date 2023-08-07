@@ -1,8 +1,7 @@
 
 import React, { useState } from "react"
 import styles from "./menuItemConstructor.module.scss"
-import burgerIcon from "../assets/svg/hamburger.svg"
-import Cola from "../assets/png/cupCola.png"
+
 
 type PropsType = {
     name: string
