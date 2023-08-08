@@ -10,9 +10,13 @@ import { faBurger } from "@fortawesome/free-solid-svg-icons";
 
 export const Food = () => {
     const BurgerMenu = useSelector((state: RootState) => state.Menu.foodMenu.burger)
- const ExtraOptionMenu = useSelector((state:RootState) => state.Menu.foodMenu.option)
+ const OptionMenu = useSelector((state:RootState) => state.Menu.foodMenu.option)
+
+
+
+
 
     return (
-        <MenuContainer  extraMenu={ExtraOptionMenu}  stateMenu={BurgerMenu} title= "Burgers"  icon={<FontAwesomeIcon icon={faBurger}/>} />
+        <MenuContainer  extraMenu={OptionMenu}  stateMenu={BurgerMenu} title= "Burgers"  icon={<FontAwesomeIcon icon={faBurger}/>} />
     )}
 

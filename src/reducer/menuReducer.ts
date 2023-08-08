@@ -18,15 +18,16 @@ let initialState = {
     foodMenu: {
         burger: [
             {
-                id: v1(), name: "Hamburger", weight: 250, price: 2.45, img: Hamburger,option: [   ],
+                id: v1(), name: "Hamburger", weight: 250, price: 2.45, img: Hamburger,option: [ ],
+                ownOption: [
+                    { id: 1, name: "test", price: 0.20, isAdd: 0 },
+                ],
             },
             {
                 id: v1(), name: "Hamburger XL", weight: 350, price: 3.45, img: HamburgerXL,option: [   ], 
             },
             {
-                id: v1(), name: "Cheeseburger", weight: 300, price: 3, img: Cheeseburger, option: [
-                
-                ],
+                id: v1(), name: "Cheeseburger", weight: 300, price: 3, img: Cheeseburger, option: [  ],
             },
             {
                 id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, option: [   ],
@@ -34,9 +35,9 @@ let initialState = {
 
         ],
         option: [
-            { id: v1(), name: "Cheese", price: 0.20, isAdd: 0 },
-            { id: v1(), name: "Meat", price: 0.50, isAdd: 0 },
-            { id: v1(), name: "Bacon", price: 0.30, isAdd: 0 }
+            { id: 1, name: "Cheese", price: 0.20, isAdd: 0 },
+            { id: 2, name: "Meat", price: 0.50, isAdd: 0 },
+            { id: 3, name: "Bacon", price: 0.30, isAdd: 0 }
         ],
     },
     drinksMenu: {
@@ -44,12 +45,17 @@ let initialState = {
             { id: v1(), name: "CocaCola", weight: 500, price: 1.5, img: Cola },
             { id: v1(), name: "Sprite", weight: 500, price: 1.5, img: Sprite },
             { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Fanta },
-            { id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral },
+            { id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral, ownOption:[
+                { id: 1, name:"1l", price: 0.10, isAdd: 0 },
+                { id: 2, name:"1.5l", price: 0.25, isAdd: 0 },
+                { id: 3, name:"2l", price: 0.50, isAdd: 0 },
+    
+            ] },
         ],
         coldOption: [
-            { id: v1(), name:"1l", price: 0.20, isAdd: 0 },
-            { id: v1(), name:"1.5l", price: 0.50, isAdd: 0 },
-            { id: v1(), name:"2l", price: 1, isAdd: 0 },],
+            { id: 1, name:"1l", price: 0.20, isAdd: 0 },
+            { id: 2, name:"1.5l", price: 0.50, isAdd: 0 },
+            { id: 3, name:"2l", price: 1, isAdd: 0 },],
 
         hot: [
             { id: v1(), name: "Espresso", weight: 50, price: 1.5, img: Espresso, },
@@ -59,15 +65,46 @@ let initialState = {
         ]
     },
 
+        order: [
+           
+        ],
+    
+
 };
+type ActionsTypes = InferActionsTypes<typeof actions>
 
-
-const menuReducer = (state = initialState) => {
-
-
-
-    return state
-
-}
-
+const menuReducer = (state = initialState, action: ActionsTypes) => {
+    debugger
+    
+        switch (action.type) {
+            case "ADD_ORDER": {
+                return {
+                  ...state,
+                  order: [ action.newOrderForm, ...state.order, ]
+                };
+            } 
+            case "ADD_OPTION": {
+                return {
+                  ...state,
+                  option: [ action.selectedOption , ...state.foodMenu.option ]
+                };
+            }
+            case "CLEAN_CART": {
+                return {
+                  ...state,
+                  order: [ action.cleanCart]
+                };
+            }
+    
+            default:
+                return state
+    
+        }
+    }
+    
+    export const actions = {
+        addOrderActionCreator: (newOrderForm: any) => ({ type: "ADD_ORDER", newOrderForm } as const),
+        addOptionActionCreator: (selectedOption: any) => ({ type: "ADD_OPTION", selectedOption } as const),
+        cleanCartActionCreator: (cleanCart: any) => ({type: "CLEAN_CART", cleanCart} as const),
+    }
 export default menuReducer

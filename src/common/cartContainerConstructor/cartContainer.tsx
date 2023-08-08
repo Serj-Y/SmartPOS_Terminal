@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import style from "./cartContainer.module.scss"
 import styles from "../extraMenuItemConstructor/extraMenuItemConstructor.module.scss"
+import { useDispatch } from "react-redux";
+import { actions } from "../../reducer/menuReducer";
+
 
 type PropsType = {
     option?: any
-    OnClick: any
+    CloseBtn?: any
     name: string
     weight: number
     price: any
@@ -12,18 +15,27 @@ type PropsType = {
 }
 
 export const CartContainer = (props: any) => {
-    const menu = props.stateMenu
+    let menu = props.stateMenu
+    const dispatch =useDispatch()
+
+
+
+    const cleanUp =()=>{
+        dispatch(actions.cleanCartActionCreator(menu))
+    }
+
     return (
         <div className={style.food}>
             <h2>{props.title} {props.icon}</h2>
             {menu.map((i: any) =>
                 <div className={style.extraOption} >
                     <MenuItem name={i.name} weight={i.weight} price={i.price}
-                        OnClick={() => { }}
+                      CloseBtn={cleanUp}
                         img={i.img}
                     />
                 </div>
             )}
+            {menu[1]?  <button onClick={cleanUp} >clean</button>: ""}
         </div>)
 }
 
@@ -37,7 +49,7 @@ const MenuItem = (props: PropsType) => {
                 <p className={styles.itemWeight} >{props.weight} g</p>
                 <p className={styles.itemPrice} >${props.price}</p>
                 <p className={styles.optionItem} >{props.option}</p>
-                <button onClick={props.OnClick} >X</button>
+                <button onClick={props.CloseBtn} >X</button>
             </div>
         </div>
     )

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor/extraMenuItemConstructor";
-import { actions } from "../../reducer/cartReducer";
+import { actions } from "../../reducer/menuReducer";
 import { useDispatch } from "react-redux";
 
 ;
 
 
 export type SecondMenuType = {
-    id: string, name: string, weight: number, price: number, img: string, 
+    id: string, name: string, weight: number, price: number, img: string,
 }
 
 const MenuContainer = (props: any) => {
@@ -18,24 +18,17 @@ const MenuContainer = (props: any) => {
     const [secondMenu, setSecondMenu] = useState(menu)
     const [isOpen, setIsOpen] = useState(false)
     const [pricer, setPricer] = useState(secondMenu.price)
+    const [extraOption, setExtraOption] = useState(undefined)
+    const [count, setCount] = useState(0)
 
-    const [isAddOption3, setIsAddOption3] = useState(false)
-    const [extraOption, setExtraOption] = useState(extraMenu)
-
+console.log(secondMenu.option)
     const dispatch = useDispatch()
 
 
-
-
     const addToCart = (newOrderForm: any) => {
-        const selectedOption = newOrderForm.option
-        dispatch(actions.addOrderActionCreator(newOrderForm));
-
-        console.log(selectedOption)
-        dispatch(actions.addOptionActionCreator(selectedOption));
+      dispatch(actions.addOrderActionCreator(newOrderForm));
     }
 
-    const [isOnBag, setIsOnBag] = useState(null)
 
     function onClickHandler(i: any) {
         setIsOpen(true)
@@ -46,8 +39,6 @@ const MenuContainer = (props: any) => {
 
 
     function onCloseExtraMenu() {
-        setIsAddOption3(false)
-        setIsOnBag(null)
         setIsOpen(false)
     }
 
@@ -132,34 +123,30 @@ const MenuContainer = (props: any) => {
 
     // }
 
-    const Option = () => {
-
+    const Option = (props: any) => {
+        const i = props.MenuObject;      
         function onHandlerAddOption(i: any) {
-            if (!isAddOption3) {
-                setPricer(((prev: any) => prev + i.price))
-                setIsAddOption3(true)
-                setIsOnBag(i)
+            setExtraOption(i)
+            setPricer(((prev: any) => prev + i.price))
+            setCount(i.isAdd)
+            setCount(((prev: any) => prev + 1))
 
-            } else {
-                setPricer(pricer - i.price)
-                setIsAddOption3(false)
-                setIsOnBag(null)
-            }
+            dispatch(actions.addOptionActionCreator(i))
         }
+
+        function onHandlerDeleteOption(i: any) {
+            setPricer(pricer - i.price)
+            setCount(((prev: any) => prev - 1))
+
+        }
+
         return (
- 
-            extraOption.map((i: any) => <div key={i.id} >
-                    {i.name}
-                    <input type="checkbox" onChange={() => onHandlerAddOption(i)} />
-                    ${i.price}
-                </div>)
-       
-        )
-
+            <div  >
+                {i.name}
+                <button onClick={() => onHandlerDeleteOption(i)} >-</button>{count} <button onClick={() => onHandlerAddOption(i)} >+</button>
+                ${i.price}
+            </div>)
     }
-
-
-
 
 
     return (
@@ -178,16 +165,12 @@ const MenuContainer = (props: any) => {
                 </div>
                 : <div className={styles.extraOption} >
                     <ExtraMenuItemConstructor name={secondMenu.name} weight={secondMenu.weight} price={pricer}
-                        OnClick={onCloseExtraMenu}
-                        option={<Option  />} img={secondMenu.img}
+                        CloseBtn={onCloseExtraMenu}
+                        addCartBtn={() => addToCart(secondMenu)}
+                        option={secondMenu.ownOption?  secondMenu.ownOption.map((i: any) => <Option MenuObject={i} /> ): extraMenu? extraMenu.map((i: any) => <Option MenuObject={i} />): ""} 
+                        img={secondMenu.img}
                     />
-                    <div>
-                        <h2>Add to Bag</h2>
-                        <button onClick={() => addToCart(secondMenu)} >+</button>
-                    </div>
-
                 </div>
-
             }
         </div>
     );
@@ -195,5 +178,7 @@ const MenuContainer = (props: any) => {
 
 
 export default MenuContainer
+
+
 
 
