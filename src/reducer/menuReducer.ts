@@ -17,22 +17,10 @@ import BigJoh from "../common/assets/png/BigJoh.png"
 let initialState = {
     foodMenu: {
         burger: [
-            {
-                id: v1(), name: "Hamburger", weight: 250, price: 2.45, img: Hamburger,option: [ ],
-                ownOption: [
-                    { id: 1, name: "test", price: 0.20, isAdd: 0 },
-                ],
-            },
-            {
-                id: v1(), name: "Hamburger XL", weight: 350, price: 3.45, img: HamburgerXL,option: [   ], 
-            },
-            {
-                id: v1(), name: "Cheeseburger", weight: 300, price: 3, img: Cheeseburger, option: [  ],
-            },
-            {
-                id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, option: [   ],
-            },
-
+            { id: v1(), name: "Hamburger", weight: 250, price: 2.45, img: Hamburger, option: [] },
+            { id: v1(), name: "Hamburger XL", weight: 350, price: 3.45, img: HamburgerXL, option: [] },
+            { id: v1(), name: "Cheeseburger", weight: 300, price: 3, img: Cheeseburger, option: [] },
+            { id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, option: [] },
         ],
         option: [
             { id: 1, name: "Cheese", price: 0.20, isAdd: 0 },
@@ -42,69 +30,63 @@ let initialState = {
     },
     drinksMenu: {
         cold: [
-            { id: v1(), name: "CocaCola", weight: 500, price: 1.5, img: Cola },
-            { id: v1(), name: "Sprite", weight: 500, price: 1.5, img: Sprite },
-            { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Fanta },
-            { id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral, ownOption:[
-                { id: 1, name:"1l", price: 0.10, isAdd: 0 },
-                { id: 2, name:"1.5l", price: 0.25, isAdd: 0 },
-                { id: 3, name:"2l", price: 0.50, isAdd: 0 },
-    
-            ] },
+            { id: v1(), name: "CocaCola", weight: 500, price: 1.5, img: Cola, option: [] },
+            { id: v1(), name: "Sprite", weight: 500, price: 1.5, img: Sprite, option: [] },
+            { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Fanta, option: [] },
+            {
+                id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral, option: [], ownOption: [
+                    { id: 1, name: "1l", price: 0.10, isAdd: 0 },
+                    { id: 2, name: "1.5l", price: 0.25, isAdd: 0 },
+                    { id: 3, name: "2l", price: 0.50, isAdd: 0 },
+                ]
+            },
         ],
         coldOption: [
-            { id: 1, name:"1l", price: 0.20, isAdd: 0 },
-            { id: 2, name:"1.5l", price: 0.50, isAdd: 0 },
-            { id: 3, name:"2l", price: 1, isAdd: 0 },],
+            { id: 1, name: "1l", price: 0.20, isAdd: 0 },
+            { id: 2, name: "1.5l", price: 0.50, isAdd: 0 },
+            { id: 3, name: "2l", price: 1, isAdd: 0 },],
 
         hot: [
-            { id: v1(), name: "Espresso", weight: 50, price: 1.5, img: Espresso, },
-            { id: v1(), name: "Cappuccino", weight: 200, price: 2, img: Cappuccino, },
-            { id: v1(), name: "Latte", weight: 300, price: 4.30, img: Latte, },
-            { id: v1(), name: "Tea", weight: 350, price: 1.5, img: Tea, },
+            { id: v1(), name: "Espresso", weight: 50, price: 1.5, img: Espresso, option: [] },
+            { id: v1(), name: "Cappuccino", weight: 200, price: 2, img: Cappuccino, option: [] },
+            { id: v1(), name: "Latte", weight: 300, price: 4.30, img: Latte, option: [] },
+            { id: v1(), name: "Tea", weight: 350, price: 1.5, img: Tea, option: [] },
         ]
     },
 
-        order: [
-           
-        ],
-    
+    order: [
+
+    ],
 
 };
+
 type ActionsTypes = InferActionsTypes<typeof actions>
 
 const menuReducer = (state = initialState, action: ActionsTypes) => {
-    debugger
-    
-        switch (action.type) {
-            case "ADD_ORDER": {
-                return {
-                  ...state,
-                  order: [ action.newOrderForm, ...state.order, ]
-                };
-            } 
-            case "ADD_OPTION": {
-                return {
-                  ...state,
-                  option: [ action.selectedOption , ...state.foodMenu.option ]
-                };
-            }
-            case "CLEAN_CART": {
-                return {
-                  ...state,
-                  order: [ action.cleanCart]
-                };
-            }
-    
-            default:
-                return state
-    
+
+    switch (action.type) {
+        case "ADD_ORDER": {
+            debugger
+            return {
+                ...state,
+                order: [action.newOrderForm, ...state.order,]
+            };
         }
+        case "CLEAN_CART": {
+            return {
+                ...state,
+                order: [action.cleanCart]
+            };
+        }
+
+        default:
+            return state
+
     }
-    
-    export const actions = {
-        addOrderActionCreator: (newOrderForm: any) => ({ type: "ADD_ORDER", newOrderForm } as const),
-        addOptionActionCreator: (selectedOption: any) => ({ type: "ADD_OPTION", selectedOption } as const),
-        cleanCartActionCreator: (cleanCart: any) => ({type: "CLEAN_CART", cleanCart} as const),
-    }
+}
+
+export const actions = {
+    addOrderActionCreator: (newOrderForm: any) => ({ type: "ADD_ORDER", newOrderForm } as const),
+    cleanCartActionCreator: (cleanCart: any) => ({ type: "CLEAN_CART", cleanCart } as const),
+}
 export default menuReducer

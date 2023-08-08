@@ -14,10 +14,6 @@ type PropsType = {
 
 export const MenuItemConstructor: React.FC<PropsType> = (props) => {
 
-
-
-  
-
     return (
         <div className={styles.itemContainer}>
           <div className={styles.item}>
