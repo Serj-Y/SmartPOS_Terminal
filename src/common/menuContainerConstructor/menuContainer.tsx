@@ -4,6 +4,7 @@ import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor"
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor/extraMenuItemConstructor";
 import { actions } from "../../reducer/menuReducer";
 import { useDispatch } from "react-redux";
+import { $CombinedState } from "redux";
 
 
 const MenuContainer = (props: any) => {
@@ -14,6 +15,8 @@ const MenuContainer = (props: any) => {
     const [isOpen, setIsOpen] = useState(false)
     const [pricer, setPricer] = useState(secondMenu.price)
     const [count, setCount] = useState(0)
+    const [selectedOption, setSelectedOption] = useState([]) as any
+
     const dispatch = useDispatch()
 
 
@@ -30,19 +33,19 @@ const MenuContainer = (props: any) => {
     }
 
     const addToCart = (order: any) => {
-        dispatch(actions.addOrderActionCreator(order));
-        console.log(optionsOfCart)
+        const orderWithOption = { ...order, option: selectedOption }
+        dispatch(actions.addOrderActionCreator(orderWithOption));
+
     }
 
     const Option = (props: any) => {
         const i = props.MenuObject;
-        const parent = props.parent
-
-
         function onHandlerAddOption(i: any) {
             setPricer(((prev: any) => prev + i.price))
             setCount(i.isAdd)
             setCount(((prev: any) => prev + 1))
+            const option = i
+            setSelectedOption([...selectedOption, option])
         }
 
 
