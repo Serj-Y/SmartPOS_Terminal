@@ -24,12 +24,37 @@ export const CartContainer = (props: any) => {
         dispatch(actions.cleanCartActionCreator(menu))
     }
 
+    const Option = (props: any) => {
+        const i = props.MenuObject;
+
+        function onHandlerAddOption(i: any) {
+    
+        }
+
+
+        function onHandlerDeleteOption(i: any) {
+
+        
+     
+        }
+
+
+        return (
+            <div  >
+                {i.name}
+                <button onClick={() => onHandlerDeleteOption(i)} >-</button> <button onClick={() => onHandlerAddOption(i)} >+</button>
+                ${i.price}
+            </div>)
+    }
+
+
+
     return (
         <div className={style.food}>
             <h2>{props.title} {props.icon}</h2>
             {menu.map((i: any) =>
                 <div className={style.extraOption} >
-                    <MenuItem name={i.name} weight={i.weight} price={i.price}
+                    <MenuItem name={i.name} weight={i.weight} price={i.price} option={ i.option? i.option.map((i: any) => <Option MenuObject={i}/>): <></>}
                       CloseBtn={cleanUp}
                         img={i.img}
                     />
