@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor/extraMenuItemConstructor";
@@ -10,7 +10,6 @@ import { $CombinedState } from "redux";
 const MenuContainer = (props: any) => {
     const menu = props.stateMenu;
     const extraMenu = props.extraMenu
-    const optionsOfCart = props.cartOfOption
     const [secondMenu, setSecondMenu] = useState(menu)
     const [isOpen, setIsOpen] = useState(false)
     const [pricer, setPricer] = useState(secondMenu.price)
@@ -33,19 +32,33 @@ const MenuContainer = (props: any) => {
     }
 
     const addToCart = (order: any) => {
-        const orderWithOption = { ...order, option: selectedOption }
+        const orderWithOption = {
+            id:order.id,
+            name: order.name,
+            weight: selectedOption.weight ||order.weight,
+            price: pricer,
+            img: order.img,
+            option: selectedOption
+        }
         dispatch(actions.addOrderActionCreator(orderWithOption));
-
+        setCount(0)
+        setPricer(secondMenu.price)
     }
 
     const Option = (props: any) => {
         const i = props.MenuObject;
+
         function onHandlerAddOption(i: any) {
             setPricer(((prev: any) => prev + i.price))
-            setCount(i.isAdd)
+            const option = {
+                id: i.id,
+                name: i.name,
+                weight: i.weight,
+                price: i.price,
+                isAdd: count
+                }
+            setSelectedOption([...selectedOption, option]) 
             setCount(((prev: any) => prev + 1))
-            const option = i
-            setSelectedOption([...selectedOption, option])
         }
 
 
@@ -58,7 +71,7 @@ const MenuContainer = (props: any) => {
         return (
             <div  >
                 {i.name}
-                <button onClick={() => onHandlerDeleteOption(i)} >-</button>{count} <button onClick={() => onHandlerAddOption(i)} >+</button>
+                <button onClick={() => onHandlerDeleteOption(i)} >-</button>{i.isAdd} <button onClick={() => onHandlerAddOption(i)} >+</button>
                 ${i.price}
             </div>)
     }
