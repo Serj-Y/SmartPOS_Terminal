@@ -1,10 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor/extraMenuItemConstructor";
 import { actions } from "../../reducer/menuReducer";
 import { useDispatch } from "react-redux";
-import { $CombinedState } from "redux";
+
+
+
+export type OptionType = {
+    id: string
+    name: string,
+    weight?:number ,
+    price: number,
+    isAdd: number
+}
+
+ export type OrderType = {
+    id: string,
+    name: string,
+    weight:number ,
+    price: number,
+    img: string,
+    option?: Array<object>
+}
 
 
 const MenuContainer = (props: any) => {
@@ -14,14 +32,11 @@ const MenuContainer = (props: any) => {
     const [isOpen, setIsOpen] = useState(false)
     const [pricer, setPricer] = useState(secondMenu.price)
     const [count, setCount] = useState(0)
-    const [selectedOption, setSelectedOption] = useState([]) as any
+    const [selectedOption, setSelectedOption] = useState([])as any 
 
     const dispatch = useDispatch()
 
-
-
-
-    function onOpenExtraOptions(i: any) {
+    function onOpenExtraOptions(i: OrderType) {
         setIsOpen(true)
         setSecondMenu(i)
         setPricer(i.price)
@@ -31,7 +46,7 @@ const MenuContainer = (props: any) => {
         setIsOpen(false)
     }
 
-    const addToCart = (order: any) => {
+    const addToCart = (order: OrderType) => {
         const orderWithOption = {
             id:order.id,
             name: order.name,
@@ -48,8 +63,9 @@ const MenuContainer = (props: any) => {
     const Option = (props: any) => {
         const i = props.MenuObject;
 
-        function onHandlerAddOption(i: any) {
+        function onHandlerAddOption(i: OptionType) {
             setPricer(((prev: any) => prev + i.price))
+            setCount(i.isAdd)
             const option = {
                 id: i.id,
                 name: i.name,
@@ -58,13 +74,13 @@ const MenuContainer = (props: any) => {
                 isAdd: count
                 }
             setSelectedOption([...selectedOption, option]) 
-            setCount(((prev: any) => prev + 1))
+            setCount((prev => prev + 1))
         }
 
 
-        function onHandlerDeleteOption(i: any) {
+        function onHandlerDeleteOption(i: OptionType) {
             setPricer(pricer - i.price)
-            setCount(((prev: any) => prev - 1))
+            setCount((prev => prev - 1))
         }
 
 
@@ -81,7 +97,7 @@ const MenuContainer = (props: any) => {
             <h2>{props.title} {props.icon}</h2>
             {!isOpen
                 ? <div className={styles.items}>
-                    {menu.map((i: any) => <div key={i.id}>
+                    {menu.map((i: OrderType) => <div key={i.id}>
                         <label form="Btn">
                             <MenuItemConstructor name={i.name} weight={i.weight} price={i.price} img={i.img} />
                             <button id="Btn" style={{ display: "none" }} onClick={() => onOpenExtraOptions(i)}></button>
@@ -92,12 +108,12 @@ const MenuContainer = (props: any) => {
                 : <div className={styles.extraOption} >
                     <ExtraMenuItemConstructor name={secondMenu.name} weight={secondMenu.weight} price={pricer}
                         CloseBtn={onCloseExtraOptions}
-                        addCartBtn={() => addToCart(secondMenu)}
+                        addToCartBtn={() => addToCart(secondMenu)}
                         option={
                             secondMenu.ownOption ?
-                                secondMenu.ownOption.map((i: any) => <Option parent={secondMenu} MenuObject={i} />) :
+                                secondMenu.ownOption.map((i: OptionType) => <Option parent={secondMenu} MenuObject={i} />) :
                                 extraMenu ?
-                                    extraMenu.map((i: any) => <Option parent={secondMenu} MenuObject={i} />) :
+                                    extraMenu.map((i: OptionType) => <Option parent={secondMenu} MenuObject={i} />) :
                                     <></>
                         }
                         img={secondMenu.img}

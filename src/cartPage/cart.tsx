@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 type PropsType = {
-
+  
 }
 
 export const CartPage: React.FC<PropsType> = (props) => {
@@ -15,7 +15,7 @@ export const CartPage: React.FC<PropsType> = (props) => {
 
     return (
         <div>
-            <CartContainer stateMenu={order} cleanCart={order} icon={ <FontAwesomeIcon icon={faCartShopping} /> } title={"Cart"} />
+            <CartContainer stateMenu={order} icon={<FontAwesomeIcon icon={faCartShopping} />} title={"Cart"} name={""} />
         </div>
     )
 }
