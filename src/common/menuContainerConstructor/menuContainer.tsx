@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor/extraMenuItemConstructor";
@@ -10,15 +10,15 @@ import { useDispatch } from "react-redux";
 export type OptionType = {
     id: string
     name: string,
-    weight?:number ,
+    weight?: number,
     price: number,
     isAdd: number
 }
 
- export type OrderType = {
+export type OrderType = {
     id: string,
     name: string,
-    weight:number ,
+    weight: number,
     price: number,
     img: string,
     option?: Array<object>
@@ -32,7 +32,8 @@ const MenuContainer = (props: any) => {
     const [isOpen, setIsOpen] = useState(false)
     const [pricer, setPricer] = useState(secondMenu.price)
     const [count, setCount] = useState(0)
-    const [selectedOption, setSelectedOption] = useState([])as any 
+    const [selectedOption, setSelectedOption] = useState([]) as any
+    const [iOptions, setIOptions] = useState([]) as any
 
     const dispatch = useDispatch()
 
@@ -40,6 +41,7 @@ const MenuContainer = (props: any) => {
         setIsOpen(true)
         setSecondMenu(i)
         setPricer(i.price)
+
     }
 
     function onCloseExtraOptions() {
@@ -47,17 +49,11 @@ const MenuContainer = (props: any) => {
     }
 
     const addToCart = (order: OrderType) => {
-        const orderWithOption = {
-            id:order.id,
-            name: order.name,
-            weight: selectedOption.weight ||order.weight,
-            price: pricer,
-            img: order.img,
-            option: selectedOption
-        }
+        const orderWithOption = { ...order, weight: selectedOption.weight || order.weight, price: pricer, option: selectedOption }
         dispatch(actions.addOrderActionCreator(orderWithOption));
-        setCount(0)
+        // setCount(0)
         setPricer(secondMenu.price)
+        setSelectedOption([]) as any
     }
 
     const Option = (props: any) => {
@@ -65,22 +61,18 @@ const MenuContainer = (props: any) => {
 
         function onHandlerAddOption(i: OptionType) {
             setPricer(((prev: any) => prev + i.price))
-            setCount(i.isAdd)
-            const option = {
-                id: i.id,
-                name: i.name,
-                weight: i.weight,
-                price: i.price,
-                isAdd: count
-                }
-            setSelectedOption([...selectedOption, option]) 
-            setCount((prev => prev + 1))
+            const option = { ...i }
+            const options = { ...option, isAdd: i.isAdd += 1 }
+            setSelectedOption([...selectedOption, options ])
         }
 
 
-        function onHandlerDeleteOption(i: OptionType) {
+        function onHandlerDeleteOption(i: OrderType) {
+            let forFilter = [...selectedOption]
+            const updatedOption = forFilter.filter((filtredOption: any) => filtredOption.id !== i.id)
             setPricer(pricer - i.price)
-            setCount((prev => prev - 1))
+            setCount(0)
+            setSelectedOption([...updatedOption])
         }
 
 

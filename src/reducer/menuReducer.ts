@@ -57,7 +57,7 @@ let initialState = {
             { id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, },
         ],
         option: [
-            { id: v1(), name: "Cheese", price: 0.20, isAdd: 0 },
+            { id: v1(), name: "Cheese", price: 0.20,isAdd: 0 },
             { id: v1(), name: "Meat", price: 0.50, isAdd: 0 },
             { id: v1(), name: "Bacon", price: 0.30, isAdd: 0 }
         ],
@@ -109,7 +109,7 @@ const menuReducer = (state = initialState, action: ActionsTypes) => {
         case "DELETE_ITEM_OF_CART": {
             return {
                 ...state,
-                order: [action.deleteItem]
+                order: [action.deleteItem ]
             };
         }
         case "CLEAN_CART": {
@@ -127,7 +127,7 @@ const menuReducer = (state = initialState, action: ActionsTypes) => {
 
 export const actions = {
     addOrderActionCreator: (newOrderForm: any) => ({ type: "ADD_ORDER", newOrderForm } as const),
-    deleteItemOfCartActionCreator: (deleteItem: () => void) => ({ type: "DELETE_ITEM_OF_CART", deleteItem } as const),
+    deleteItemOfCartActionCreator: (deleteItem: any) => ({ type: "DELETE_ITEM_OF_CART", deleteItem } as const),
     cleanCartActionCreator: (cleanCart: () => void) => ({ type: "CLEAN_CART", cleanCart } as const),
 }
 export default menuReducer

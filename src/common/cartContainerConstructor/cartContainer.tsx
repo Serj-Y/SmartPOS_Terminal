@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./cartContainer.module.scss"
 import styles from "../extraMenuItemConstructor/extraMenuItemConstructor.module.scss"
 import { useDispatch } from "react-redux";
@@ -10,25 +10,39 @@ import { OptionType, OrderType } from "../menuContainerConstructor/menuContainer
 type PropsType = {
     title: string;
     icon?: any;
-    stateMenu?: any;
+    CartItems?: any;
     option?: any
     CloseBtn?: any
     name: string
     weight?: number
     price?: number
     img?: string
-    
 }
 
-export const CartContainer: React.FC<PropsType> = ({stateMenu, title, icon}) => {
-    let menu = stateMenu
+export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) => {
+
+    const menu = CartItems 
+   
+
     const dispatch = useDispatch()
+
+    const menuForFilter = [...menu]
+
+
+    const deleteMenuItem = (id: string) => {
+        const newMenu = menuForFilter.filter((newMenu: any) => newMenu.id !== id)
+
+
+        dispatch(actions.deleteItemOfCartActionCreator(newMenu))
+        
+    }
+
 
     const cleanUp = () => {
         dispatch(actions.cleanCartActionCreator(menu))
     }
 
-    const Option = (props:any ) => {
+    const Option = (props: any) => {
         const Option = props.Option
 
         function onHandlerAddOption(i: any) {
@@ -36,25 +50,22 @@ export const CartContainer: React.FC<PropsType> = ({stateMenu, title, icon}) => 
         }
         function onHandlerDeleteOption(i: any) {
 
-
-
         }
 
         return (
             <div  >
                 {Option.name}
-                <button onClick={() => onHandlerDeleteOption(Option)} >-</button> <button onClick={() => onHandlerAddOption(Option)} >+</button>
+                <button onClick={() => onHandlerDeleteOption(Option)} >-</button>{Option.isAdd} <button onClick={() => onHandlerAddOption(Option)} >+</button>
                 ${Option.price}
             </div>)
     }
-
     return (
         <div className={style.food}>
             <h2>{title} {icon}</h2>
             {menu.map((i: OrderType) =>
                 <div className={style.extraOption} >
                     <MenuItem name={i.name} weight={i.weight} price={i.price} option={i.option ? i.option.map((i) => <Option Option={i} />) : <></>}
-                        CloseBtn={cleanUp}
+                        CloseBtn={() => deleteMenuItem(i.id)}
                         img={i.img}
                     />
                 </div>
@@ -69,7 +80,7 @@ type MenuItemType = {
     weight: number,
     price: number,
     option?: any,
-    CloseBtn: () => void
+    CloseBtn: any
 }
 
 const MenuItem: React.FC<MenuItemType> = ({ name, img, weight, price, option, CloseBtn }) => {

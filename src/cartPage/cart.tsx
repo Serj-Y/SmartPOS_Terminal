@@ -15,7 +15,7 @@ export const CartPage: React.FC<PropsType> = (props) => {
 
     return (
         <div>
-            <CartContainer stateMenu={order} icon={<FontAwesomeIcon icon={faCartShopping} />} title={"Cart"} name={""} />
+            <CartContainer CartItems={order} icon={<FontAwesomeIcon icon={faCartShopping} />} title={"Cart"} name={""} />
         </div>
     )
 }
