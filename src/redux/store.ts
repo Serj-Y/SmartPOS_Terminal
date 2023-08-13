@@ -1,18 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import  menuReducer   from '../reducer/menuReducer'
-
-
-
-
+import { productReducer } from "../reducer/productReducer";
+import { basketReducer } from "../reducer/basketReducer";
 
 export const store = configureStore({
   reducer: {
-     //@ts-ignore
-  Menu: menuReducer,
-
+    product: productReducer,
+    //@ts-ignore
+    basket: basketReducer,
   },
-
-})
+});
 
 export type RootState = ReturnType<typeof store.getState>
 

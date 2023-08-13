@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor/extraMenuItemConstructor";
-import { actions } from "../../reducer/menuReducer";
 import { useDispatch } from "react-redux";
-
-
 
 export type OptionType = {
     id: string
@@ -50,7 +47,7 @@ const MenuContainer = (props: any) => {
 
     const addToCart = (order: OrderType) => {
         const orderWithOption = { ...order, weight: selectedOption.weight || order.weight, price: pricer, option: selectedOption }
-        dispatch(actions.addOrderActionCreator(orderWithOption));
+        // dispatch(actions.addOrderActionCreator(orderWithOption));
         // setCount(0)
         setPricer(secondMenu.price)
         setSelectedOption([]) as any
