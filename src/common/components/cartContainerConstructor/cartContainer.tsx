@@ -17,12 +17,13 @@ type PropsType = {
     weight?: number
     price?: number
     img?: string
+    multiply?: boolean
 }
 
 export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) => {
 
-    const menu = CartItems 
-   
+    const menu = CartItems
+
 
     const dispatch = useDispatch()
 
@@ -30,11 +31,11 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
 
 
     const deleteMenuItem = (id: string) => {
-        const newMenu = menuForFilter.filter((newMenu: any) => newMenu.id !== id)
+        const cartItems = menuForFilter.filter((item: any) => item.id !== id)
 
+        console.log(cartItems)
+        dispatch(actions.deleteItemOfCartActionCreator(cartItems))
 
-        dispatch(actions.deleteItemOfCartActionCreator(newMenu))
-        
     }
 
 
@@ -53,10 +54,10 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
         }
 
         return (
-            <div  >
-                {Option.name}
-                <button onClick={() => onHandlerDeleteOption(Option)} >-</button>{Option.isAdd} <button onClick={() => onHandlerAddOption(Option)} >+</button>
-                ${Option.price}
+            <div>
+                {Option.multiply
+                    ? <> {Option.name} <button onClick={() => onHandlerDeleteOption(Option)} >-</button><button onClick={() => onHandlerAddOption(Option)} >+</button> ${Option.price} </>
+                    : <> {Option.name} <input type="checkbox" checked key={Option.id} name={Option.name} /> ${Option.price}  </>}
             </div>)
     }
     return (

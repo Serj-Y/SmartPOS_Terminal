@@ -31,9 +31,9 @@ const MenuContainer = (props: any) => {
     const [secondMenu, setSecondMenu] = useState(menu)
     const [isOpen, setIsOpen] = useState(false)
     const [pricer, setPricer] = useState(secondMenu.price)
-    const [count, setCount] = useState(0)
     const [selectedOption, setSelectedOption] = useState([]) as any
-    const [iOptions, setIOptions] = useState([]) as any
+    const [isChecked, setChecked] = useState([]) as any
+
 
     const dispatch = useDispatch()
 
@@ -59,28 +59,40 @@ const MenuContainer = (props: any) => {
     const Option = (props: any) => {
         const i = props.MenuObject;
 
-        function onHandlerAddOption(i: OptionType) {
-            setPricer(((prev: any) => prev + i.price))
-            const option = { ...i }
-            const options = { ...option, isAdd: i.isAdd += 1 }
-            setSelectedOption([...selectedOption, options ])
+        // function onHandlerAddOption(i: OptionType) {
+        //     setPricer(((prev: any) => prev + i.price))
+        //     const option = { ...i}
+        //     setSelectedOption([...selectedOption, option ])
+        // }
+
+
+        // function onHandlerDeleteOption(i: OrderType) {
+        //     let forFilter = [...selectedOption]
+        //     const updatedOption = forFilter.filter((filtredOption: any) => filtredOption.id !== i.id)
+        //     setPricer(pricer - i.price)
+        //     setSelectedOption([...updatedOption])
+        // }
+
+        function onChangeOptionForRadio (i: OptionType) {
+            if (isChecked !== i.id ){
+            setPricer( secondMenu.price + i.price)
+            const option = { ...i}
+            setChecked(i.id)
+            setSelectedOption( option )
+        } else {
+            setPricer(secondMenu.price)
+            setChecked("")
         }
 
-
-        function onHandlerDeleteOption(i: OrderType) {
-            let forFilter = [...selectedOption]
-            const updatedOption = forFilter.filter((filtredOption: any) => filtredOption.id !== i.id)
-            setPricer(pricer - i.price)
-            setCount(0)
-            setSelectedOption([...updatedOption])
         }
 
 
         return (
-            <div  >
-                {i.name}
-                <button onClick={() => onHandlerDeleteOption(i)} >-</button>{i.isAdd} <button onClick={() => onHandlerAddOption(i)} >+</button>
-                ${i.price}
+            <div>
+                {i.multiply 
+                    ? <> {i.name} <input type="checkbox" checked={i.id === isChecked} value={i.id} onChange={() =>onChangeOptionForRadio(i)}  key={i.id} name={i.name} /> ${i.price}  </>
+                    :<> {i.name} <input type="radio" checked={i.id === isChecked} value={i.id} onChange={() =>onChangeOptionForRadio(i)}  key={i.id} name={i.name} /> ${i.price}  </>
+                     }
             </div>)
     }
 

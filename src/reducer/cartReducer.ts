@@ -29,7 +29,7 @@ const cartReducer = (state = initialState, action: ActionsTypes) => {
         case "CLEAN_CART": {
             return {
                 ...state,
-                orders: [action.cleanCart]
+                orders: [initialState]
             }
         }
 
