@@ -1,14 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
-import { Nav } from './nav/nav';
+import { Nav } from './common/nav/nav';
 import {  Route, Routes  } from "react-router-dom";
-import { Dashboard } from './home/dashboard';
-import { Header } from './header/header';
-import { Food } from './food/food';
-import { HotDrinks } from './hotDrinks/hotDrinks';
-import { ColdDrinks } from "./coldDrinks/coldDrinks"
-import { CartPage } from './cartPage/cart';
+import { Dashboard } from './pages/home/dashboard';
+import { Header } from './common/header/header';
+import { Food } from './pages/food/food';
+import { HotDrinks } from './pages/hotDrinks/hotDrinks';
+import { ColdDrinks } from "./pages/coldDrinks/coldDrinks"
+import { CartPage } from './pages/cartPage/cart';
 
 
 

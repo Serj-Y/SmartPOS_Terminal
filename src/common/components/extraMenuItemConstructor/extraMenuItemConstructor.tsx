@@ -1,7 +1,6 @@
 
 import React from "react"
 import styles from "./extraMenuItemConstructor.module.scss"
-import burgerIcon from "../assets/svg/hamburger.svg"
 
 
 type PropsType = {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor/extraMenuItemConstructor";
-import { actions } from "../../reducer/menuReducer";
+import { actions } from "../../../reducer/cartReducer";
 import { useDispatch } from "react-redux";
 
 

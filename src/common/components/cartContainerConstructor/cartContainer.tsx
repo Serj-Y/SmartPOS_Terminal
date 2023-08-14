@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import style from "./cartContainer.module.scss"
 import styles from "../extraMenuItemConstructor/extraMenuItemConstructor.module.scss"
 import { useDispatch } from "react-redux";
-import { actions } from "../../reducer/menuReducer";
+import { actions } from "../../../reducer/cartReducer";
 import { OptionType, OrderType } from "../menuContainerConstructor/menuContainer";
 
 

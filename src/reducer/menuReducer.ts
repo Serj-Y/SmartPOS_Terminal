@@ -57,7 +57,7 @@ let initialState = {
             { id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, },
         ],
         option: [
-            { id: v1(), name: "Cheese", price: 0.20,isAdd: 0 },
+            { id: v1(), name: "Cheese", price: 0.20, isAdd: 0 },
             { id: v1(), name: "Meat", price: 0.50, isAdd: 0 },
             { id: v1(), name: "Bacon", price: 0.30, isAdd: 0 }
         ],
@@ -88,46 +88,16 @@ let initialState = {
         ]
     },
 
-    order: [
-
-    ],
 
 };
 
 type ActionsTypes = InferActionsTypes<typeof actions>
 
 const menuReducer = (state = initialState, action: ActionsTypes) => {
-
-    switch (action.type) {
-        case "ADD_ORDER": {
-            debugger
-            return {
-                ...state,
-                order: [action.newOrderForm, ...state.order,]
-            };
-        }
-        case "DELETE_ITEM_OF_CART": {
-            return {
-                ...state,
-                order: [action.deleteItem ]
-            };
-        }
-        case "CLEAN_CART": {
-            return {
-                ...state,
-                order: [action.cleanCart]
-            };
-        }
-
-        default:
-            return state
-
-    }
+    return state
 }
 
 export const actions = {
-    addOrderActionCreator: (newOrderForm: any) => ({ type: "ADD_ORDER", newOrderForm } as const),
-    deleteItemOfCartActionCreator: (deleteItem: any) => ({ type: "DELETE_ITEM_OF_CART", deleteItem } as const),
-    cleanCartActionCreator: (cleanCart: () => void) => ({ type: "CLEAN_CART", cleanCart } as const),
+
 }
 export default menuReducer
