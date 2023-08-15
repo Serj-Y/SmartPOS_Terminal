@@ -23,7 +23,7 @@ const cartReducer = (state = initialState, action: ActionsTypes) => {
         case "DELETE_ITEM_OF_CART": {
             return {
                 ...state,
-                orders: [action.deleteItem ]
+                orders: action.deleteItem 
             };
         }
         case "CLEAN_CART": {

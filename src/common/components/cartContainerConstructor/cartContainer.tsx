@@ -21,19 +21,12 @@ type PropsType = {
 }
 
 export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) => {
-
     const menu = CartItems
-
-
     const dispatch = useDispatch()
 
-    const menuForFilter = [...menu]
-
-
-    const deleteMenuItem = (id: string) => {
-        const cartItems = menuForFilter.filter((item: any) => item.id !== id)
-        dispatch(actions.deleteItemOfCartActionCreator(cartItems))
-
+    const deleteCartItem = (id: string) => {
+        const filtredItems = [...menu.filter((i: any) => i.id !== id)]
+        dispatch(actions.deleteItemOfCartActionCreator(filtredItems))
     }
 
 
@@ -45,12 +38,8 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
         const Option = props.Option
 
         return (
-
             <div>
-
                 {Option.name} <input type="checkbox" checked value={Option.id} key={Option.id} name={Option.name} /> ${Option.price}
-
-
             </div>)
     }
     return (
@@ -59,7 +48,7 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
             {menu.map((i: OrderType) =>
                 <div className={style.extraOption} >
                     <MenuItem name={i.name} weight={i.weight} price={i.price} options={i.option ? i.option.map((i: any) => <Option Option={i} />) : <></>}
-                        CloseBtn={() => deleteMenuItem(i.id)}
+                        CloseBtn={() => deleteCartItem(i.id)}
                         img={i.img}
                     />
                 </div>
