@@ -73,26 +73,28 @@ const MenuContainer = (props: any) => {
         //     setSelectedOption([...updatedOption])
         // }
 
-        function onChangeOptionForRadio (i: OptionType) {
-            if (isChecked !== i.id ){
-            setPricer( secondMenu.price + i.price)
-            const option = { ...i}
-            setChecked(i.id)
-            setSelectedOption( option )
-        } else {
-            setPricer(secondMenu.price)
-            setChecked("")
-        }
+        function onChangeOptionForRadio(i: OptionType) {
+            if (isChecked !== i.id) {
+                setPricer(secondMenu.price + i.price)
+
+                const option = [{ ...i }]
+
+                setChecked(i.id)
+                setSelectedOption(option)
+            } else {
+                setPricer(secondMenu.price)
+                setChecked("")
+            }
 
         }
 
 
         return (
             <div>
-                {i.multiply 
-                    ? <> {i.name} <input type="checkbox" checked={i.id === isChecked} value={i.id} onChange={() =>onChangeOptionForRadio(i)}  key={i.id} name={i.name} /> ${i.price}  </>
-                    :<> {i.name} <input type="radio" checked={i.id === isChecked} value={i.id} onChange={() =>onChangeOptionForRadio(i)}  key={i.id} name={i.name} /> ${i.price}  </>
-                     }
+                {i.multiply
+                    ? <> {i.name} <input type="checkbox" checked={i.id === isChecked} value={i.id} onChange={() => onChangeOptionForRadio(i)} key={i.id} name={i.name} /> ${i.price}  </>
+                    : <> {i.name} <input type="radio" checked={i.id === isChecked} value={i.id} onChange={() => onChangeOptionForRadio(i)} key={i.id} name={i.name} /> ${i.price}  </>
+                }
             </div>)
     }
 

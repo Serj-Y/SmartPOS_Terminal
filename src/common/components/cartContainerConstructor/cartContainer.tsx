@@ -11,7 +11,7 @@ type PropsType = {
     title: string;
     icon?: any;
     CartItems?: any;
-    option?: any
+    options?: any
     CloseBtn?: any
     name: string
     weight?: number
@@ -32,8 +32,6 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
 
     const deleteMenuItem = (id: string) => {
         const cartItems = menuForFilter.filter((item: any) => item.id !== id)
-
-        console.log(cartItems)
         dispatch(actions.deleteItemOfCartActionCreator(cartItems))
 
     }
@@ -46,18 +44,13 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
     const Option = (props: any) => {
         const Option = props.Option
 
-        function onHandlerAddOption(i: any) {
-
-        }
-        function onHandlerDeleteOption(i: any) {
-
-        }
-
         return (
+
             <div>
-                {Option.multiply
-                    ? <> {Option.name} <button onClick={() => onHandlerDeleteOption(Option)} >-</button><button onClick={() => onHandlerAddOption(Option)} >+</button> ${Option.price} </>
-                    : <> {Option.name} <input type="checkbox" checked key={Option.id} name={Option.name} /> ${Option.price}  </>}
+
+                {Option.name} <input type="checkbox" checked value={Option.id} key={Option.id} name={Option.name} /> ${Option.price}
+
+
             </div>)
     }
     return (
@@ -65,7 +58,7 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
             <h2>{title} {icon}</h2>
             {menu.map((i: OrderType) =>
                 <div className={style.extraOption} >
-                    <MenuItem name={i.name} weight={i.weight} price={i.price} option={i.option ? i.option.map((i) => <Option Option={i} />) : <></>}
+                    <MenuItem name={i.name} weight={i.weight} price={i.price} options={i.option ? i.option.map((i: any) => <Option Option={i} />) : <></>}
                         CloseBtn={() => deleteMenuItem(i.id)}
                         img={i.img}
                     />
@@ -80,11 +73,11 @@ type MenuItemType = {
     img: string,
     weight: number,
     price: number,
-    option?: any,
+    options?: any,
     CloseBtn: any
 }
 
-const MenuItem: React.FC<MenuItemType> = ({ name, img, weight, price, option, CloseBtn }) => {
+const MenuItem: React.FC<MenuItemType> = ({ name, img, weight, price, options, CloseBtn }) => {
     if (name) {
         return (
             <div className={styles.itemContainer}>
@@ -93,7 +86,7 @@ const MenuItem: React.FC<MenuItemType> = ({ name, img, weight, price, option, Cl
                     <p className={styles.itemName} >{name}</p>
                     <p className={styles.itemWeight} >{weight} g</p>
                     <p className={styles.itemPrice} >${price}</p>
-                    <p className={styles.optionItem} >{option}</p>
+                    <p className={styles.optionItem} >{options}</p>
                     <button onClick={CloseBtn} >X</button>
                 </div>
             </div>
