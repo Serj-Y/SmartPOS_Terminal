@@ -1,7 +1,7 @@
 import { InferActionsTypes } from "../redux/store";
 
 
-let initialState = {
+const initialState = {
     orders: [
 
     ],
@@ -29,7 +29,7 @@ const cartReducer = (state = initialState, action: ActionsTypes) => {
         case "CLEAN_CART": {
             return {
                 ...state,
-                orders: [initialState]
+                orders: []
             }
         }
 
@@ -42,6 +42,6 @@ const cartReducer = (state = initialState, action: ActionsTypes) => {
 export const actions = {
     addOrderActionCreator: (newOrderForm: any) => ({ type: "ADD_ORDER", newOrderForm } as const),
     deleteItemOfCartActionCreator: (deleteItem: any) => ({ type: "DELETE_ITEM_OF_CART", deleteItem } as const),
-    cleanCartActionCreator: (cleanCart: () => void) => ({ type: "CLEAN_CART", cleanCart } as const),
+    cleanCartActionCreator: () => ({ type: "CLEAN_CART" } as const),
 }
 export default cartReducer

@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 export type OptionType = {
     id: string
     name: string,
-    weight?: number,
+    weight: number,
     price: number,
     isAdd: number
 }
@@ -33,6 +33,7 @@ const MenuContainer = (props: any) => {
     const [pricer, setPricer] = useState(secondMenu.price)
     const [selectedOption, setSelectedOption] = useState([]) as any
     const [isChecked, setChecked] = useState([]) as any
+    const [isTotalItemWeight, setTotalItemWeight] = useState(secondMenu.weight)
 
 
     const dispatch = useDispatch()
@@ -41,7 +42,7 @@ const MenuContainer = (props: any) => {
         setIsOpen(true)
         setSecondMenu(i)
         setPricer(i.price)
-
+        setTotalItemWeight(i.weight)
     }
 
     function onCloseExtraOptions() {
@@ -49,10 +50,10 @@ const MenuContainer = (props: any) => {
     }
 
     const addToCart = (order: OrderType) => {
-        const orderWithOption = { ...order, weight: selectedOption.weight || order.weight, price: pricer, option: selectedOption }
+        const orderWithOption = { ...order, weight: isTotalItemWeight || order.weight, price: pricer, option: selectedOption }
         dispatch(actions.addOrderActionCreator(orderWithOption));
-        // setCount(0)
         setPricer(secondMenu.price)
+        setTotalItemWeight(secondMenu.weight)
         setSelectedOption([]) as any
     }
 
@@ -76,9 +77,8 @@ const MenuContainer = (props: any) => {
         function onChangeOptionForRadio(i: OptionType) {
             if (isChecked !== i.id) {
                 setPricer(secondMenu.price + i.price)
-
+                setTotalItemWeight( secondMenu.weight >  i.weight?  secondMenu.weight+ i.weight: i.weight)
                 const option = [{ ...i }]
-
                 setChecked(i.id)
                 setSelectedOption(option)
             } else {

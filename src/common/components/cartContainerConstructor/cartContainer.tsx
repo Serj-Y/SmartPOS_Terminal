@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./cartContainer.module.scss"
 import styles from "../extraMenuItemConstructor/extraMenuItemConstructor.module.scss"
 import { useDispatch } from "react-redux";
@@ -22,40 +22,50 @@ type PropsType = {
 
 export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) => {
     const menu = CartItems
+
     const dispatch = useDispatch()
 
     const deleteCartItem = (id: string) => {
         const filtredItems = [...menu.filter((i: any) => i.id !== id)]
         dispatch(actions.deleteItemOfCartActionCreator(filtredItems))
+
     }
 
 
     const cleanUp = () => {
-        dispatch(actions.cleanCartActionCreator(menu))
+        dispatch(actions.cleanCartActionCreator())
     }
 
     const Option = (props: any) => {
         const Option = props.Option
 
+
         return (
             <div>
-                {Option.name} <input type="checkbox" checked value={Option.id} key={Option.id} name={Option.name} /> ${Option.price}
+                <h4>
+                Extra options:
+                </h4>
+               {Option.name} wight: {Option.weight}g price: {Option.price}$
             </div>)
     }
     return (
         <div className={style.food}>
             <h2>{title} {icon}</h2>
-            {menu.map((i: OrderType) =>
+            {menu.map((i: OrderType)  =>
+            
                 <div className={style.extraOption} >
-                    <MenuItem name={i.name} weight={i.weight} price={i.price} options={i.option ? i.option.map((i: any) => <Option Option={i} />) : <></>}
+                    <MenuItem name={i.name} weight={  i.weight} price={i.price} options={i.option ? i.option.map((i: any) => <Option Option={i} /> ) : <></>}
                         CloseBtn={() => deleteCartItem(i.id)}
                         img={i.img}
                     />
+                    
                 </div>
-            )}
-            {menu[1] ? <button onClick={cleanUp} >clean</button> : ""}
+           
+            )  }
+            {menu[1] ? <><button onClick={cleanUp} >clean</button></> : ""}
         </div>)
 }
+
 
 type MenuItemType = {
     name: string,
@@ -67,6 +77,8 @@ type MenuItemType = {
 }
 
 const MenuItem: React.FC<MenuItemType> = ({ name, img, weight, price, options, CloseBtn }) => {
+
+
     if (name) {
         return (
             <div className={styles.itemContainer}>

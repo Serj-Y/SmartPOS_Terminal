@@ -57,7 +57,7 @@ let initialState = {
             { id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, },
         ],
         option: [
-            { id: v1(), name: "Cheese", price: 0.20, isAdd: 0, multiply: true },
+            { id: v1(), name: "Cheese", weight: 20, price: 0.20, isAdd: 0, multiply: true },
             { id: v1(), name: "Meat", price: 0.50, isAdd: 0, multiply: true },
             { id: v1(), name: "Bacon", price: 0.30, isAdd: 0, multiply: true }
         ],
