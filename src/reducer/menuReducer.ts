@@ -58,8 +58,8 @@ let initialState = {
         ],
         option: [
             { id: v1(), name: "Cheese", weight: 20, price: 0.20, isAdd: 0, multiply: true },
-            { id: v1(), name: "Meat", price: 0.50, isAdd: 0, multiply: true },
-            { id: v1(), name: "Bacon", price: 0.30, isAdd: 0, multiply: true }
+            { id: v1(), name: "Meat", weight: 20, price: 0.50, isAdd: 0, multiply: true },
+            { id: v1(), name: "Bacon", weight: 20, price: 0.30, isAdd: 0, multiply: true }
         ],
     },
     drinksMenu: {
@@ -69,14 +69,14 @@ let initialState = {
             { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Fanta, },
             {
                 id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral, ownOption: [
-                    { id: v1(), name: "1l", price: 0.10,multiply: false  },
-                    { id: v1(), name: "1.5l", price: 0.25,multiply: false },
+                    { id: v1(), name: "1l", price: 0.10, multiply: false },
+                    { id: v1(), name: "1.5l", price: 0.25, multiply: false },
                     { id: v1(), name: "2l", price: 0.50, multiply: false },
                 ],
             },
         ],
         coldOption: [
-            { id: v1(), name: "1l", weight: 1000, price: 0.20, multiply: false},
+            { id: v1(), name: "1l", weight: 1000, price: 0.20, multiply: false },
             { id: v1(), name: "1.5l", weight: 1500, price: 0.50, multiply: false },
             { id: v1(), name: "2l", weight: 2000, price: 1, multiply: false },],
 
@@ -87,8 +87,6 @@ let initialState = {
             { id: v1(), name: "Tea", weight: 350, price: 1.5, img: Tea, },
         ]
     },
-
-
 };
 
 type ActionsTypes = InferActionsTypes<typeof actions>
