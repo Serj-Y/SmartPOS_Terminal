@@ -1,5 +1,5 @@
 
-import React, { useState } from "react"
+import React from "react"
 import styles from "./menuItemConstructor.module.scss"
 
 
@@ -9,7 +9,6 @@ type PropsType = {
     price: number
     img: string
 }
-
 
 export const MenuItemConstructor: React.FC<PropsType> = ({ img, name, weight, price }) => {
     return (
@@ -23,5 +22,3 @@ export const MenuItemConstructor: React.FC<PropsType> = ({ img, name, weight, pr
         </div>
     )
 }
-
-
