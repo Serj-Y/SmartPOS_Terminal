@@ -21,7 +21,7 @@ let initialState = {
             { id: v1(), name: "Cheeseburger", weight: 300, price: 3, img: Cheeseburger, },
             { id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, },
         ],
-        option: [
+        burgerOptions: [
             { id: v1(), name: "Cheese", weight: 20, price: 0.20, isAdd: 0, multiply: true },
             { id: v1(), name: "Meat", weight: 20, price: 0.50, isAdd: 0, multiply: true },
             { id: v1(), name: "Bacon", weight: 20, price: 0.30, isAdd: 0, multiply: true }
@@ -35,23 +35,29 @@ let initialState = {
             {
                 id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral, ownOption: [
                     { id: "default", name: "O.5l", weight: 500, price: "", multiply: false },
-                    { id: v1(), name: "1l", price: 0.10, multiply: false },
-                    { id: v1(), name: "1.5l", price: 0.25, multiply: false },
-                    { id: v1(), name: "2l", price: 0.50, multiply: false },
+                    { id: v1(), name: "1l", weight: 1000, price: 0.20, multiply: false },
                 ],
             },
         ],
-        coldOption: [
+        coldDrinksOptions: [
             { id: "default", name: "O.5l", weight: 500, price: "", multiply: false },
             { id: v1(), name: "1l", weight: 1000, price: 0.20, multiply: false },
             { id: v1(), name: "1.5l", weight: 1500, price: 0.50, multiply: false },
             { id: v1(), name: "2l", weight: 2000, price: 1, multiply: false },],
 
         hot: [
-            { id: v1(), name: "Espresso", weight: 50, price: 1.5, img: Espresso, },
+            {
+                id: v1(), name: "Espresso", weight: 50, price: 1.5, img: Espresso, ownOption: [
+                    { id: v1(), name: "Doppio", weight: 10, price: 1, multiply: true },
+                    { id: v1(), name: "Milk", weight: 20, price: 0.20, multiply: true },
+                ]
+            },
             { id: v1(), name: "Cappuccino", weight: 200, price: 2, img: Cappuccino, },
             { id: v1(), name: "Latte", weight: 300, price: 4.30, img: Latte, },
-            { id: v1(), name: "Tea", weight: 350, price: 1.5, img: Tea, },
+            { id: v1(), name: "Tea", weight: 350, price: 1.5, img: Tea, ownOption: [] },
+        ],
+        hotDrinksOptions: [
+            { id: v1(), name: "Syrup", weight: 10, price: 0.50, multiply: true },
         ]
     },
 };

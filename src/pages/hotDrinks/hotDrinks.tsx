@@ -6,9 +6,11 @@ import { faMugHot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const HotDrinks = () => {
-    const HotDrinksMenu = useSelector((state: RootState) => state.Menu.drinksMenu.hot)
-
+    const hotDrinksMenu = useSelector((state: RootState) => state.Menu.drinksMenu.hot)
+    const extraMenuOption = useSelector((state: RootState) => state.Menu.drinksMenu.hotDrinksOptions)
+    const options = useSelector((state: RootState) => state.Cart.options)
+    
     return (
-        <MenuContainer stateMenu={HotDrinksMenu} title="Hot Drinks" icon={<FontAwesomeIcon icon={faMugHot} />} />
+        <MenuContainer Options={options} extraMenu={extraMenuOption}  stateMenu={hotDrinksMenu} title="Hot Drinks" icon={<FontAwesomeIcon icon={faMugHot} />} />
     )
 }

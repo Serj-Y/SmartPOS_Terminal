@@ -7,10 +7,10 @@ import { faBottleWater } from "@fortawesome/free-solid-svg-icons";
 
 
 export const ColdDrinks = () => {
-    const ColdDrinksMenu = useSelector((state: RootState) => state.Menu.drinksMenu.cold)
-    const ExtraForColdDrinksMenu = useSelector((state: RootState) => state.Menu.drinksMenu.coldOption)
+    const coldDrinksMenu = useSelector((state: RootState) => state.Menu.drinksMenu.cold)
+    const extraForColdDrinksMenu = useSelector((state: RootState) => state.Menu.drinksMenu.coldDrinksOptions)
 
     return (
-        <MenuContainer extraMenu={ExtraForColdDrinksMenu} stateMenu={ColdDrinksMenu} title="Cold Drinks" icon={<FontAwesomeIcon icon={faBottleWater} />} />
+        <MenuContainer extraMenu={extraForColdDrinksMenu} stateMenu={coldDrinksMenu} title="Cold Drinks" icon={<FontAwesomeIcon icon={faBottleWater} />} />
     )
 }

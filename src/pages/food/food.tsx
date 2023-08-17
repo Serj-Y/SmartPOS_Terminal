@@ -7,7 +7,7 @@ import { faBurger } from "@fortawesome/free-solid-svg-icons";
 
 export const Food = () => {
     const BurgerMenu = useSelector((state: RootState) => state.Menu.foodMenu.burger)
-    const OptionMenu = useSelector((state: RootState) => state.Menu.foodMenu.option)
+    const OptionMenu = useSelector((state: RootState) => state.Menu.foodMenu.burgerOptions)
     const Options = useSelector((state: RootState) => state.Cart.options)
 
     return (
