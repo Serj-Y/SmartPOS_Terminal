@@ -1,4 +1,3 @@
-
 import React from "react"
 import styles from "./extraMenuItemConstructor.module.scss"
 
@@ -6,6 +5,7 @@ import styles from "./extraMenuItemConstructor.module.scss"
 type PropsType = {
     addToCartBtn: () => void
     CloseBtn: () => void
+    isAdd: boolean
     option?: string | number
     name: string
     weight: number
@@ -13,9 +13,7 @@ type PropsType = {
     img: string
 }
 
-
-
-export const ExtraMenuItemConstructor: React.FC<PropsType> = ({ name, img, weight, price, option, addToCartBtn, CloseBtn }) => {
+export const ExtraMenuItemConstructor: React.FC<PropsType> = ({ name, img, weight, price, option, isAdd, addToCartBtn, CloseBtn }) => {
     if (name) {
         return (
             <div className={styles.itemContainer}>
@@ -26,7 +24,7 @@ export const ExtraMenuItemConstructor: React.FC<PropsType> = ({ name, img, weigh
                     <div className={styles.itemPrice} >${price}</div>
                     <div className={styles.optionItem} >{option}</div>
                     <div className={styles.addBtn} >
-                        <button onClick={addToCartBtn} >Add To Cart</button>
+                        <button onClick={addToCartBtn} >{isAdd ? "DONE" : "Add To Cart"}</button>
                     </div>
                     <div>
                         <button onClick={CloseBtn} >X</button>

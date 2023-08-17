@@ -35,11 +35,12 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
         const Option = props.Option
 
         return (
-           <>
-             {Option.name} wight: {Option.weight}g price: {Option.price}$
-           </>
-                  
-             )
+            <div>
+                <div >
+                   {Option.price === ""? "": <>{Option.name} wight: {Option.weight}g price: {Option.price}$</> }
+                </div>
+            </div>
+        )
     }
 
     return (
@@ -51,14 +52,14 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
                         name={i.name}
                         weight={i.weight}
                         price={i.price}
-                        options={i.option ? i.option.map((i: any) => <Option Option={i} />) : <></>}
+                        options={i.option ? i.option.map((i: any) =>  <div key={i.id} ><Option Option={i} /></div> ) : <></>}
                         CloseBtn={() => deleteCartItem(i.id)}
                         img={i.img}
                     />
                 </div>
             )}
             <div className={style.cleanCartBtn} >
-                 {menu[1] ? <><button onClick={cleanUp} >Clean cart</button></> : ""}
+                {menu[1] ? <><button onClick={cleanUp} >Clean cart</button></> : ""}
             </div>
         </div>)
 }
@@ -81,10 +82,10 @@ const MenuItem: React.FC<MenuItemType> = ({ name, img, weight, price, options, C
             <div className={styles.itemContainer}>
                 <div className={styles.item}>
                     <img src={img} alt={name} />
-                    <p className={styles.itemName} >{name}</p>
-                    <p className={styles.itemWeight} >{weight} g</p>
-                    <p className={styles.itemPrice} >${price}</p>
-                    <p className={styles.optionItem} >{options}</p>
+                    <div className={styles.itemName} >{name}</div>
+                    <div className={styles.itemWeight} >{weight} g</div>
+                    <div className={styles.itemPrice} >${price}</div>
+                    <div className={styles.optionItem} >{options}</div>
                     <button onClick={CloseBtn} >X</button>
                 </div>
             </div>

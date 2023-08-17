@@ -46,6 +46,12 @@ const cartReducer = (state = initialState, action: ActionsTypes) => {
                 options: action.deleteOptionItem 
             };
         }
+        case "CLEAN_UP_OPTION": {
+            return {
+                ...state,
+                options: []
+            }
+        }
 
         default:
             return state
@@ -59,5 +65,6 @@ export const actions = {
     cleanCartActionCreator: () => ({ type: "CLEAN_CART" } as const),
     addOptionActionCreator: (option: any) => ({ type: "ADD_OPTION", option } as const),
     deleteItemOfOptionActionCreator: (deleteOptionItem: any) => ({ type: "DELETE_ITEM_OF_OPTION", deleteOptionItem } as const),
+    cleanOptionsActionCreator: () => ({ type: "CLEAN_UP_OPTION"} as const),
 }
 export default cartReducer

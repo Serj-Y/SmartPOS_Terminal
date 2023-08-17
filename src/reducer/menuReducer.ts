@@ -34,6 +34,7 @@ let initialState = {
             { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Fanta, },
             {
                 id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral, ownOption: [
+                    { id: "default", name: "O.5l", weight: 500, price: "", multiply: false },
                     { id: v1(), name: "1l", price: 0.10, multiply: false },
                     { id: v1(), name: "1.5l", price: 0.25, multiply: false },
                     { id: v1(), name: "2l", price: 0.50, multiply: false },
@@ -41,6 +42,7 @@ let initialState = {
             },
         ],
         coldOption: [
+            { id: "default", name: "O.5l", weight: 500, price: "", multiply: false },
             { id: v1(), name: "1l", weight: 1000, price: 0.20, multiply: false },
             { id: v1(), name: "1.5l", weight: 1500, price: 0.50, multiply: false },
             { id: v1(), name: "2l", weight: 2000, price: 1, multiply: false },],

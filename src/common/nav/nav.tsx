@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./nav.module.scss"
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBottleWater, faBurger, faHamburger, faHouse, faMugHot } from "@fortawesome/free-solid-svg-icons";
+import { faBottleWater, faBurger, faCartShopping, faHamburger, faHouse, faMugHot } from "@fortawesome/free-solid-svg-icons";
 
 export const Nav = () => {
     return (
@@ -23,7 +23,7 @@ export const Nav = () => {
                         <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/hotDrinks"}> <FontAwesomeIcon icon={faMugHot} /> HotDrinks</NavLink>
                     </div>
                     <div className={styles.item} >
-                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/cartPage"}>...</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/cartPage"}><FontAwesomeIcon icon={faCartShopping} />Cart</NavLink>
                     </div>
                 </div>
             </div>
