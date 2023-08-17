@@ -21,10 +21,10 @@ export const ExtraMenuItemConstructor: React.FC<PropsType> = ({ name, img, weigh
             <div className={styles.itemContainer}>
                 <div className={styles.item}>
                     <img src={img} alt={name} />
-                    <p className={styles.itemName} >{name}</p>
-                    <p className={styles.itemWeight} >{weight} g</p>
-                    <p className={styles.itemPrice} >${price}</p>
-                    <p className={styles.optionItem} >{option}</p>
+                    <div className={styles.itemName} >{name}</div>
+                    <div className={styles.itemWeight} >{weight} g</div>
+                    <div className={styles.itemPrice} >${price}</div>
+                    <div className={styles.optionItem} >{option}</div>
                     <div className={styles.addBtn} >
                         <button onClick={addToCartBtn} >Add To Cart</button>
                     </div>

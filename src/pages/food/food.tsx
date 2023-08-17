@@ -1,23 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { RootState } from "../../redux/store";
-import { useDispatch, useSelector } from "react-redux";
-import  MenuContainer  from "../../common/components/menuContainerConstructor/menuContainer";
-import { MenuItemConstructor } from "../../common/components/menuItemConstructor/menuItemConstructor";
+import { useSelector } from "react-redux";
+import MenuContainer from "../../common/components/menuContainerConstructor/menuContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBurger } from "@fortawesome/free-solid-svg-icons";
 
-
-
 export const Food = () => {
     const BurgerMenu = useSelector((state: RootState) => state.Menu.foodMenu.burger)
- const OptionMenu = useSelector((state:RootState) => state.Menu.foodMenu.option)
- const Options = useSelector((state: RootState) => state.Cart.options) 
-
-
-
-
+    const OptionMenu = useSelector((state: RootState) => state.Menu.foodMenu.option)
+    const Options = useSelector((state: RootState) => state.Cart.options)
 
     return (
-        <MenuContainer Options={Options} extraMenu={OptionMenu}  stateMenu={BurgerMenu} title= "Burgers"  icon={<FontAwesomeIcon icon={faBurger}/>} />
-    )}
+        <MenuContainer Options={Options} extraMenu={OptionMenu} stateMenu={BurgerMenu} title="Burgers" icon={<FontAwesomeIcon icon={faBurger} />} />
+    )
+}
 

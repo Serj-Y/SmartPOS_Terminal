@@ -13,7 +13,7 @@ options:[
 type ActionsTypes = InferActionsTypes<typeof actions>
 
 const cartReducer = (state = initialState, action: ActionsTypes) => {
-
+    
     switch (action.type) {
         case "ADD_ORDER": {
             return {
@@ -35,7 +35,6 @@ const cartReducer = (state = initialState, action: ActionsTypes) => {
             }
         }
         case "ADD_OPTION": {
-            debugger
             return {
                 ...state,
                 options: [action.option, ...state.options,]

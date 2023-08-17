@@ -1,5 +1,4 @@
 import { v1 } from "uuid";
-import { InferActionsTypes } from "../redux/store";
 import Cola from "../common/assets/png/cupCola.png"
 import Sprite from "../common/assets/png/cupSprite.png"
 import Fanta from "../common/assets/png/cupFanta.png";
@@ -13,40 +12,6 @@ import Cheeseburger from "../common/assets/png/Cheeseburger.png"
 import HamburgerXL from "../common/assets/png/HamburgerXL.png"
 import BigJoh from "../common/assets/png/BigJoh.png"
 
-type InitialStateType = {
-    foodMenu: {
-        burger: [
-            {
-                id: string, name: string, weight: number, price: number, img: string, option?: Array<object>, ownOption?: [
-                    { id: string, name: string, price: number, isAdd: number, weight?: number, }
-                ]
-            }
-        ],
-        option: [
-            { id: string, name: string, price: number, isAdd: number, weight?: number, }
-        ]
-    },
-    drinksMenu: {
-        cold: [
-            {
-                id: string, name: string, weight: number, price: number, img: string, option?: Array<object>, ownOption?: [
-                    { id: string, name: string, price: number, isAdd: number, weight?: number, }
-                ]
-            }
-        ],
-        coldOption: [
-            { id: string, name: string, price: number, isAdd: number, weight?: number, }
-        ]
-        hot: {
-            id: string, name: string, weight: number, price: number, img: string, option?: Array<object>, ownOption?: [
-                { id: string, name: string, price: number, isAdd: number, weight?: number, }
-            ]
-        }
-    }
-    order: [
-        {}
-    ]
-}
 
 let initialState = {
     foodMenu: {
@@ -89,13 +54,8 @@ let initialState = {
     },
 };
 
-type ActionsTypes = InferActionsTypes<typeof actions>
-
-const menuReducer = (state = initialState, action: ActionsTypes) => {
+const menuReducer = (state = initialState) => {
     return state
 }
 
-export const actions = {
-
-}
 export default menuReducer

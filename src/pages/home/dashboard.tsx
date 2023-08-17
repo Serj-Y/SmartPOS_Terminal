@@ -1,14 +1,10 @@
 import React from "react";
-import styles from "./dashboard.module.scss"
 
- export const Dashboard = () => {
+export const Dashboard = () => {
 
-return(
-    <div className={styles.dashboard}>
-
-Dashboard
-
-
-    </div>
-)
+    return (
+        <div style={{ textAlign: "center" }}>
+            Dashboard
+        </div>
+    )
 }

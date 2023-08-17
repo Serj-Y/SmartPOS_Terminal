@@ -1,26 +1,15 @@
-.food{
+.food {
     justify-content: center;
     width: 90%;
-    
-        .items{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    @media screen and (max-width: 750px) {
+
+    .items {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
-      }
-    
-        }
-
-
-        .extraOption {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            
-        }
+        width: 100%;
+        padding: 20px;
     }
+    .cleanCartBtn{
+       @extend .items;
+       
+    }
+}

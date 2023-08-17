@@ -6,7 +6,6 @@ import { actions } from "../../../reducer/cartReducer";
 import { useDispatch } from "react-redux";
 
 
-
 export type OptionType = {
     id: string
     name: string,
@@ -36,8 +35,6 @@ const MenuContainer = (props: any) => {
     const [isChecked, setChecked] = useState([]) as any
     const [isTotalItemWeight, setTotalItemWeight] = useState(secondMenu.weight)
 
-
-
     const dispatch = useDispatch()
 
     function onOpenExtraOptions(i: OrderType) {
@@ -65,7 +62,6 @@ const MenuContainer = (props: any) => {
         const i = props.MenuObject;
         const findCheckedOption = stateOptions?.find(({ id }: any) => id === i.id);
 
-
         function onChangeOptionForCheckBox(i: OptionType) {
             if (findCheckedOption?.id !== i.id) {
                 setPricer((prev: any) => prev + i.price)
@@ -79,7 +75,6 @@ const MenuContainer = (props: any) => {
             }
         }
 
-
         function onChangeOptionForRadio(i: OptionType) {
             if (isChecked !== i.id) {
                 setPricer(secondMenu.price + i.price)
@@ -91,7 +86,6 @@ const MenuContainer = (props: any) => {
                 setChecked("")
             }
         }
-        
 
         return (
             <div>
@@ -99,7 +93,8 @@ const MenuContainer = (props: any) => {
                     ? <>{i.name} <input type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => onChangeOptionForCheckBox(i)} /> {i.price}$  </>
                     : <> {i.name} <input type="radio" checked={i.id === isChecked} value={i.id} onChange={() => onChangeOptionForRadio(i)} /> {i.price}$  </>
                 }
-            </div>)
+            </div>
+        )
     }
 
     return (
@@ -121,9 +116,15 @@ const MenuContainer = (props: any) => {
                         CloseBtn={onCloseExtraOptions}
                         addToCartBtn={() => addToCart(secondMenu)}
                         option={secondMenu.ownOption
-                            ? secondMenu.ownOption.map((i: OptionType) => <Option parent={secondMenu} MenuObject={i} />)
+                            ? secondMenu.ownOption.map((i: OptionType) =>
+                                <div key={i.id} >
+                                    <Option parent={secondMenu} MenuObject={i} />
+                                </div>)
                             : extraMenu
-                                ? extraMenu.map((i: OptionType) => <Option parent={secondMenu} MenuObject={i} />)
+                                ? extraMenu.map((i: OptionType) =>
+                                    <div key={i.id}>
+                                        <Option parent={secondMenu} MenuObject={i} />
+                                    </div>)
                                 : <></>
                         }
                         img={secondMenu.img}
@@ -136,7 +137,3 @@ const MenuContainer = (props: any) => {
 
 
 export default MenuContainer
-
-
-
-
