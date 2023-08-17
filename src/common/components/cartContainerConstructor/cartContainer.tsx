@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./cartContainer.module.scss"
 import styles from "../extraMenuItemConstructor/extraMenuItemConstructor.module.scss"
 import { useDispatch } from "react-redux";
 import { actions } from "../../../reducer/cartReducer";
-import { OptionType, OrderType } from "../menuContainerConstructor/menuContainer";
+import { OrderType } from "../menuContainerConstructor/menuContainer";
 
 
 
@@ -31,7 +31,6 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
 
     }
 
-
     const cleanUp = () => {
         dispatch(actions.cleanCartActionCreator())
     }
@@ -39,29 +38,27 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
     const Option = (props: any) => {
         const Option = props.Option
 
-
         return (
             <div>
-                <h4>
-                Extra options:
-                </h4>
-               {Option.name} wight: {Option.weight}g price: {Option.price}$
+                <div>
+                    {Option.name} wight: {Option.weight}g price: {Option.price}$
+                </div>
             </div>)
     }
     return (
         <div className={style.food}>
             <h2>{title} {icon}</h2>
-            {menu.map((i: OrderType)  =>
-            
+            {menu.map((i: OrderType) =>
+
                 <div className={style.extraOption} >
-                    <MenuItem name={i.name} weight={  i.weight} price={i.price} options={i.option ? i.option.map((i: any) => <Option Option={i} /> ) : <></>}
+                    <MenuItem name={i.name} weight={i.weight} price={i.price} options={i.option ? i.option.map((i: any) => <Option Option={i} />) : <></>}
                         CloseBtn={() => deleteCartItem(i.id)}
                         img={i.img}
                     />
-                    
+
                 </div>
-           
-            )  }
+
+            )}
             {menu[1] ? <><button onClick={cleanUp} >clean</button></> : ""}
         </div>)
 }
