@@ -19,7 +19,7 @@ export const Header = () => {
             <div className={styles.items} >
                 <div></div>
                 <form onSubmit={OnHandleSubmit} >
-                    <input type="search" placeholder="search" value={searchValue} onChange={OnHandleChange} />
+                    <input id="search" type="search" placeholder="search" value={searchValue} onChange={OnHandleChange} />
                     <button type="submit" >search</button>
                 </form>
             </div>

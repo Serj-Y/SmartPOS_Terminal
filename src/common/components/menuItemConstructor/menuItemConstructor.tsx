@@ -1,7 +1,5 @@
-
 import React from "react"
 import styles from "./menuItemConstructor.module.scss"
-
 
 type PropsType = {
     name: string

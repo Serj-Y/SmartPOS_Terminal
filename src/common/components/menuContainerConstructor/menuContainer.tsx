@@ -8,7 +8,6 @@ import { useAlert } from "react-alert";
 import { v1 } from "uuid";
 
 
-
 export type OptionType = {
     id: string
     name: string,
@@ -100,8 +99,8 @@ const MenuContainer = (props: any) => {
         return (
             <div>
                 {i.multiply
-                    ? <>{i.name} <input type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => OnChangeOptionForCheckBox(i)} /> {i.price}$  </>
-                    : <> {i.name} <input type="radio" checked={i.id === isChecked} onChange={() => OnChangeOptionForRadio(i)} /> {i.price === "" ? secondMenu.price : `+ ${i.price}`}$   </>
+                    ? <>{i.name} <input id={v1()} type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => OnChangeOptionForCheckBox(i)} /> {i.price}$  </>
+                    : <> {i.name} <input id={v1()} type="radio" checked={i.id === isChecked} onChange={() => OnChangeOptionForRadio(i)} /> {i.price === "" ? secondMenu.price : `+ ${i.price}`}$   </>
                 }
             </div>
         )
