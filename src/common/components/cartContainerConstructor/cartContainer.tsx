@@ -8,33 +8,33 @@ import { useAlert } from "react-alert";
 
 type PropsType = {
     title: string;
-    CartItems: Array<OrderType>
+    cartItems: Array<OrderType>
     icon: any
 }
 
-export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) => {
-    const menu = CartItems
+export const CartContainer: React.FC<PropsType> = ({ cartItems, title, icon }) => {
+    const menu = cartItems
     const dispatch = useDispatch()
     const alert = useAlert()
 
-    const deleteCartItem = (item: { id: string; name: string; weight: number; price?: number | string; }) => {
+    const DeleteCartItem = (item: { id: string; name: string; weight: number; price?: number | string; }) => {
         const filtredItems = [...menu.filter((i: any) => i.id !== item.id)]
         dispatch(actions.deleteItemOfCartActionCreator(filtredItems))
         alert.show(`Is Deleted: ${item.name}`)
     }
 
-    const cleanUp = () => {
+    const CleanUp = () => {
         dispatch(actions.cleanCartActionCreator())
         alert.show("Cart Is Clean Up")
     }
 
     const Option = (props: any) => {
-        const Option = props.Option
+        const option = props.Option
 
         return (
             <div>
                 <div >
-                    {Option.price === "" ? "" : <>{Option.name} wight: {Option.weight}g price: {Option.price}$</>}
+                    {option.price === "" ? "" : <>{option.name} wight: {option.weight}g price: {option.price}$</>}
                 </div>
             </div>
         )
@@ -50,13 +50,13 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
                         weight={i.weight}
                         price={i.price}
                         options={i.option ? i.option.map((i: any) => <div key={i.id} ><Option Option={i} /></div>) : <></>}
-                        CloseBtn={() => deleteCartItem(i)}
+                        CloseBtn={() => DeleteCartItem(i)}
                         img={i.img}
                     />
                 </div>
             )}
             <div className={style.cleanCartBtn} >
-                {menu[1] ? <><button onClick={cleanUp} >Clean cart</button></> : ""}
+                {menu[1] ? <><button onClick={CleanUp} >Clean cart</button></> : ""}
             </div>
         </div>)
 }

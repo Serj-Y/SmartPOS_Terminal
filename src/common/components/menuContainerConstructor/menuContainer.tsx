@@ -29,7 +29,7 @@ export type OrderType = {
 const MenuContainer = (props: any) => {
     const menu = props.stateMenu;
     const extraMenu = props.extraMenu
-    const stateOptions = props.Options
+    const stateOptions = props.options
     const [secondMenu, setSecondMenu] = useState(menu)
     const [isOpen, setIsOpen] = useState(false)
     const [pricer, setPricer] = useState(secondMenu.price)
@@ -41,7 +41,7 @@ const MenuContainer = (props: any) => {
     const dispatch = useDispatch()
     const alert = useAlert()
 
-    function onOpenExtraOptions(i: OrderType) {
+    function OnOpenExtraOptions(i: OrderType) {
         const defaultCheckedOption = extraMenu?.find(({ id }: any) => id === "default")
 
         setIsOpen(true)
@@ -52,13 +52,13 @@ const MenuContainer = (props: any) => {
         setChecked(defaultCheckedOption?.id)
     }
 
-    function onCloseExtraOptions() {
+    function OnCloseExtraOptions() {
         setIsOpen(false)
         setChecked("")
         dispatch(actions.cleanOptionsActionCreator())
     }
 
-    const addToCart = (order: OrderType) => {
+    const AddToCart = (order: OrderType) => {
         const orderWithOption = { ...order,  id: v1(), weight: isTotalItemWeight || order.weight, price: pricer, option: stateOptions || localStateOptions }
         dispatch(actions.addOrderActionCreator(orderWithOption));
         setPricer(secondMenu.price)
@@ -72,7 +72,7 @@ const MenuContainer = (props: any) => {
         const i = props.MenuObject;
         const findCheckedOption = stateOptions?.find(({ id }: any) => id === i.id)
 
-        function onChangeOptionForCheckBox(i: OptionType) {
+        function OnChangeOptionForCheckBox(i: OptionType) {
             if (findCheckedOption?.id !== i.id) {
                 setPricer((prev: any) => prev + i.price)
                 setTotalItemWeight((prev: any) => prev + i.weight)
@@ -85,7 +85,7 @@ const MenuContainer = (props: any) => {
             }
         }
 
-        function onChangeOptionForRadio(i: OptionType) {
+        function OnChangeOptionForRadio(i: OptionType) {
             if (isChecked !== i.id) {
                 setPricer(secondMenu.price + i.price)
                 setTotalItemWeight(secondMenu.weight > i.weight ? secondMenu.weight + i.weight : i.weight)
@@ -100,8 +100,8 @@ const MenuContainer = (props: any) => {
         return (
             <div>
                 {i.multiply
-                    ? <>{i.name} <input type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => onChangeOptionForCheckBox(i)} /> {i.price}$  </>
-                    : <> {i.name} <input type="radio" checked={i.id === isChecked} onChange={() => onChangeOptionForRadio(i)} /> {i.price === "" ? secondMenu.price : `+ ${i.price}`}$   </>
+                    ? <>{i.name} <input type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => OnChangeOptionForCheckBox(i)} /> {i.price}$  </>
+                    : <> {i.name} <input type="radio" checked={i.id === isChecked} onChange={() => OnChangeOptionForRadio(i)} /> {i.price === "" ? secondMenu.price : `+ ${i.price}`}$   </>
                 }
             </div>
         )
@@ -121,7 +121,7 @@ const MenuContainer = (props: any) => {
                                     price={i.price}
                                     img={i.img}
                                 />
-                                <button id="Btn" style={{ display: "none" }} onClick={() => onOpenExtraOptions(i)} />
+                                <button id="Btn" style={{ display: "none" }} onClick={() => OnOpenExtraOptions(i)} />
                             </label>
                         </div>
                     )}
@@ -132,8 +132,8 @@ const MenuContainer = (props: any) => {
                         name={secondMenu.name}
                         weight={isTotalItemWeight}
                         price={pricer}
-                        CloseBtn={onCloseExtraOptions}
-                        addToCartBtn={() => addToCart(secondMenu)}
+                        CloseBtn={OnCloseExtraOptions}
+                        AddToCartBtn={() => AddToCart(secondMenu)}
                         option={secondMenu.ownOption
                             ? secondMenu.ownOption.map((i: OptionType) => <div key={i.id} > <Option MenuObject={i} /> </div>)
                             : extraMenu

@@ -11,6 +11,6 @@ export const HotDrinks = () => {
     const options = useSelector((state: RootState) => state.Cart.options)
     
     return (
-        <MenuContainer Options={options} extraMenu={extraMenuOption}  stateMenu={hotDrinksMenu} title="Hot Drinks" icon={<FontAwesomeIcon icon={faMugHot} />} />
+        <MenuContainer options={options} extraMenu={extraMenuOption}  stateMenu={hotDrinksMenu} title="Hot Drinks" icon={<FontAwesomeIcon icon={faMugHot} />} />
     )
 }

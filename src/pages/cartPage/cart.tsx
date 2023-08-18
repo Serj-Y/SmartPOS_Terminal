@@ -10,7 +10,7 @@ export const CartPage = () => {
     const order= useSelector((state: RootState) => state.Cart.orders)
 
     return (
-        <CartContainer CartItems={order} icon={<FontAwesomeIcon icon={faCartShopping} />} title="Cart"  />
+        <CartContainer cartItems={order} icon={<FontAwesomeIcon icon={faCartShopping} />} title="Cart"  />
     )
 }
 

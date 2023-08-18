@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBurger } from "@fortawesome/free-solid-svg-icons";
 
 export const Food = () => {
-    const BurgerMenu = useSelector((state: RootState) => state.Menu.foodMenu.burger)
-    const OptionMenu = useSelector((state: RootState) => state.Menu.foodMenu.burgerOptions)
-    const Options = useSelector((state: RootState) => state.Cart.options)
+    const burgerMenu = useSelector((state: RootState) => state.Menu.foodMenu.burger)
+    const optionMenu = useSelector((state: RootState) => state.Menu.foodMenu.burgerOptions)
+    const options = useSelector((state: RootState) => state.Cart.options)
 
     return (
-        <MenuContainer Options={Options} extraMenu={OptionMenu} stateMenu={BurgerMenu} title="Burgers" icon={<FontAwesomeIcon icon={faBurger} />} />
+        <MenuContainer options={options} extraMenu={optionMenu} stateMenu={burgerMenu} title="Burgers" icon={<FontAwesomeIcon icon={faBurger} />} />
     )
 }
 
