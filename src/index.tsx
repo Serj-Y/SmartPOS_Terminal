@@ -6,17 +6,29 @@ import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import {store} from './redux/store';
+import { transitions, positions, types, Provider as AlertProvider } from 'react-alert';
+//@ts-ignore
+import AlertTemplate from 'react-alert-template-basic';
+
+const options = {
+  position: positions.TOP_RIGHT,
+  timeout: 2000,
+  transition: transitions.FADE,
+  type: types.SUCCESS,
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    <AlertProvider template={AlertTemplate} {...options}>
     <HashRouter>
       <Provider store={store} >
          <App />
       </Provider>
     </HashRouter>
+    </AlertProvider>
   </React.StrictMode>
 );
 

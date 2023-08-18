@@ -3,32 +3,29 @@ import style from "./cartContainer.module.scss"
 import styles from "../extraMenuItemConstructor/extraMenuItemConstructor.module.scss"
 import { useDispatch } from "react-redux";
 import { actions } from "../../../reducer/cartReducer";
-import { OrderType } from "../menuContainerConstructor/menuContainer";
+import { OptionType, OrderType } from "../menuContainerConstructor/menuContainer";
+import { useAlert } from "react-alert";
 
 type PropsType = {
     title: string;
-    icon?: any;
-    CartItems?: any;
-    options?: any
-    CloseBtn?: any
-    name: string
-    weight?: number
-    price?: number
-    img?: string
-    multiply?: boolean
+    CartItems: Array<OrderType>
+    icon: any
 }
 
 export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) => {
     const menu = CartItems
     const dispatch = useDispatch()
+    const alert = useAlert()
 
-    const deleteCartItem = (id: string) => {
-        const filtredItems = [...menu.filter((i: any) => i.id !== id)]
+    const deleteCartItem = (item: { id: string; name: string; weight: number; price?: number | string; }) => {
+        const filtredItems = [...menu.filter((i: any) => i.id !== item.id)]
         dispatch(actions.deleteItemOfCartActionCreator(filtredItems))
+        alert.show(`Is Deleted: ${item.name}`)
     }
 
     const cleanUp = () => {
         dispatch(actions.cleanCartActionCreator())
+        alert.show("Cart Is Clean Up")
     }
 
     const Option = (props: any) => {
@@ -37,7 +34,7 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
         return (
             <div>
                 <div >
-                   {Option.price === ""? "": <>{Option.name} wight: {Option.weight}g price: {Option.price}$</> }
+                    {Option.price === "" ? "" : <>{Option.name} wight: {Option.weight}g price: {Option.price}$</>}
                 </div>
             </div>
         )
@@ -52,8 +49,8 @@ export const CartContainer: React.FC<PropsType> = ({ CartItems, title, icon }) =
                         name={i.name}
                         weight={i.weight}
                         price={i.price}
-                        options={i.option ? i.option.map((i: any) =>  <div key={i.id} ><Option Option={i} /></div> ) : <></>}
-                        CloseBtn={() => deleteCartItem(i.id)}
+                        options={i.option ? i.option.map((i: any) => <div key={i.id} ><Option Option={i} /></div>) : <></>}
+                        CloseBtn={() => deleteCartItem(i)}
                         img={i.img}
                     />
                 </div>
@@ -70,12 +67,11 @@ type MenuItemType = {
     img: string,
     weight: number,
     price: number,
-    options?: any,
-    CloseBtn: any
+    options?: Array<OptionType> | any,
+    CloseBtn: () => void
 }
 
 const MenuItem: React.FC<MenuItemType> = ({ name, img, weight, price, options, CloseBtn }) => {
-
 
     if (name) {
         return (

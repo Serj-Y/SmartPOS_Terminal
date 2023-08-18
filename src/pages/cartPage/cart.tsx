@@ -5,11 +5,12 @@ import { CartContainer } from "../../common/components/cartContainerConstructor/
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
+
 export const CartPage = () => {
-    const order = useSelector((state: RootState) => state.Cart.orders)
+    const order= useSelector((state: RootState) => state.Cart.orders)
 
     return (
-        <CartContainer CartItems={order} icon={<FontAwesomeIcon icon={faCartShopping} />} title="Cart" name={""} />
+        <CartContainer CartItems={order} icon={<FontAwesomeIcon icon={faCartShopping} />} title="Cart"  />
     )
 }
 

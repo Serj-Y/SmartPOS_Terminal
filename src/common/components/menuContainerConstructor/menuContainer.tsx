@@ -4,6 +4,8 @@ import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor"
 import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor/extraMenuItemConstructor";
 import { actions } from "../../../reducer/cartReducer";
 import { useDispatch } from "react-redux";
+import { useAlert } from "react-alert";
+import { v1 } from "uuid";
 
 
 
@@ -12,7 +14,6 @@ export type OptionType = {
     name: string,
     weight: number,
     price: number,
-    isAdd: number
 }
 
 export type OrderType = {
@@ -35,10 +36,10 @@ const MenuContainer = (props: any) => {
     const [localStateOptions, setSelectedOption] = useState([]) as any
     const [isChecked, setChecked] = useState([]) as any
     const [isTotalItemWeight, setTotalItemWeight] = useState(secondMenu.weight)
-    const [isAdd, setIsAdd] = useState(false)
     const [isDefaultCheckedOption, setDefaultCheckedOption] = useState(null)
 
     const dispatch = useDispatch()
+    const alert = useAlert()
 
     function onOpenExtraOptions(i: OrderType) {
         const defaultCheckedOption = extraMenu?.find(({ id }: any) => id === "default")
@@ -58,16 +59,13 @@ const MenuContainer = (props: any) => {
     }
 
     const addToCart = (order: OrderType) => {
-        const orderWithOption = { ...order, weight: isTotalItemWeight || order.weight, price: pricer, option: stateOptions || localStateOptions }
-
+        const orderWithOption = { ...order,  id: v1(), weight: isTotalItemWeight || order.weight, price: pricer, option: stateOptions || localStateOptions }
         dispatch(actions.addOrderActionCreator(orderWithOption));
-        setIsAdd(true)
         setPricer(secondMenu.price)
         setTotalItemWeight(secondMenu.weight)
         setChecked(isDefaultCheckedOption)
         setSelectedOption([])
-
-
+        alert.show(`Is Add: ${order.name}`)
     }
 
     const Option = (props: any) => {
@@ -135,7 +133,6 @@ const MenuContainer = (props: any) => {
                         weight={isTotalItemWeight}
                         price={pricer}
                         CloseBtn={onCloseExtraOptions}
-                        isAdd={isAdd}
                         addToCartBtn={() => addToCart(secondMenu)}
                         option={secondMenu.ownOption
                             ? secondMenu.ownOption.map((i: OptionType) => <div key={i.id} > <Option MenuObject={i} /> </div>)
