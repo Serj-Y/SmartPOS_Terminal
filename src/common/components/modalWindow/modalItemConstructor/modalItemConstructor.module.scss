@@ -1,0 +1,70 @@
+@import "../../../styles/sass/variables.scss";
+
+.itemContainer {
+    height: 100%;
+    background-color: $bgColor;
+    border-radius: 25px 0 0 25px;
+
+    @media screen and (max-width: 600px) {
+        width: 250px;
+    }
+
+    .item {
+        text-align: center;
+
+        img {
+            padding-top: 100px;
+            max-width: 200px;
+            height: 150px;
+
+            @media screen and (max-width: 600px) {
+                max-width: 100px;
+                height: 75px;
+            }
+        }
+
+        .itemName {
+            font-size: xx-large;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 20px;
+
+
+            @media screen and (max-width: 600px) {
+                font-size: x-large;
+                font-weight: 600;
+            }
+        }
+
+        .itemWeight {
+            color: $secondTextColor;
+            font-weight: 600;
+            padding: 5px;
+        }
+
+        .itemPrice {
+            @extend .itemName;
+            color: $accentColor
+        }
+
+        .optionItem {
+            div {
+                padding: 5px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .addBtn {
+       
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background: none;
+            border-radius: 15px;
+            background-color: $accentColor;
+        }
+
+        .closeBtn {
+            padding-top: 25px;
+        }
+    }
+}

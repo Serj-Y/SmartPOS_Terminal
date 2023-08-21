@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
-import { ExtraMenuItemConstructor } from "../extraMenuItemConstructor/extraMenuItemConstructor";
+import { ExtraMenuItemConstructor } from "../modalWindow/modalItemConstructor/modalItemConstructor";
 import { actions } from "../../../reducer/cartReducer";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
 import { v1 } from "uuid";
+import { ModalWindow } from "../modalWindow/modal";
 
 
 export type OptionType = {
@@ -112,15 +113,10 @@ const MenuContainer = (props: any) => {
             </div>
         )
     }
-
-
-
-
     return (
         <div className={styles.food}>
             <h2>{props.title} {props.icon}</h2>
-            {!isOpen
-                ? <div className={styles.items}>
+                <div className={styles.items}>
                     {menu.map((i: OrderType) =>
                         <div key={i.id}>
                             <label form="Btn">
@@ -135,8 +131,9 @@ const MenuContainer = (props: any) => {
                         </div>
                     )}
                 </div>
-                : <div className={styles.extraOption} >
-                    <ExtraMenuItemConstructor
+                 <div className={styles.extraOption} >
+                 <ModalWindow active={isOpen} setActive={setIsOpen} > 
+             <ExtraMenuItemConstructor
                         img={secondMenu.img}
                         name={secondMenu.name}
                         weight={isTotalItemWeight}
@@ -148,9 +145,9 @@ const MenuContainer = (props: any) => {
                             : extraMenu
                                 ? extraMenu.map((i: OptionType) => <div key={i.id}> <Option MenuObject={i} /></div>)
                                 : <></>}
-                    />
+                    /></ModalWindow>
                 </div>
-            }
+       
         </div>
     );
 };

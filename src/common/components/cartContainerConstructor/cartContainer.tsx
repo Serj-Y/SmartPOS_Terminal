@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./cartContainer.module.scss"
-import styles from "../extraMenuItemConstructor/extraMenuItemConstructor.module.scss"
 import { useDispatch } from "react-redux";
 import { actions } from "../../../reducer/cartReducer";
-import { OptionType, OrderType } from "../menuContainerConstructor/menuContainer";
+import { OrderType } from "../menuContainerConstructor/menuContainer";
 import { useAlert } from "react-alert";
+import { CartItem } from "./cartItem";
 
 type PropsType = {
     title: string;
@@ -45,7 +45,7 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems, title, icon }) =
             <h2>{title} {icon}</h2>
             {menu.map((i: OrderType) =>
                 <div key={i.id} className={style.items} >
-                    <MenuItem
+                    <CartItem
                         name={i.name}
                         weight={i.weight}
                         price={i.price}
@@ -59,36 +59,4 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems, title, icon }) =
                 {menu[1] ? <><button onClick={CleanUp} >Clean cart</button></> : ""}
             </div>
         </div>)
-}
-
-
-type MenuItemType = {
-    name: string,
-    img: string,
-    weight: number,
-    price: number,
-    options?: Array<OptionType> | any,
-    CloseBtn: () => void
-}
-
-const MenuItem: React.FC<MenuItemType> = ({ name, img, weight, price, options, CloseBtn }) => {
-
-    if (name) {
-        return (
-            <div className={styles.itemContainer}>
-                <div className={styles.item}>
-                    <img src={img} alt={name} />
-                    <div className={styles.itemName} >{name}</div>
-                    <div className={styles.itemWeight} >{weight} g</div>
-                    <div className={styles.itemPrice} >${price}</div>
-                    <div className={styles.optionItem} >{options}</div>
-                    <button onClick={CloseBtn} >X</button>
-                </div>
-            </div>
-        )
-    } else {
-        return (
-            <></>
-        )
-    }
 }

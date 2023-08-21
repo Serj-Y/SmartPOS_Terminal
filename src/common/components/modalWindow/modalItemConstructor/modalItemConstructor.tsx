@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./extraMenuItemConstructor.module.scss"
+import styles from "./modalItemConstructor.module.scss"
 
 
 type PropsType = {
@@ -22,11 +22,11 @@ export const ExtraMenuItemConstructor: React.FC<PropsType> = ({ name, img, weigh
                     <div className={styles.itemWeight} >{weight} g</div>
                     <div className={styles.itemPrice} >${price}</div>
                     <div className={styles.optionItem} >{option}</div>
-                    <div className={styles.addBtn} >
-                        <button onClick={AddToCartBtn} >{"Add To Cart"}</button>
+                    <div className={styles.addBtn} onClick={AddToCartBtn} > 
+                        Add To Cart
                     </div>
-                    <div>
-                        <button onClick={CloseBtn} >X</button>
+                    <div className={styles.closeBtn}  onClick={CloseBtn}>
+                       x
                     </div>
                 </div>
             </div>
