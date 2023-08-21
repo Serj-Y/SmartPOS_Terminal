@@ -58,13 +58,20 @@ const MenuContainer = (props: any) => {
     }
 
     const AddToCart = (order: OrderType) => {
-        const orderWithOption = { ...order,  id: v1(), weight: isTotalItemWeight || order.weight, price: pricer, option: stateOptions || localStateOptions }
+        const orderWithOption = { ...order, id: v1(), weight: isTotalItemWeight || order.weight, price: FixPriceDecimals(pricer), option: stateOptions || localStateOptions }
         dispatch(actions.addOrderActionCreator(orderWithOption));
         setPricer(secondMenu.price)
         setTotalItemWeight(secondMenu.weight)
         setChecked(isDefaultCheckedOption)
         setSelectedOption([])
         alert.show(`Is Add: ${order.name}`)
+    }
+
+    function FixPriceDecimals(price: number) {
+        const fixPrice = Math.round(price * 100) / 100
+        return (
+            fixPrice
+        )
     }
 
     const Option = (props: any) => {
@@ -106,6 +113,9 @@ const MenuContainer = (props: any) => {
         )
     }
 
+
+
+
     return (
         <div className={styles.food}>
             <h2>{props.title} {props.icon}</h2>
@@ -130,7 +140,7 @@ const MenuContainer = (props: any) => {
                         img={secondMenu.img}
                         name={secondMenu.name}
                         weight={isTotalItemWeight}
-                        price={pricer}
+                        price={FixPriceDecimals(pricer)}
                         CloseBtn={OnCloseExtraOptions}
                         AddToCartBtn={() => AddToCart(secondMenu)}
                         option={secondMenu.ownOption
