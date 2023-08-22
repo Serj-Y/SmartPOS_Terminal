@@ -7,12 +7,10 @@ import { useAlert } from "react-alert";
 import { CartItem } from "./cartItem";
 
 type PropsType = {
-    title: string;
     cartItems: Array<OrderType>
-    icon: any
 }
 
-export const CartContainer: React.FC<PropsType> = ({ cartItems, title, icon }) => {
+export const CartContainer: React.FC<PropsType> = ({ cartItems }) => {
     const menu = cartItems
     const dispatch = useDispatch()
     const alert = useAlert()
@@ -33,16 +31,13 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems, title, icon }) =
 
         return (
             <div>
-                <div >
                     {option.price === "" ? "" : <>{option.name} wight: {option.weight}g price: {option.price}$</>}
-                </div>
             </div>
         )
     }
 
     return (
         <div className={style.food}>
-            <h2>{title} {icon}</h2>
             {menu.map((i: OrderType) =>
                 <div key={i.id} className={style.items} >
                     <CartItem
@@ -55,6 +50,7 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems, title, icon }) =
                     />
                 </div>
             )}
-                {menu[1] ? <div   className={style.cleanCartBtn}  onClick={()=>CleanUp()} >Clean cart</div> : ""}
-        </div>)
+            {menu[1] ? <div className={style.cleanCartBtn} onClick={() => CleanUp()} >Clean cart</div> : ""}
+        </div>
+    )
 }

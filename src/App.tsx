@@ -1,37 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 import { Nav } from './common/nav/nav';
-import {  Route, Routes  } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Dashboard } from './pages/home/dashboard';
 import { Header } from './common/header/header';
 import { Food } from './pages/food/food';
 import { HotDrinks } from './pages/hotDrinks/hotDrinks';
 import { ColdDrinks } from "./pages/coldDrinks/coldDrinks"
 import { CartPage } from './pages/cartPage/cart';
-import { ModalWindow } from './common/components/modalWindow/modal';
+
 
 
 
 function App() {
-
-  // const [modalActive, setModalActive] =useState(true)
-
   return (
     <div className="App">
-      {/* <button onClick={() => setModalActive(true)} ></button>
-       <ModalWindow active={modalActive} setActive={setModalActive} /> */}
-      <Nav/>
-      <Header/>
-<div className="Content" >
-<Routes>
-<Route path="/*" element={ <Dashboard/>}  />
-<Route path="/dash" element={ <Dashboard/>}  />
-<Route path="/food" element={ <Food/>}  />
-<Route path="/coldDrinks" element={ <ColdDrinks/>}  />
-<Route path="/hotDrinks" element={ <HotDrinks/>}  />
-<Route path="/cartPage" element={ <CartPage/>}  />
-</Routes>
-</div>
+      <Nav />
+      <Header />
+      <div className="Content" >
+        <Routes>
+          <Route path="/*" element={<Dashboard />} />
+          <Route path="/dash" element={<Dashboard />} />
+          <Route path="/food" element={<Food />} />
+          <Route path="/coldDrinks" element={<ColdDrinks />} />
+          <Route path="/hotDrinks" element={<HotDrinks />} />
+          <Route path="/cartPage" element={<CartPage />} />
+        </Routes>
+      </div>
     </div>
   );
 }

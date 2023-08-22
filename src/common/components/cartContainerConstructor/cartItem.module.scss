@@ -15,10 +15,16 @@
     }
 
     .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
+
         img {
             max-width: 200px;
             height: 150px;
+
             @media screen and (max-width: 600px) {
                 max-width: 100px;
                 height: 75px;
@@ -30,7 +36,7 @@
             font-weight: 800;
             letter-spacing: 1px;
             padding: 5px;
-            
+
 
             @media screen and (max-width: 600px) {
                 font-size: x-large;
@@ -42,15 +48,34 @@
             color: $secondTextColor;
             font-weight: 600;
             padding: 5px;
-        } 
+        }
 
         .itemPrice {
             @extend .itemName;
-            color: $accentColor 
+            color: $accentColor
         }
 
-        .addBtn{
-            padding: 5px;
+        .optionItem {
+            div {
+                padding: 2px;
+            }
+        }
+
+        .deleteItem {
+
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            background-color: $accentColor;
+            width: 50%;
+            font-size: medium;
+            font-weight: 800;
+
+            &:active {
+                transform: scale(0.98);
+            }
         }
     }
 }

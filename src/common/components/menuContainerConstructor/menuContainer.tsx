@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
-import { ModalItemConstructor  } from "../modalWindow/modalItemConstructor/modalItemConstructor";
+import { ModalItemConstructor } from "../modalWindow/modalItemConstructor/modalItemConstructor";
 import { actions } from "../../../reducer/cartReducer";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
@@ -56,7 +56,6 @@ const MenuContainer = (props: any) => {
         setIsOpen(false)
         setChecked("")
         dispatch(actions.cleanOptionsActionCreator())
-        console.log("Close")
     }
 
     const AddToCart = (order: OrderType) => {
@@ -117,24 +116,24 @@ const MenuContainer = (props: any) => {
     return (
         <div className={styles.food}>
             <h2>{props.title} {props.icon}</h2>
-                <div className={styles.items}>
-                    {menu.map((i: OrderType) =>
-                        <div key={i.id}>
-                            <label form="Btn">
-                                <MenuItemConstructor
-                                    name={i.name}
-                                    weight={i.weight}
-                                    price={i.price}
-                                    img={i.img}
-                                />
-                                <button id="Btn" style={{ display: "none" }} onClick={() => OnOpenExtraOptions(i)} />
-                            </label>
-                        </div>
-                    )}
-                </div>
-                 <div className={styles.extraOption} >
-                 <ModalWindow active={isOpen} setActive={() => OnCloseExtraOptions()} closeBtn={() => OnCloseExtraOptions()} > 
-             <ModalItemConstructor
+            <div className={styles.items}>
+                {menu.map((i: OrderType) =>
+                    <div key={i.id}>
+                        <label form="Btn">
+                            <MenuItemConstructor
+                                name={i.name}
+                                weight={i.weight}
+                                price={i.price}
+                                img={i.img}
+                            />
+                            <button id="Btn" style={{ display: "none" }} onClick={() => OnOpenExtraOptions(i)} />
+                        </label>
+                    </div>
+                )}
+            </div>
+            <div className={styles.extraOption} >
+                <ModalWindow active={isOpen} setActive={() => OnCloseExtraOptions()} closeBtn={() => OnCloseExtraOptions()} >
+                    <ModalItemConstructor
                         img={secondMenu.img}
                         name={secondMenu.name}
                         weight={isTotalItemWeight}
@@ -144,11 +143,11 @@ const MenuContainer = (props: any) => {
                             ? secondMenu.ownOption.map((i: OptionType) => <div key={i.id} > <Option MenuObject={i} /> </div>)
                             : extraMenu
                                 ? extraMenu.map((i: OptionType) => <div key={i.id}> <Option MenuObject={i} /></div>)
-                                : <></>}
+                                : <></>
+                        }
                     />
-                    </ModalWindow>
-                </div>
-       
+                </ModalWindow>
+            </div>
         </div>
     );
 };

@@ -21,7 +21,7 @@ export const CartItem: React.FC<MenuItemType> = ({ name, img, weight, price, opt
                     <div className={style.itemWeight}>{weight} g</div>
                     <div className={style.itemPrice}>${price}</div>
                     <div className={style.optionItem}>{options}</div>
-                    <button onClick={CloseBtn}>X</button>
+                    <div className={style.deleteItem} onClick={CloseBtn}>Delete</div>
                 </div>
             </div>
         );

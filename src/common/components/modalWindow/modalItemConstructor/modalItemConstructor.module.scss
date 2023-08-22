@@ -4,7 +4,8 @@
     height: 100%;
     background-color: $bgColor;
     border-radius: 25px 0 0 25px;
-    @media screen and (max-width: 600px) {
+
+    @media screen and (max-width: 375px) {
         width: 250px;
     }
 
@@ -15,55 +16,58 @@
         align-items: center;
         text-align: center;
         height: 100%;
+        min-width: 300px;
 
         img {
-            padding-top: 100px;
+            padding-top: 60px;
             max-width: 200px;
             height: 150px;
 
-            @media screen and (max-width: 600px) {
+            @media screen and (max-width: 375px) {
                 max-width: 100px;
                 height: 75px;
             }
         }
-.namePriceWeight{
-     .itemName {
-            font-size: xx-large;
-            font-weight: 800;
-            letter-spacing: 1px;
-            padding: 20px;
 
-            @media screen and (max-width: 600px) {
-                font-size: x-large;
-                font-weight: 600;
+        .namePriceWeight {
+            .itemName {
+                font-size: xx-large;
+                font-weight: 800;
+                letter-spacing: 1px;
+                padding: 20px;
+
+                @media screen and (max-width: 375px) {
+                    font-size: x-large;
+                    font-weight: 600;
+                }
             }
+
+            .itemWeight {
+                color: $secondTextColor;
+                font-weight: 600;
+                padding: 5px;
+            }
+
+            .itemPrice {
+                @extend .itemName;
+                color: $accentColor
+            }
+
         }
 
-        .itemWeight {
-            color: $secondTextColor;
-            font-weight: 600;
-            padding: 5px;
-        }
-
-        .itemPrice {
-            @extend .itemName;
-            color: $accentColor
-        }
-
-}
-       
         .optionItem {
             div {
                 font-size: large;
-                font-weight: 400;
+                font-weight: 600;
                 padding: 5px;
                 margin-bottom: 5px;
                 margin-top: 5px;
+                letter-spacing: 1px;
             }
         }
 
         .addBtn {
-            margin: 20px;
+            margin-bottom: 60px;
             padding-top: 20px;
             padding-bottom: 20px;
             border-radius: 15px;
@@ -71,8 +75,9 @@
             width: 80%;
             font-size: medium;
             font-weight: 800;
-            &:active{
-            transform: scale(0.98);
+
+            &:active {
+                transform: scale(0.98);
             }
         }
 

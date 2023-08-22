@@ -1,16 +1,35 @@
+@import "../../styles/sass/variables.scss";
+
 .food {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     width: 90%;
+    align-items: center;
 
     .items {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         width: 100%;
         padding: 20px;
+        align-items: center
     }
 
     .cleanCartBtn {
         @extend .items;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 15px;
+        background-color: $accentColor;
+        width: 60%;
+        font-size: medium;
+        font-weight: 800;
 
+        &:active {
+            transform: scale(0.98);
+        }
     }
 }

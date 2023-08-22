@@ -9,7 +9,7 @@ export const Nav = () => {
         <div className={styles.nav} >
             <div className={styles.fullScreen} >
                 <div className={styles.items}>
-                    <h1>  Burgers  <FontAwesomeIcon icon={faHamburger} /> & <FontAwesomeIcon icon={faBottleWater} /> </h1>
+                    <h1 >  Burgers  <FontAwesomeIcon icon={faHamburger} /> & <FontAwesomeIcon icon={faBottleWater} /> </h1>
                     <div className={styles.item} >
                         <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/dash"} > <FontAwesomeIcon icon={faHouse} /> Dashboard</NavLink>
                     </div>
@@ -43,7 +43,7 @@ export const Nav = () => {
                         <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/hotDrinks"}><FontAwesomeIcon icon={faMugHot} /></NavLink>
                     </div>
                     <div className={styles.item} >
-                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/cartPage"}>...</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/cartPage"}><FontAwesomeIcon icon={faCartShopping} /></NavLink>
                     </div>
                 </div>
             </div>

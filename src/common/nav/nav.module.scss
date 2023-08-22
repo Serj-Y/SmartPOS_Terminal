@@ -1,6 +1,7 @@
 @import "../styles/sass/variables.scss";
 
 .nav {
+    margin-left: 5px;
     grid-area: n;
     position: fixed;
 
@@ -18,7 +19,7 @@
             align-items: center;
 
             .item {
-                width: 80%;
+                width: 90%;
 
                 .isPending {
                     padding-left: 20px;
