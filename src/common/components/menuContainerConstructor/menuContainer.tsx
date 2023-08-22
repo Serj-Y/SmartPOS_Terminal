@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./menuContainer.module.scss"
 import { MenuItemConstructor } from "../menuItemConstructor/menuItemConstructor";
-import { ExtraMenuItemConstructor } from "../modalWindow/modalItemConstructor/modalItemConstructor";
+import { ModalItemConstructor  } from "../modalWindow/modalItemConstructor/modalItemConstructor";
 import { actions } from "../../../reducer/cartReducer";
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
@@ -56,6 +56,7 @@ const MenuContainer = (props: any) => {
         setIsOpen(false)
         setChecked("")
         dispatch(actions.cleanOptionsActionCreator())
+        console.log("Close")
     }
 
     const AddToCart = (order: OrderType) => {
@@ -132,20 +133,20 @@ const MenuContainer = (props: any) => {
                     )}
                 </div>
                  <div className={styles.extraOption} >
-                 <ModalWindow active={isOpen} setActive={setIsOpen} > 
-             <ExtraMenuItemConstructor
+                 <ModalWindow active={isOpen} setActive={() => OnCloseExtraOptions()} closeBtn={() => OnCloseExtraOptions()} > 
+             <ModalItemConstructor
                         img={secondMenu.img}
                         name={secondMenu.name}
                         weight={isTotalItemWeight}
                         price={FixPriceDecimals(pricer)}
-                        CloseBtn={OnCloseExtraOptions}
                         AddToCartBtn={() => AddToCart(secondMenu)}
                         option={secondMenu.ownOption
                             ? secondMenu.ownOption.map((i: OptionType) => <div key={i.id} > <Option MenuObject={i} /> </div>)
                             : extraMenu
                                 ? extraMenu.map((i: OptionType) => <div key={i.id}> <Option MenuObject={i} /></div>)
                                 : <></>}
-                    /></ModalWindow>
+                    />
+                    </ModalWindow>
                 </div>
        
         </div>

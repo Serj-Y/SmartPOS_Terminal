@@ -33,7 +33,7 @@ let initialState = {
             { id: v1(), name: "Sprite", weight: 500, price: 1.5, img: Sprite, },
             { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Fanta, },
             {
-                id: v1(), name: "Aypa", weight: 500, price: 1, img: AquaMineral, ownOption: [
+                id: v1(), name: "Aqua Minerale", weight: 500, price: 1, img: AquaMineral, ownOption: [
                     { id: "default", name: "O.5l", weight: 500, price: "", multiply: false },
                     { id: v1(), name: "1l", weight: 1000, price: 0.20, multiply: false },
                 ],

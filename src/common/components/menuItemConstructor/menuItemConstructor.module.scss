@@ -11,6 +11,9 @@
         0 -10px 20px rgba(0, 0, 0, 0.1),
         5px 5px 10px rgba(0, 0, 0, 0.2);
 
+    &:active {
+        transform: scale(0.99);
+    }
 
     .item {
         text-align: center;
@@ -18,7 +21,7 @@
         img {
 
             max-width: 150px;
-           height:  100px;
+            height: 100px;
         }
 
         .itemName {

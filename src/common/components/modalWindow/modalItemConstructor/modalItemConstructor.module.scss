@@ -4,13 +4,17 @@
     height: 100%;
     background-color: $bgColor;
     border-radius: 25px 0 0 25px;
-
     @media screen and (max-width: 600px) {
         width: 250px;
     }
 
     .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
         text-align: center;
+        height: 100%;
 
         img {
             padding-top: 100px;
@@ -22,13 +26,12 @@
                 height: 75px;
             }
         }
-
-        .itemName {
+.namePriceWeight{
+     .itemName {
             font-size: xx-large;
             font-weight: 800;
             letter-spacing: 1px;
             padding: 20px;
-
 
             @media screen and (max-width: 600px) {
                 font-size: x-large;
@@ -47,24 +50,31 @@
             color: $accentColor
         }
 
+}
+       
         .optionItem {
             div {
+                font-size: large;
+                font-weight: 400;
                 padding: 5px;
-                margin-bottom: 10px;
+                margin-bottom: 5px;
+                margin-top: 5px;
             }
         }
 
         .addBtn {
-       
+            margin: 20px;
             padding-top: 20px;
             padding-bottom: 20px;
-            background: none;
             border-radius: 15px;
             background-color: $accentColor;
+            width: 80%;
+            font-size: medium;
+            font-weight: 800;
+            &:active{
+            transform: scale(0.98);
+            }
         }
 
-        .closeBtn {
-            padding-top: 25px;
-        }
     }
 }

@@ -55,8 +55,6 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems, title, icon }) =
                     />
                 </div>
             )}
-            <div className={style.cleanCartBtn} >
-                {menu[1] ? <><button onClick={CleanUp} >Clean cart</button></> : ""}
-            </div>
+                {menu[1] ? <div   className={style.cleanCartBtn}  onClick={()=>CleanUp()} >Clean cart</div> : ""}
         </div>)
 }
