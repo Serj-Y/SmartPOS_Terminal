@@ -105,10 +105,32 @@ const MenuContainer = (props: any) => {
         }
 
         return (
-            <div>
+            <div className={styles.optionsContainer} >
                 {i.multiply
-                    ? <>{i.name} <input id={v1()} type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => OnChangeOptionForCheckBox(i)} /> {i.price}$  </>
-                    : <> {i.name} <input id={v1()} type="radio" checked={i.id === isChecked} onChange={() => OnChangeOptionForRadio(i)} /> {i.price === "" ? secondMenu.price : `+ ${i.price}`}$   </>
+                    ? <div className={styles.options}>
+                        <div className={styles.optionsImgAndName} style={{ display: 'flex', alignItems: "center" }}>
+                            {i.img ? <img className={styles.optionImg}  src={i.img} alt="i.name" /> : <></>}
+                            <div>{i.name}</div>
+                        </div>
+                        <div className={styles.optionsSelectorAndPrice} >
+                            <input id={v1()} type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => OnChangeOptionForCheckBox(i)} />
+                            <div>
+                                {i.price}$
+                            </div>
+                        </div>
+                    </div>
+                    : <div className={styles.options}>
+                        <div className={styles.optionsImgAndName} style={{ display: 'flex', alignItems: "center" }}>
+                            {i.img ? <img className={styles.optionImg} src={i.img} alt="i.name" /> : <></>}
+                            <div>{i.name}</div>
+                        </div>
+                        <div className={styles.optionsSelectorAndPrice} >
+                            <input id={v1()} type="radio" checked={i.id === isChecked} onChange={() => OnChangeOptionForRadio(i)} />
+                            <div>
+                                {i.price === "" ? secondMenu.price : `+ ${i.price}`}$
+                            </div>
+                        </div>
+                    </div>
                 }
             </div>
         )

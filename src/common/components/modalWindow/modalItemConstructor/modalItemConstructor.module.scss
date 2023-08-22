@@ -6,7 +6,7 @@
     border-radius: 25px 0 0 25px;
 
     @media screen and (max-width: 375px) {
-        width: 250px;
+        width: 300px;
     }
 
     .item {
@@ -19,13 +19,23 @@
         min-width: 300px;
 
         img {
-            padding-top: 60px;
+            padding-top: 80px;
             max-width: 200px;
             height: 150px;
 
             @media screen and (max-width: 375px) {
                 max-width: 100px;
                 height: 75px;
+            }
+
+            @media screen and (max-height: 750px) {
+                max-width: 100px;
+                height: 100px;
+                padding-top: 10px;
+            }
+            @media screen and (max-height: 500px) {
+                width: 50px;
+                height: 50px;
             }
         }
 
@@ -40,34 +50,34 @@
                     font-size: x-large;
                     font-weight: 600;
                 }
+                @media screen and (max-height: 750px) {
+                    font-size: large;
+                    font-weight: 600;
+                }
             }
 
             .itemWeight {
                 color: $secondTextColor;
                 font-weight: 600;
                 padding: 5px;
+                @media screen and (max-height: 750px) {
+                    padding: 0px;
+                }
             }
 
             .itemPrice {
                 @extend .itemName;
                 color: $accentColor
+                
             }
 
         }
 
-        .optionItem {
-            div {
-                font-size: large;
-                font-weight: 600;
-                padding: 5px;
-                margin-bottom: 5px;
-                margin-top: 5px;
-                letter-spacing: 1px;
-            }
-        }
+
 
         .addBtn {
             margin-bottom: 60px;
+            margin-top: 20px;
             padding-top: 20px;
             padding-bottom: 20px;
             border-radius: 15px;
@@ -76,6 +86,7 @@
             font-size: medium;
             font-weight: 800;
             cursor: pointer;
+
             &:active {
                 transform: scale(0.98);
             }

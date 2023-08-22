@@ -11,6 +11,9 @@ import Hamburger from "../common/assets/png/Hamburger.png"
 import Cheeseburger from "../common/assets/png/Cheeseburger.png"
 import HamburgerXL from "../common/assets/png/HamburgerXL.png"
 import BigJoh from "../common/assets/png/BigJoh.png"
+import Cheese from "../common/assets/png/cheese.png"
+import Meat from "../common/assets/png/meat.png"
+import Bacon from "../common/assets/png/bacon.png"
 
 
 let initialState = {
@@ -22,9 +25,9 @@ let initialState = {
             { id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, },
         ],
         burgerOptions: [
-            { id: v1(), name: "Cheese", weight: 20, price: 0.20,  multiply: true },
-            { id: v1(), name: "Meat", weight: 20, price: 0.50, multiply: true },
-            { id: v1(), name: "Bacon", weight: 20, price: 0.30,  multiply: true }
+            { id: v1(), name: "Cheese", weight: 20, price: 0.20, img: Cheese,  multiply: true },
+            { id: v1(), name: "Meat", weight: 20, price: 0.50, img: Meat, multiply: true },
+            { id: v1(), name: "Bacon", weight: 20, price: 0.30, img: Bacon, multiply: true }
         ],
     },
     drinksMenu: {
@@ -43,7 +46,7 @@ let initialState = {
             { id: "default", name: "O.5l", weight: 500, price: "", multiply: false },
             { id: v1(), name: "1l", weight: 1000, price: 0.20, multiply: false },
             { id: v1(), name: "1.5l", weight: 1500, price: 0.50, multiply: false },
-            { id: v1(), name: "2l", weight: 2000, price: 1, multiply: false },],
+            ],
 
         hot: [
             {

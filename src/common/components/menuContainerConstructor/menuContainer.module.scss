@@ -1,23 +1,63 @@
-.food{
+.food {
     justify-content: center;
     width: 90%;
-    
-        .items{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    @media screen and (max-width: 750px) {
+
+    .items {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-    
-        }
-        .extraOption {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px;
+
+        @media screen and (max-width: 750px) {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            width: 100%;
         }
+
     }
+}
+
+.optionsContainer {
+
+    width: 400px;
+
+    @media screen and (max-width: 400px) {
+        width: 300px;
+    }
+
+    .options {
+        display: flex;
+        justify-content: space-between;
+        font-size: large;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        @media screen and (max-height: 750px) {
+            margin-bottom: 0px;
+          }
+
+        .optionsImgAndName {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+         
+              .optionImg{
+                width: 60px;
+                height: 60px;
+                padding-top: 0px;
+                @media screen and (max-height: 750px) {
+                    width: 25px;
+                    height: 25px;
+                  }
+              }
+        }
+
+        .optionsSelectorAndPrice {
+            @extend .optionsImgAndName;
+
+        }
+
+    }
+
+}

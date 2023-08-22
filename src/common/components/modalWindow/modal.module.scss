@@ -5,9 +5,9 @@
 }
 
 .closeElement {
-    width: 5px;
+    width: 6px;
     border-radius: 2px;
-    height: 100px;
+    height: 150px;
     background-color: $bgColor;
     margin-right: 10px;
     cursor: pointer;
@@ -30,6 +30,6 @@
     transition: all 0.7s;;
     .modalContent {
         height: 100%;
-        min-width: 35vw;
+        min-width: 40vw;
     }
 }
