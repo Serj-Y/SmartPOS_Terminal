@@ -62,7 +62,6 @@
         }
 
         .deleteItem {
-
             margin-top: 10px;
             margin-bottom: 10px;
             padding-top: 10px;
@@ -72,6 +71,7 @@
             width: 50%;
             font-size: medium;
             font-weight: 800;
+            cursor: pointer;
 
             &:active {
                 transform: scale(0.98);

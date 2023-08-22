@@ -10,6 +10,7 @@
     height: 100px;
     background-color: $bgColor;
     margin-right: 10px;
+    cursor: pointer;
     &:active {
         translate: 5px;
     }
