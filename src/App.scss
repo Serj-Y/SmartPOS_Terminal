@@ -10,7 +10,7 @@
     "n h"
     "n c";
 
-  grid-template-rows: 150px 2fr;
+  grid-template-rows: 100px 2fr;
   grid-template-columns: 250px 2fr;
   @media screen and (max-width: 950px) {
     grid-template-columns: 60px ;

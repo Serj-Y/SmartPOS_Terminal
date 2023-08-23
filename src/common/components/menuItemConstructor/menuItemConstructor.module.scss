@@ -7,10 +7,10 @@
     padding: 20px;
     background-color: $bgColor;
     border-radius: 15%;
+    cursor: pointer;
     box-shadow:
         0 -10px 20px rgba(0, 0, 0, 0.1),
         5px 5px 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
 
     &:active {
         transform: scale(0.99);
@@ -20,7 +20,6 @@
         text-align: center;
 
         img {
-
             max-width: 150px;
             height: 100px;
         }
@@ -38,9 +37,7 @@
 
         .itemPrice {
             color: $accentColor ;
-            font-size: xx-large;
-            font-weight: 800;
-            letter-spacing: 1px;
+            @extend .itemName;
         }
     }
 }

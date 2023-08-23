@@ -5,10 +5,6 @@
     background-color: $bgColor;
     border-radius: 25px 0 0 25px;
 
-    @media screen and (max-width: 375px) {
-        width: 300px;
-    }
-
     .item {
         display: flex;
         flex-direction: column;
@@ -16,7 +12,8 @@
         align-items: center;
         text-align: center;
         height: 100%;
-        @media screen and (min-height: 900px) {
+
+        @media screen and (min-height: 750px) {
             justify-content: space-evenly;
         }
 
@@ -35,6 +32,7 @@
                 height: 100px;
                 padding-top: 10px;
             }
+
             @media screen and (max-height: 500px) {
                 width: 50px;
                 height: 50px;
@@ -52,6 +50,7 @@
                     font-size: x-large;
                     font-weight: 600;
                 }
+
                 @media screen and (max-height: 750px) {
                     font-size: large;
                     font-weight: 600;
@@ -62,6 +61,7 @@
                 color: $secondTextColor;
                 font-weight: 600;
                 padding: 5px;
+
                 @media screen and (max-height: 750px) {
                     padding: 0px;
                 }
@@ -70,23 +70,19 @@
             .itemPrice {
                 @extend .itemName;
                 color: $accentColor
-                
             }
-
         }
 
-
-
         .addBtn {
-            margin-bottom: 60px;
+            margin-bottom: 55px;
             margin-top: 20px;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
             border-radius: 15px;
             background-color: $accentColor;
-            width: 80%;
+            width: 83%;
             font-size: medium;
-            font-weight: 800;
+            font-weight: 700;
             cursor: pointer;
 
             &:active {

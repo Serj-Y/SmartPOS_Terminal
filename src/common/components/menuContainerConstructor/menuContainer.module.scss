@@ -1,6 +1,5 @@
 @import "../../styles/sass/variables.scss";
 
-
 .food {
     justify-content: center;
     width: 90%;
@@ -21,16 +20,13 @@
 }
 
 .optionsContainer {
-    width: 35vw;
+    width: 450px;
 
     @media screen and (max-width: 450px) {
         width: 300px;
     }
     @media screen and (max-height: 600px) {
         width: 300px;
-    }
-    @media screen and (min-height: 950px) {
-        width: 45vw;
     }
 
     .options {
@@ -39,8 +35,8 @@
         font-size: large;
         font-weight: 700;
         letter-spacing: 1px;
-        margin-bottom: 10px;
-        margin-left: 10px;
+        margin-left: 25px;
+        margin-right: 10px;
 
         @media screen and (max-width: 450px) {
             margin-left: 0px;
@@ -50,7 +46,6 @@
         @media screen and (max-height: 500px) {
             margin-bottom: 0px;
         }
-      
 
         .optionsImgAndName {
             display: flex;
@@ -59,34 +54,31 @@
 
             @media screen and (max-height: 500px) {
                 margin: 2px;
-
             }
 
             .optionImg {
                 width: 60px;
                 height: 60px;
                 padding-top: 0px;
+                margin-right: 20px;
 
-
-                @media screen and (max-height:500px) {
+                @media screen and (max-height:750px) {
                     width: 25px;
                     height: 25px;
-
                 }
             }
         }
 
         .optionsWeight {
             @extend .optionsImgAndName;
+
             @media screen and (max-width: 450px) {
                 margin: 0;
-                
             }
 
             .optionsWeight {
                 font-weight: 600;
                 color: $secondTextColor ;
-               
             }
         }
 
@@ -97,9 +89,9 @@
                 display: flex;
                 width: 50px;
                 color: $accentColor;
+
                 @media screen and (max-width: 450px) {
                     width: unset;
-
                 }
             }
         }

@@ -12,16 +12,17 @@
         }
 
         .items {
-            padding-top: 40px;
+            padding-top: 5px;
             gap: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
 
             .item {
-                width: 90%;
+                width: 100%;
                 .navLink{
                     margin-left: 15px;
+                    text-align: center;
                 }
                 .isPending {
                     padding-left: 20px;
@@ -52,11 +53,14 @@
         }
 
         .items {
-            padding-top: 40px;
+            padding-top: 5px;
             gap: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            @media screen and (max-height: 500px) {
+                gap: 5px
+            }
 
             .item {
                 display: flex;
@@ -68,14 +72,13 @@
                 }
 
                 .isPending {
-                    padding-left: 15px;
                     border-radius: 15px;
                     height: 50px;
                     display: flex;
                     align-items: center;
                     text-decoration: none;
+                    justify-content: center;
                     color: black;
-                    font-weight: 600;
                 }
 
                 .isActive {

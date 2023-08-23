@@ -116,13 +116,13 @@ const MenuContainer = (props: any) => {
                         </div>
                         <div className={styles.optionsWeight} >
                             <div className={styles.optionsWeight}>
-                                + {i.weight}g
+                                +{i.weight}g
                             </div>
                             <div className={styles.optionsSelectorAndPrice}>
-                            <input id={v1()} type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => OnChangeOptionForCheckBox(i)} />
-                            <div className={styles.optionsPrice}>
-                                {i.price}$
-                            </div>
+                                <input id={v1()} type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => OnChangeOptionForCheckBox(i)} />
+                                <div className={styles.optionsPrice}>
+                                    ${i.price}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@ const MenuContainer = (props: any) => {
                             <div className={styles.optionsSelectorAndPrice}>
                                 <input id={v1()} type="radio" checked={i.id === isChecked} onChange={() => OnChangeOptionForRadio(i)} />
                                 <div className={styles.optionsPrice}>
-                                    {i.price === "" ? secondMenu.price : i.price + secondMenu.price}$
+                                    ${i.price === "" ? secondMenu.price : i.price + secondMenu.price}
                                 </div>
                             </div>
 
