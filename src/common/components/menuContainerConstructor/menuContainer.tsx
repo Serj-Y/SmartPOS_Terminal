@@ -114,7 +114,7 @@ const MenuContainer = (props: any) => {
                                 {i.name}
                             </div>
                         </div>
-                        <div className={styles.optionsSelectorAndWeight} >
+                        <div className={styles.optionsWeight} >
                             <div className={styles.optionsWeight}>
                                 + {i.weight}g
                             </div>
@@ -133,7 +133,7 @@ const MenuContainer = (props: any) => {
                                 {i.name}
                             </div>
                         </div>
-                        <div className={styles.optionsSelectorAndWeight} >
+                        <div className={styles.optionsWeight} >
                             <div className={styles.optionsWeight}>
                                 {i.weight}g
                             </div>
