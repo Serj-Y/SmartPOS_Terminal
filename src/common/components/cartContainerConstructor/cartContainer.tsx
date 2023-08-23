@@ -31,7 +31,7 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems }) => {
 
         return (
             <div>
-                    {option.price === "" ? "" : <>{option.name} wight: {option.weight}g price: {option.price}$</>}
+                    {option.multiply === false ? "" : <>{option.name} wight: {option.weight}g price: {option.price}$</>}
             </div>
         )
     }

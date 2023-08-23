@@ -109,26 +109,41 @@ const MenuContainer = (props: any) => {
                 {i.multiply
                     ? <div className={styles.options}>
                         <div className={styles.optionsImgAndName} style={{ display: 'flex', alignItems: "center" }}>
-                            {i.img ? <img className={styles.optionImg}  src={i.img} alt="i.name" /> : <></>}
-                            <div>{i.name}</div>
-                        </div>
-                        <div className={styles.optionsSelectorAndPrice} >
-                            <input id={v1()} type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => OnChangeOptionForCheckBox(i)} />
+                            {i.img ? <img className={styles.optionImg} src={i.img} alt="i.name" /> : <></>}
                             <div>
+                                {i.name}
+                            </div>
+                        </div>
+                        <div className={styles.optionsSelectorAndWeight} >
+                            <div className={styles.optionsWeight}>
+                                + {i.weight}g
+                            </div>
+                            <div className={styles.optionsSelectorAndPrice}>
+                            <input id={v1()} type="checkBox" checked={findCheckedOption?.id === i.id} onChange={() => OnChangeOptionForCheckBox(i)} />
+                            <div className={styles.optionsPrice}>
                                 {i.price}$
+                            </div>
                             </div>
                         </div>
                     </div>
                     : <div className={styles.options}>
                         <div className={styles.optionsImgAndName} style={{ display: 'flex', alignItems: "center" }}>
                             {i.img ? <img className={styles.optionImg} src={i.img} alt="i.name" /> : <></>}
-                            <div>{i.name}</div>
-                        </div>
-                        <div className={styles.optionsSelectorAndPrice} >
-                            <input id={v1()} type="radio" checked={i.id === isChecked} onChange={() => OnChangeOptionForRadio(i)} />
                             <div>
-                                {i.price === "" ? secondMenu.price : `+ ${i.price}`}$
+                                {i.name}
                             </div>
+                        </div>
+                        <div className={styles.optionsSelectorAndWeight} >
+                            <div className={styles.optionsWeight}>
+                                {i.weight}g
+                            </div>
+                            <div className={styles.optionsSelectorAndPrice}>
+                                <input id={v1()} type="radio" checked={i.id === isChecked} onChange={() => OnChangeOptionForRadio(i)} />
+                                <div className={styles.optionsPrice}>
+                                    {i.price === "" ? secondMenu.price : i.price + secondMenu.price}$
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 }

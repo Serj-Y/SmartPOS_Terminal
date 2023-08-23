@@ -1,3 +1,6 @@
+@import "../../styles/sass/variables.scss";
+
+
 .food {
     justify-content: center;
     width: 90%;
@@ -14,12 +17,10 @@
             align-items: center;
             justify-content: center;
         }
-
     }
 }
 
 .optionsContainer {
-
     width: 400px;
 
     @media screen and (max-width: 400px) {
@@ -33,31 +34,45 @@
         font-weight: 700;
         letter-spacing: 1px;
         margin-bottom: 10px;
+
         @media screen and (max-height: 750px) {
             margin-bottom: 0px;
-          }
+        }
 
         .optionsImgAndName {
             display: flex;
             align-items: center;
             margin: 10px;
-         
-              .optionImg{
+
+            .optionImg {
                 width: 60px;
                 height: 60px;
                 padding-top: 0px;
+
                 @media screen and (max-height: 750px) {
                     width: 25px;
                     height: 25px;
-                  }
-              }
+                }
+            }
         }
 
+        .optionsSelectorAndWeight {
+            @extend .optionsImgAndName;
+
+            .optionsWeight {
+                font-weight: 600;
+                color: $secondTextColor
+            }
+        }
         .optionsSelectorAndPrice {
             @extend .optionsImgAndName;
 
+            .optionsPrice {
+                display: flex;
+                width: 50px;
+                color: $accentColor;
+            }
         }
-
     }
 
 }

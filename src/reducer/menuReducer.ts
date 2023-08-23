@@ -2,7 +2,7 @@ import { v1 } from "uuid";
 import Cola from "../common/assets/png/cupCola.png"
 import Sprite from "../common/assets/png/cupSprite.png"
 import Fanta from "../common/assets/png/cupFanta.png";
-import AquaMineral from "../common/assets/png/butleAquaMinerale.png";
+import AquaMineral from "../common/assets/png/bottleAquaMinerale.png";
 import Espresso from "../common/assets/png/mugEspresso.png"
 import Cappuccino from "../common/assets/png/mugCappuccino.png"
 import Latte from "../common/assets/png/cupLatte.png"
