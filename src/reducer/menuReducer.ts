@@ -30,9 +30,9 @@ let initialState = {
             { id: v1(), name: "Big John", weight: 550, price: 5.50, img: BigJoh, },
         ],
         burgerOptions: [
-            { id: v1(), name: "Cheese", weight: 20, price: 0.20, img: Cheese, multiply: true },
-            { id: v1(), name: "Meat", weight: 20, price: 0.50, img: Meat, multiply: true },
-            { id: v1(), name: "Bacon", weight: 20, price: 0.30, img: Bacon, multiply: true }
+            { id: v1(), name: "Cheese", weight: 10, price: 0.10, img: Cheese, multiply: true },
+            { id: v1(), name: "Meat", weight: 60, price: 0.50, img: Meat, multiply: true },
+            { id: v1(), name: "Bacon", weight: 25, price: 0.30, img: Bacon, multiply: true }
         ],
     },
     drinksMenu: {

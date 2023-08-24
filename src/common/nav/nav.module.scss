@@ -1,39 +1,62 @@
 @import "../styles/sass/variables.scss";
 
 .nav {
-    margin-left: 5px;
+    margin-left: 20px;
     grid-area: n;
     position: fixed;
+    width: 220px;
+
+    @media screen and (max-width: 1025px) {
+        width: unset;
+    }
 
     .fullScreen {
-        @media screen and (max-width: 950px) {
+        @media screen and (max-width: 1025px) {
             display: none;
+            width: unset;
 
         }
 
         .items {
-            padding-top: 5px;
-            gap: 20px;
+            padding-top: 45px;
+            gap: 5px;
             display: flex;
             flex-direction: column;
             align-items: center;
 
+            .storeName {
+                display: flex;
+                padding-bottom: 20px;
+
+                .storeIcon {
+                    margin-right: 20px
+                }
+
+                .storeNameAccent {
+                    color: red;
+                }
+            }
+
             .item {
+            
                 width: 100%;
-                .navLink{
+
+                .navLink {
                     margin-left: 15px;
                     text-align: center;
                 }
+
                 .isPending {
                     padding-left: 20px;
                     text-align: start;
                     border-radius: 15px;
-                    height: 50px;
+                    height: 55px;
                     display: flex;
                     align-items: center;
                     text-decoration: none;
                     color: black;
                     font-weight: 600;
+
                     &:active {
                         transform: scale(0.98);
                     }
@@ -48,7 +71,7 @@
     }
 
     .mobileDevice {
-        @media screen and (min-width: 950px) {
+        @media screen and (min-width: 1025px) {
             display: none;
         }
 
@@ -58,6 +81,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
             @media screen and (max-height: 500px) {
                 gap: 5px
             }
@@ -67,6 +91,7 @@
                 flex-direction: column;
                 width: 100%;
                 padding-left: 10px;
+
                 &:active {
                     transform: scale(0.95);
                 }

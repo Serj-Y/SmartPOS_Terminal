@@ -11,6 +11,6 @@ export const ColdDrinks = () => {
     const extraForColdDrinksMenu = useSelector((state: RootState) => state.Menu.drinksMenu.coldDrinksOptions)
 
     return (
-        <MenuContainer extraMenu={extraForColdDrinksMenu} stateMenu={coldDrinksMenu} title="Cold Drinks" icon={<FontAwesomeIcon icon={faBottleWater} />} />
+        <MenuContainer extraMenu={extraForColdDrinksMenu} stateMenu={coldDrinksMenu} title="Cold Drinks" icon={<FontAwesomeIcon  icon={faBottleWater} />} />
     )
 }

@@ -13,8 +13,10 @@ export const MenuItemConstructor: React.FC<PropsType> = ({ img, name, weight, pr
         <div className={styles.itemContainer}>
             <div className={styles.item}>
                 <img src={img} alt={name} />
-                <p className={styles.itemName} >{name}</p>
-                <p className={styles.itemWeight} >{weight} g</p>
+                <div>
+                    <p className={styles.itemName} >{name}</p>
+                    <p className={styles.itemWeight} >{weight} g</p>
+                </div>
                 <p className={styles.itemPrice} >${price}</p>
             </div>
         </div>

@@ -108,7 +108,7 @@ const MenuContainer = (props: any) => {
             <div className={styles.optionsContainer} >
                 {i.multiply
                     ? <div className={styles.options}>
-                        <div className={styles.optionsImgAndName} style={{ display: 'flex', alignItems: "center" }}>
+                        <div className={styles.optionsImgAndName} >
                             {i.img ? <img className={styles.optionImg} src={i.img} alt="i.name" /> : <></>}
                             <div>
                                 {i.name}
@@ -127,7 +127,7 @@ const MenuContainer = (props: any) => {
                         </div>
                     </div>
                     : <div className={styles.options}>
-                        <div className={styles.optionsImgAndName} style={{ display: 'flex', alignItems: "center" }}>
+                        <div className={styles.optionsImgAndName} >
                             {i.img ? <img className={styles.optionImg} src={i.img} alt="i.name" /> : <></>}
                             <div>
                                 {i.name}
@@ -152,7 +152,7 @@ const MenuContainer = (props: any) => {
     }
     return (
         <div className={styles.food}>
-            <h2>{props.title} {props.icon}</h2>
+            <h1>{props.title} {props.icon}</h1>
             <div className={styles.items}>
                 {menu.map((i: OrderType) =>
                     <div key={i.id}>

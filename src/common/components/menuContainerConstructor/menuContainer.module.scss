@@ -2,18 +2,27 @@
 
 .food {
     justify-content: center;
-    width: 90%;
+    width: 88%;
 
+    h1{
+        margin-bottom: 50px;
+        margin-top: 50px;
+        font-size: 40px;
+    }
+  
     .items {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 40px;
+        gap: 50px;
 
-        @media screen and (max-width: 750px) {
-            display: flex;
+        @media screen and (max-width: 840px) {
+      
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+        }
+        @media screen and (max-width: 1025px) {
             justify-content: center;
         }
     }

@@ -1,43 +1,48 @@
 @import "../../styles/sass/variables.scss";
 
 .itemContainer {
-    width: 250px;
-    height: 300px;
-    padding: 20px;
+    width:270px;
+    height:310px;
     padding: 20px;
     background-color: $bgColor;
-    border-radius: 15%;
+    border-radius: 40px;
     cursor: pointer;
-    box-shadow:
-        0 -10px 20px rgba(0, 0, 0, 0.1),
-        5px 5px 10px rgba(0, 0, 0, 0.2);
-
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -16px;
     &:active {
         transform: scale(0.99);
     }
 
     .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
         text-align: center;
 
         img {
-            max-width: 150px;
-            height: 100px;
+            height: 133px;
         }
 
         .itemName {
             font-size: xx-large;
-            font-weight: 800;
+            font-weight: 600;
             letter-spacing: 1px;
+            margin: 0px 0px 5px 0px;
+
         }
 
         .itemWeight {
             color: $secondTextColor;
             font-weight: 600;
+            margin: 0;
+          
         }
 
         .itemPrice {
             color: $accentColor ;
             @extend .itemName;
+            margin-bottom: 20px;
         }
     }
 }
