@@ -16,18 +16,21 @@
         @media screen and (min-height: 750px) {
             justify-content: space-evenly;
         }
+        @media screen and (max-width: 350px) {
+            justify-content: space-evenly;
+        }
 
         img {
             padding-top: 80px;
             max-width: 200px;
             height: 150px;
 
-            @media screen and (max-width: 375px) {
+            @media screen and (max-width: 350px) {
                 max-width: 100px;
                 height: 75px;
             }
 
-            @media screen and (max-height: 750px) {
+            @media screen and (max-height: 600px) {
                 max-width: 100px;
                 height: 100px;
                 padding-top: 10px;
@@ -46,12 +49,12 @@
                 letter-spacing: 1px;
                 padding: 20px;
 
-                @media screen and (max-width: 375px) {
+                @media screen and (max-width: 350px) {
                     font-size: x-large;
                     font-weight: 600;
                 }
 
-                @media screen and (max-height: 750px) {
+                @media screen and (max-height: 500px) {
                     font-size: large;
                     font-weight: 600;
                 }

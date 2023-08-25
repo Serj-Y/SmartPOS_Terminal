@@ -2,14 +2,12 @@ import React from 'react';
 import './App.scss';
 import { Nav } from './common/nav/nav';
 import { Route, Routes } from "react-router-dom";
-import { Dashboard } from './pages/home/dashboard';
+import { Home } from './pages/home/homePage';
 import { Header } from './common/header/header';
-import { Food } from './pages/food/food';
+import { Burger } from './pages/burger/burger';
+import { ColdDrinks } from './pages/coldDrinks/coldDrinks';
 import { HotDrinks } from './pages/hotDrinks/hotDrinks';
-import { ColdDrinks } from "./pages/coldDrinks/coldDrinks"
 import { CartPage } from './pages/cartPage/cart';
-
-
 
 
 function App() {
@@ -19,9 +17,9 @@ function App() {
       <Header />
       <div className="Content" >
         <Routes>
-          <Route path="/*" element={<Dashboard />} />
-          <Route path="/dash" element={<Dashboard />} />
-          <Route path="/food" element={<Food />} />
+          <Route path="/*" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/burger" element={<Burger />} />
           <Route path="/coldDrinks" element={<ColdDrinks />} />
           <Route path="/hotDrinks" element={<HotDrinks />} />
           <Route path="/cartPage" element={<CartPage />} />

@@ -5,7 +5,7 @@ import MenuContainer from "../../common/components/menuContainerConstructor/menu
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBurger } from "@fortawesome/free-solid-svg-icons";
 
-export const Food = () => {
+export const Burger = () => {
     const burgerMenu = useSelector((state: RootState) => state.Menu.foodMenu.burger)
     const optionMenu = useSelector((state: RootState) => state.Menu.foodMenu.burgerOptions)
     const options = useSelector((state: RootState) => state.Cart.options)

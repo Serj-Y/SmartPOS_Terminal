@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { actions } from "../../../reducer/cartReducer";
 import { OrderType } from "../menuContainerConstructor/menuContainer";
 import { useAlert } from "react-alert";
-import { CartItem } from "./cartItem";
+import { CartItem } from "./cartItem/cartItem";
 
 type PropsType = {
     cartItems: Array<OrderType>

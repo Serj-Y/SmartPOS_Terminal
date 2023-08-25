@@ -4,17 +4,20 @@
     margin-left: 20px;
     grid-area: n;
     position: fixed;
-    width: 220px;
+    width: 240px;
+    height: 100%;
+    border-right: 2px solid;
+    border-color:$borderColor;
 
     @media screen and (max-width: 1025px) {
         width: unset;
+        border: none;
+        margin-left: 5px;
     }
 
     .fullScreen {
         @media screen and (max-width: 1025px) {
             display: none;
-            width: unset;
-
         }
 
         .items {
@@ -23,7 +26,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-
+            width: 90%;
             .storeName {
                 display: flex;
                 padding-bottom: 20px;
@@ -38,7 +41,7 @@
             }
 
             .item {
-            
+
                 width: 100%;
 
                 .navLink {

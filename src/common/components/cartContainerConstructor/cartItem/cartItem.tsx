@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./cartItem.module.scss"
-import { OptionType } from "../menuContainerConstructor/menuContainer";
+import { OptionType } from "../../menuContainerConstructor/menuContainer";
 
 type MenuItemType = {
     name: string;

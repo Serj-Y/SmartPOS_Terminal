@@ -19,16 +19,16 @@ export const Nav = () => {
                         </div>
                     </div>
                     <div className={styles.item} >
-                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/dash"} > <FontAwesomeIcon icon={faHouse} /> <div className={styles.navLink} >Dashboard</div></NavLink>
+                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/home"} > <FontAwesomeIcon icon={faHouse} /> <div className={styles.navLink} >Home</div></NavLink>
                     </div>
                     <div className={styles.item} >
-                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/food"} > <FontAwesomeIcon icon={faBurger} /><div className={styles.navLink} > Food</div></NavLink>
+                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/burger"} > <FontAwesomeIcon icon={faBurger} /><div className={styles.navLink} > Burger</div></NavLink>
                     </div>
                     <div className={styles.item} >
-                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/coldDrinks"}> <FontAwesomeIcon width={16} icon={faBottleWater} /><div className={styles.navLink} > ColdDrinks</div></NavLink>
+                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/coldDrinks"}> <FontAwesomeIcon width={16} icon={faBottleWater} /><div className={styles.navLink} > Cold-Drinks</div></NavLink>
                     </div>
                     <div className={styles.item} >
-                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/hotDrinks"}> <FontAwesomeIcon icon={faMugHot} /> <div className={styles.navLink} > HotDrinks</div>   </NavLink>
+                        <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/hotDrinks"}> <FontAwesomeIcon icon={faMugHot} /> <div className={styles.navLink} > Hot-Drinks</div>   </NavLink>
                     </div>
                     <div className={styles.item} >
                         <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/cartPage"}><FontAwesomeIcon icon={faCartShopping} /><div className={styles.navLink} >Cart</div></NavLink>
