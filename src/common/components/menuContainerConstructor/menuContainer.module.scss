@@ -3,16 +3,17 @@
 .food {
     justify-content: center;
     width: 88%;
+
     @media screen and (max-width: 400px) {
         width: 100%;
     }
 
-    h1{
+    h1 {
         margin-bottom: 50px;
         margin-top: 50px;
         font-size: 40px;
     }
-  
+
     .items {
         display: flex;
         justify-content: space-between;
@@ -20,11 +21,12 @@
         gap: 50px;
 
         @media screen and (max-width: 840px) {
-      
+
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
+
         @media screen and (max-width: 1025px) {
             justify-content: center;
         }
@@ -37,8 +39,14 @@
     @media screen and (max-width: 450px) {
         width: 300px;
     }
+
     @media screen and (max-height: 600px) {
         width: 300px;
+    }
+
+    .check {
+        @extend .options;
+        border-color: $accentColor !important;
     }
 
     .options {
@@ -47,8 +55,11 @@
         font-size: large;
         font-weight: 700;
         letter-spacing: 1px;
-        margin-left: 25px;
-        margin-right: 10px;
+        margin: 4px 20px 4px 20px;
+        border: 2px solid $bgColor;
+        border-radius: 20px;
+
+
 
         @media screen and (max-width: 450px) {
             margin-left: 0px;
