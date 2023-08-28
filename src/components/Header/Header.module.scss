@@ -1,0 +1,19 @@
+ @import "../../Styles/sass/variables.scss";
+
+ .header {
+     grid-area: h;
+     height: 100%;
+     width: 100%;
+
+     @media screen and (max-width: 450px) {
+         margin: 55px 15px 0px 0px;
+     }
+
+     .items {
+         height: 100%;
+         display: flex;
+         justify-content: flex-end;
+         align-items: flex-end;
+         width: 94%;
+     }
+ }

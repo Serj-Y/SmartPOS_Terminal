@@ -5,8 +5,8 @@ import cartReducer from '../reducer/cartReducer'
 
 export const store = configureStore({
   reducer: {
-    Menu: menuReducer,
-    Cart: cartReducer,
+    menu: menuReducer,
+    cart: cartReducer,
   },
 })
 

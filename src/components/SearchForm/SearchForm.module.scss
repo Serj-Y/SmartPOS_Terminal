@@ -1,0 +1,25 @@
+@import "../../Styles/sass/variables.scss";
+
+.searchContainer {
+    width: 310px;
+     height: 55px;
+    
+        .input {
+            width: 310px;
+            height: 55px;
+            background: $borderColor;
+            margin: 0;
+            padding: 0px 10px 0px 40px;
+            font-size: 14px;
+            border: 1px solid transparent;
+            border-radius: 15px;
+            color: $secondTextColor;
+            position: absolute;
+
+        }
+        .icon{
+            position: relative;
+          left: 10px;
+          top: 18px;
+    }
+}

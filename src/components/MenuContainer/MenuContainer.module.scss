@@ -1,0 +1,109 @@
+@import "../../Styles/sass/variables.scss";
+
+.food {
+    justify-content: center;
+    width: 88%;
+
+    @media screen and (max-width: 400px) {
+        width: 100%;
+    }
+
+    .title {
+        margin-bottom: 50px;
+        margin-top: 50px;
+        font-size: 40px;
+        font-weight: 800;
+    }
+
+    .items {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 50px;
+
+        @media screen and (max-width: 840px) {
+
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 1025px) {
+            justify-content: center;
+        }
+    }
+}
+
+.optionsContainer {
+    width: 450px;
+
+    @media screen and (max-width: 450px) {
+        width: 350px;
+    }
+
+    @media screen and (max-height: 600px) {
+        width: 350px;
+    }
+
+    .check {
+        @extend .options;
+        border-color: $accentColor !important;
+    }
+
+    .options {
+        display: flex;
+        justify-content: space-between;
+        font-size: large;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 4px 20px 4px 20px;
+        border: 2px solid $bgColor;
+        border-radius: 20px;
+        cursor: pointer;
+
+        @media screen and (max-width: 450px) {
+            font-weight: 600;
+        }
+
+        @media screen and (max-height: 500px) {
+            margin-bottom: 0px;
+        }
+
+        .imageAndNameContainer {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+
+            .img {
+                width: 60px;
+                height: 60px;
+                padding-top: 0px;
+                margin-right: 20px;
+
+                @media screen and (max-height:750px) {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+
+        .weightAndPriceContainer {
+            @extend .imageAndNameContainer;
+          
+            .weight {
+                margin: 10px;
+                font-weight: 600;
+                color: $secondTextColor ;
+
+            }
+            .price {
+                display: flex;
+                width: 50px;
+                color: $accentColor;
+            }
+
+        }
+
+    }
+
+}

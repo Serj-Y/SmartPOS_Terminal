@@ -1,0 +1,120 @@
+@import "../../Styles/sass/variables.scss";
+
+.nav {
+    margin-left: 20px;
+    grid-area: n;
+    position: fixed;
+    width: 240px;
+    height: 100%;
+    border-right: 2px solid;
+    border-color: $borderColor;
+
+    @media screen and (max-width: 1025px) {
+        width: unset;
+        border: none;
+        margin-left: 5px;
+    }
+
+    .fullScreen {
+        @media screen and (max-width: 1025px) {
+            display: none;
+        }
+
+        .items {
+            padding-top: 45px;
+            gap: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+
+            .storeName {
+                display: flex;
+                padding-bottom: 20px;
+                align-items: center;
+
+                .storeIcon {
+                    font-size: x-large;
+                    margin-right: 20px;
+                }
+
+                .storeNameAccent {
+                    color: red;
+                }
+            }
+
+            .item {
+                width: 100%;
+                .navLink {
+                    margin-left: 15px;
+                    text-align: center;
+                }
+
+                .isPending {
+                    padding-left: 20px;
+                    text-align: start;
+                    border-radius: 15px;
+                    height: 55px;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: black;
+                    font-weight: 600;
+
+                    &:active {
+                        transform: scale(0.98);
+                    }
+                }
+
+                .isActive {
+                    @extend .isPending;
+                    background-color: $accentColor ;
+                }
+            }
+        }
+    }
+
+    .mobileDevice {
+        @media screen and (min-width: 1025px) {
+            display: none;
+        }
+
+        .items {
+            padding-top: 5px;
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @media screen and (max-height: 500px) {
+                gap: 5px
+            }
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding-left: 10px;
+
+                &:active {
+                    transform: scale(0.95);
+                }
+
+                .isPending {
+                    border-radius: 15px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    justify-content: center;
+                    color: black;
+                }
+
+                .isActive {
+                    @extend .isPending;
+                    background-color: $accentColor ;
+                }
+            }
+        }
+    }
+}

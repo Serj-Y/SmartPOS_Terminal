@@ -1,0 +1,97 @@
+@import "../../../Styles/sass/variables.scss";
+
+.itemContainer {
+    height: 100%;
+    background-color: $bgColor;
+    border-radius: 25px 0 0 25px;
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+
+        @media screen and (min-height: 750px) {
+            justify-content: space-evenly;
+        }
+        @media screen and (max-width: 350px) {
+            justify-content: space-evenly;
+        }
+
+        img {
+            padding-top: 80px;
+            max-width: 200px;
+            height: 150px;
+
+            @media screen and (max-width: 350px) {
+                max-width: 100px;
+                height: 75px;
+            }
+
+            @media screen and (max-height: 600px) {
+                max-width: 100px;
+                height: 100px;
+                padding-top: 10px;
+            }
+
+            @media screen and (max-height: 500px) {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .namePriceWeight {
+            .itemName {
+                font-size: xx-large;
+                font-weight: 800;
+                letter-spacing: 1px;
+                padding: 20px;
+
+                @media screen and (max-width: 350px) {
+                    font-size: x-large;
+                    font-weight: 600;
+                }
+
+                @media screen and (max-height: 500px) {
+                    font-size: large;
+                    font-weight: 600;
+                }
+            }
+
+            .itemWeight {
+                color: $secondTextColor;
+                font-weight: 600;
+                padding: 5px;
+
+                @media screen and (max-height: 750px) {
+                    padding: 0px;
+                }
+            }
+
+            .itemPrice {
+                @extend .itemName;
+                color: $accentColor
+            }
+        }
+
+        .addBtn {
+            margin-bottom: 55px;
+            margin-top: 20px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-radius: 15px;
+            background-color: $accentColor;
+            width: 83%;
+            font-size: medium;
+            font-weight: 700;
+            cursor: pointer;
+
+            &:active {
+                transform: scale(0.98);
+            }
+        }
+
+    }
+}

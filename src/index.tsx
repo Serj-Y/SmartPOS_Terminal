@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
-import {store} from './redux/store';
+import { store } from './redux/store';
 import { transitions, positions, types, Provider as AlertProvider } from 'react-alert';
 //@ts-ignore
 import AlertTemplate from 'react-alert-template-basic';
@@ -21,15 +21,13 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <AlertProvider template={AlertTemplate} {...options}>
+  <AlertProvider template={AlertTemplate} {...options}>
     <HashRouter>
       <Provider store={store} >
-         <App />
+        <App />
       </Provider>
     </HashRouter>
-    </AlertProvider>
-  </React.StrictMode>
+  </AlertProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

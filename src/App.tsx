@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.scss';
-import { Nav } from './common/nav/nav';
 import { Route, Routes } from "react-router-dom";
-import { Home } from './pages/home/homePage';
-import { Header } from './common/header/header';
-import { Burger } from './pages/burger/burger';
-import { ColdDrinks } from './pages/coldDrinks/coldDrinks';
-import { HotDrinks } from './pages/hotDrinks/hotDrinks';
-import { CartPage } from './pages/cartPage/cart';
+import { HomePage } from './pages/HomePage/HomePage';
+import { BurgerPage } from './pages/BurgerPage/BurgerPage';
+import { ColdDrinksPage } from './pages/ColdDrinksPage/ColdDrinksPage';
+import { HotDrinksPage } from './pages/HotDrinksPage/HotDrinksPage';
+import { CartPage } from './pages/CartPage/CartPage';
+import { Nav } from './components/Navigation/Nav';
+import { Header } from './components/Header/Header';
 
 
 function App() {
@@ -17,11 +17,11 @@ function App() {
       <Header />
       <div className="Content" >
         <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/burger" element={<Burger />} />
-          <Route path="/coldDrinks" element={<ColdDrinks />} />
-          <Route path="/hotDrinks" element={<HotDrinks />} />
+          <Route path="/*" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/burger" element={<BurgerPage />} />
+          <Route path="/coldDrinks" element={<ColdDrinksPage />} />
+          <Route path="/hotDrinks" element={<HotDrinksPage />} />
           <Route path="/cartPage" element={<CartPage />} />
         </Routes>
       </div>
