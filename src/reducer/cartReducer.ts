@@ -1,19 +1,25 @@
+import { OptionType, OrderType } from "../components/MenuContainer/MenuContainer";
 import { InferActionsTypes } from "../redux/store";
 
+type InitialStateType =
+    {
+        orders: Array<OrderType>,
+        options: Array<OptionType>
+    }
 
 const initialState = {
     orders: [
 
     ],
-options:[
+    options: [
 
-]
-};
+    ]
+} as InitialStateType;
 
 type ActionsTypes = InferActionsTypes<typeof actions>
 
 const cartReducer = (state = initialState, action: ActionsTypes) => {
-    
+
     switch (action.type) {
         case "ADD_ORDER": {
             return {
@@ -23,9 +29,10 @@ const cartReducer = (state = initialState, action: ActionsTypes) => {
             };
         }
         case "DELETE_ITEM_OF_CART": {
+            const filtredItems = [...state.orders.filter((item: any) => item.id !== action.id)]
             return {
                 ...state,
-                orders: action.deleteItem 
+                orders: filtredItems
             };
         }
         case "CLEAN_CART": {
@@ -40,10 +47,11 @@ const cartReducer = (state = initialState, action: ActionsTypes) => {
                 options: [action.option, ...state.options,]
             };
         }
-        case "DELETE_ITEM_OF_OPTION": {
+        case "DELETE_OPTION": {
+            const filtredOption = [...state.options.filter((item: any) => item.id !== action.id)]
             return {
                 ...state,
-                options: action.deleteOptionItem 
+                options: filtredOption
             };
         }
         case "CLEAN_UP_OPTION": {
@@ -60,11 +68,11 @@ const cartReducer = (state = initialState, action: ActionsTypes) => {
 }
 
 export const actions = {
-    addOrderActionCreator: (newOrderForm: any) => ({ type: "ADD_ORDER", newOrderForm } as const),
-    deleteItemOfCartActionCreator: (deleteItem: any) => ({ type: "DELETE_ITEM_OF_CART", deleteItem } as const),
+    addOrderActionCreator: (newOrderForm: OrderType) => ({ type: "ADD_ORDER", newOrderForm } as const),
+    deleteItemOfCartActionCreator: (id: string) => ({ type: "DELETE_ITEM_OF_CART", id } as const),
     cleanCartActionCreator: () => ({ type: "CLEAN_CART" } as const),
-    addOptionActionCreator: (option: any) => ({ type: "ADD_OPTION", option } as const),
-    deleteItemOfOptionActionCreator: (deleteOptionItem: any) => ({ type: "DELETE_ITEM_OF_OPTION", deleteOptionItem } as const),
-    cleanOptionsActionCreator: () => ({ type: "CLEAN_UP_OPTION"} as const),
+    addOptionActionCreator: (option: OptionType) => ({ type: "ADD_OPTION", option } as const),
+    deleteOptionActionCreator: (id: any) => ({ type: "DELETE_OPTION", id } as const),
+    cleanOptionsActionCreator: () => ({ type: "CLEAN_UP_OPTION" } as const),
 }
 export default cartReducer

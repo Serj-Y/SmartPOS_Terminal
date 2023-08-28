@@ -43,7 +43,6 @@ const MenuContainer = (props: any) => {
 
     function OnOpenExtraOptions(i: OrderType) {
         const defaultCheckedOption = extraMenu?.find(({ id }: any) => id === "default")
-
         setIsOpen(true)
         setSecondMenu(i)
         setPricer(i.price)
@@ -75,24 +74,23 @@ const MenuContainer = (props: any) => {
         )
     }
 
-    const Option = (props: any) => {
-        const i = props.MenuObject;
+    const Option = ({MenuObject} : any) => {
+        const i = MenuObject;
         const findCheckedOption = stateOptions?.find(({ id }: any) => id === i.id)
 
-        function OnChangeOptionForCheckBox(i: OptionType) {
+        function OnChangeOptionCheckBoxType(i: OptionType) {
             if (findCheckedOption?.id !== i.id) {
                 setPricer((prev: any) => prev + i.price)
                 setTotalItemWeight((prev: any) => prev + i.weight)
                 dispatch(actions.addOptionActionCreator({ ...i }))
             } else {
-                const updatedOption = stateOptions.filter((filtredOption: any) => filtredOption.id !== i.id)
                 setPricer(secondMenu.price < pricer ? (prev: any) => prev - i.price : secondMenu.price)
                 setTotalItemWeight(secondMenu.weight < totalItemWeight ? (prev: any) => prev - i.weight : secondMenu.weight)
-                dispatch(actions.deleteItemOfOptionActionCreator(updatedOption))
+                dispatch(actions.deleteOptionActionCreator(i.id))
             }
         }
 
-        function OnChangeOptionForRadio(i: OptionType) {
+        function OnChangeOptionRadioType(i: OptionType) {
             if (checked !== i.id) {
                 setPricer(secondMenu.price + i.price)
                 setTotalItemWeight(secondMenu.weight > i.weight ? secondMenu.weight + i.weight : i.weight)
@@ -107,7 +105,7 @@ const MenuContainer = (props: any) => {
         return (
             <div className={styles.optionsContainer} >
                 {i.multiply
-                    ? <div onClick={() => OnChangeOptionForCheckBox(i)} className={findCheckedOption?.id === i.id ? styles.check : styles.options}>
+                    ? <div onClick={() => OnChangeOptionCheckBoxType(i)} className={findCheckedOption?.id === i.id ? styles.check : styles.options}>
                         <div className={styles.imageAndNameContainer} >
                             {i.img ? <img className={styles.img} src={i.img} alt="i.name" /> : <></>}
                             <div>
@@ -123,7 +121,7 @@ const MenuContainer = (props: any) => {
                             </div>
                         </div>
                     </div>
-                    : <div onClick={() => OnChangeOptionForRadio(i)} className={i.id === checked ? styles.check : styles.options}>
+                    : <div onClick={() => OnChangeOptionRadioType(i)} className={i.id === checked ? styles.check : styles.options}>
                         <div className={styles.imageAndNameContainer} >
                             {i.img ? <img className={styles.img} src={i.img} alt="i.name" /> : <></>}
                             <div>

@@ -18,10 +18,10 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems }) => {
     const dispatch = useDispatch()
     const alert = useAlert()
 
-    const DeleteCartItem = (item: { id: string; name: string; weight: number; price?: number | string; }) => {
-        const filtredItems = [...menu.filter((i: any) => i.id !== item.id)]
-        dispatch(actions.deleteItemOfCartActionCreator(filtredItems))
-        alert.show(`Is Deleted: ${item.name}`)
+    const DeleteCartItem = (id:string, name:string) => {
+      
+        dispatch(actions.deleteItemOfCartActionCreator(id))
+        alert.show(`Is Deleted: ${name}`)
     }
 
     const CleanUp = () => {
@@ -48,7 +48,7 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems }) => {
                         weight={i.weight}
                         price={i.price}
                         options={i.option ? i.option.map((i: any) => <div key={i.id} ><Option Option={i} /></div>) : <></>}
-                        CloseBtn={() => DeleteCartItem(i)}
+                        CloseBtn={() => DeleteCartItem(i.id, i.name)}
                         img={i.img}
                     />
                 </div>

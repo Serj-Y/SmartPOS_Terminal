@@ -1,6 +1,25 @@
 import { v1 } from "uuid";
 import * as Assets from "../assets/images"
 
+// type InitialStateType = {
+//     foodMenu: {
+//         burger: Array<{ id: string, name: string, weight: number, price: number, img: string, }>,
+//         burgerOptions: Array<{ id: string, name: string, weight: number, price: number, img: string, multiply: boolean }>,
+//     },
+//     drinksMenu: {
+//         cold: Array<{
+//             id: string, name: string, weight: number, price: number, img: string,
+//             ownOption?: Array<{ id: string, name: string, weight: number, price: number | string, img: string, multiply: boolean }>,
+//         }>,
+//         coldDrinksOptions: Array<{ id: string, name: string, weight: number, price: number | string, img: string, multiply: boolean }>,
+
+//         hot: Array<{
+//             id: string, name: string, weight: number, price: number, img: string,
+//             ownOption?: Array<{ id: string, name: string, weight: number, price: number, img: string, multiply: boolean }>,
+//         }>,
+//         hotDrinksOptions: Array<{ id: string, name: string, weight: number, price: number, img: string, multiply: boolean }>,
+//     },
+// }
 
 let initialState = {
     foodMenu: {
@@ -49,7 +68,7 @@ let initialState = {
             { id: v1(), name: "Syrup", weight: 10, price: 0.50, img: Assets.Syrup, multiply: true },
         ]
     },
-};
+} 
 
 const menuReducer = (state = initialState) => {
     return state
