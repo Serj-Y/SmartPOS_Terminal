@@ -4,9 +4,10 @@
      grid-area: h;
      height: 100%;
      width: 100%;
+     margin-top: 15px;
 
      @media screen and (max-width: 450px) {
-         margin: 55px 15px 0px 0px;
+         margin: 0px 15px 0px 0px;
      }
 
      .items {

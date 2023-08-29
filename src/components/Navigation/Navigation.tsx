@@ -32,7 +32,7 @@ export const Nav = () => {
             </div>
             <div className={styles.mobileDevice} >
                 <div className={styles.items}>
-                    <h2 className={styles.item} > <FontAwesomeIcon icon={faBagShopping} /></h2>
+                    <FontAwesomeIcon className={styles.storeIcon} icon={faBagShopping} />
                     <div className={styles.item} >
                         <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/dash"} ><FontAwesomeIcon icon={faHouse} /></NavLink>
                     </div>

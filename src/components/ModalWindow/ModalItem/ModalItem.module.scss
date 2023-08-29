@@ -79,15 +79,14 @@
         .addBtn {
             margin-bottom: 55px;
             margin-top: 20px;
-            padding-top: 15px;
-            padding-bottom: 15px;
+            padding-top: 17px;
+            padding-bottom: 17px;
             border-radius: 15px;
             background-color: $accentColor;
             width: 83%;
             font-size: medium;
             font-weight: 700;
             cursor: pointer;
-
             &:active {
                 transform: scale(0.98);
             }

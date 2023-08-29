@@ -22,9 +22,9 @@ export type OrderType = {
     id: string,
     name: string,
     weight: number,
-    price: number ,
+    price: number,
     img: string,
-    option?: Array<OptionType> 
+    option?: Array<OptionType>
     ownOption?: Array<OptionType>
 }
 
@@ -84,7 +84,7 @@ const MenuContainer: React.FC<PropsType> = (props) => {
         )
     }
 
-    const Option = ({option}: any) => {
+    const Option = ({ option }: any) => {
         const findCheckedOption = stateOptions?.find(({ id }: any) => id === option.id)
         function OnChangeOptionCheckBoxType(option: OptionType) {
             if (findCheckedOption?.id !== option.id) {
@@ -124,8 +124,8 @@ const MenuContainer: React.FC<PropsType> = (props) => {
                             <div className={styles.weight}>
                                 +{option.weight}g
                             </div>
-                                <div className={styles.price}>
-                                    ${option.price}
+                            <div className={styles.price}>
+                                ${option.price}
                             </div>
                         </div>
                     </div>
@@ -140,14 +140,13 @@ const MenuContainer: React.FC<PropsType> = (props) => {
                             <div className={styles.weight}>
                                 {option.weight}g
                             </div>
-                                <div className={styles.price}>
-                                    ${option.price === 0 ? secondMenu.price : option.price + secondMenu.price}
-                                </div>
+                            <div className={styles.price}>
+                                ${option.price === 0 ? secondMenu.price : option.price + secondMenu.price}
+                            </div>
                         </div>
                     </div>
-                
                 }
-         </div>
+            </div>
         )
     }
     return (
@@ -190,6 +189,5 @@ const MenuContainer: React.FC<PropsType> = (props) => {
         </div>
     );
 };
-
 
 export default MenuContainer
