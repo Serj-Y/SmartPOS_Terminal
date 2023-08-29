@@ -10,7 +10,7 @@ type MenuItemType = {
     img: string;
     weight: number;
     price: number;
-    options?: Array<OptionType> | any;
+    options?:  any;
     CloseBtn: () => void;
 };
 export const CartItem: React.FC<MenuItemType> = ({ name, img, weight, price, options, CloseBtn }) => {
@@ -20,11 +20,11 @@ export const CartItem: React.FC<MenuItemType> = ({ name, img, weight, price, opt
             <div className={style.itemContainer}>
                 <div className={style.item}>
                     <img src={img} alt={name} />
-                    <div className={style.itemName}>{name}</div>
-                    <div className={style.itemWeight}>{weight} g</div>
-                    <div className={style.itemPrice}>${price}</div>
-                    <div className={style.optionItem}>{options}</div>
-                    <div className={style.deleteItem} onClick={CloseBtn}>Delete</div>
+                    <div className={style.name}>{name}</div>
+                    <div className={style.weight}>{weight} g</div>
+                    <div className={style.price}>${price}</div>
+                    <div className={style.options}>{options}</div>
+                    <div className={style.deleteBtn} onClick={CloseBtn}>Delete</div>
                 </div>
             </div>
         );

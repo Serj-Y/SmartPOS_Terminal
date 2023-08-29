@@ -42,13 +42,13 @@ let initialState = {
             { id: v1(), name: "Fanta", weight: 500, price: 1.5, img: Assets.Fanta, },
             {
                 id: v1(), name: "Aqua Minerale", weight: 500, price: 1, img: Assets.AquaMineral, ownOption: [
-                    { id: "default", name: "O.5L", weight: 500, price: "", img: Assets.Bottle, multiply: false },
+                    { id: "default", name: "O.5L", weight: 500, price: 0, img: Assets.Bottle, multiply: false },
                     { id: v1(), name: "1L", weight: 1000, price: 0.20, img: Assets.Bottle, multiply: false },
                 ],
             },
         ],
         coldDrinksOptions: [
-            { id: "default", name: "O.5L", weight: 500, price: "", img: Assets.Cup, multiply: false },
+            { id: "default", name: "O.5L", weight: 500, price: 0, img: Assets.Cup, multiply: false },
             { id: v1(), name: "1L", weight: 1000, price: 0.20, img: Assets.Bottle, multiply: false },
             { id: v1(), name: "1.5L", weight: 1500, price: 0.50, img: Assets.Bottle, multiply: false },
         ],

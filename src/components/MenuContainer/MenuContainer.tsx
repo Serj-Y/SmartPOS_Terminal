@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import styles from "./MenuContainer.module.scss"
 import { useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
@@ -12,21 +12,31 @@ import { actions } from "../../reducer/cartReducer";
 export type OptionType = {
     id: string
     name: string,
+    img: string,
     weight: number,
     price: number,
+    multiply: boolean
 }
 
 export type OrderType = {
     id: string,
     name: string,
     weight: number,
-    price: number,
+    price: number ,
     img: string,
-    option?: Array<object>
+    option?: Array<OptionType> 
+    ownOption?: Array<OptionType>
 }
 
+type PropsType = {
+    stateMenu: any
+    extraMenu?: any
+    options?: Array<OptionType>
+    title: string
+    icon: ReactElement
+}
 
-const MenuContainer = (props: any) => {
+const MenuContainer: React.FC<PropsType> = (props) => {
     const menu = props.stateMenu;
     const extraMenu = props.extraMenu
     const stateOptions = props.options
@@ -74,28 +84,26 @@ const MenuContainer = (props: any) => {
         )
     }
 
-    const Option = ({MenuObject} : any) => {
-        const i = MenuObject;
-        const findCheckedOption = stateOptions?.find(({ id }: any) => id === i.id)
-
-        function OnChangeOptionCheckBoxType(i: OptionType) {
-            if (findCheckedOption?.id !== i.id) {
-                setPricer((prev: any) => prev + i.price)
-                setTotalItemWeight((prev: any) => prev + i.weight)
-                dispatch(actions.addOptionActionCreator({ ...i }))
+    const Option = ({option}: any) => {
+        const findCheckedOption = stateOptions?.find(({ id }: any) => id === option.id)
+        function OnChangeOptionCheckBoxType(option: OptionType) {
+            if (findCheckedOption?.id !== option.id) {
+                setPricer((prev: any) => prev + option.price)
+                setTotalItemWeight((prev: any) => prev + option.weight)
+                dispatch(actions.addOptionActionCreator({ ...option }))
             } else {
-                setPricer(secondMenu.price < pricer ? (prev: any) => prev - i.price : secondMenu.price)
-                setTotalItemWeight(secondMenu.weight < totalItemWeight ? (prev: any) => prev - i.weight : secondMenu.weight)
-                dispatch(actions.deleteOptionActionCreator(i.id))
+                setPricer(secondMenu.price < pricer ? (prev: any) => prev - option.price : secondMenu.price)
+                setTotalItemWeight(secondMenu.weight < totalItemWeight ? (prev: any) => prev - option.weight : secondMenu.weight)
+                dispatch(actions.deleteOptionActionCreator(option.id))
             }
         }
 
-        function OnChangeOptionRadioType(i: OptionType) {
-            if (checked !== i.id) {
-                setPricer(secondMenu.price + i.price)
-                setTotalItemWeight(secondMenu.weight > i.weight ? secondMenu.weight + i.weight : i.weight)
-                setChecked(i.id)
-                setSelectedOption([{ ...i }])
+        function OnChangeOptionRadioType(option: OptionType) {
+            if (checked !== option.id) {
+                setPricer(secondMenu.price + option.price)
+                setTotalItemWeight(secondMenu.weight > option.weight ? secondMenu.weight + option.weight : option.weight)
+                setChecked(option.id)
+                setSelectedOption([{ ...option }])
             } else {
                 setPricer(secondMenu.price)
                 setChecked("")
@@ -104,36 +112,36 @@ const MenuContainer = (props: any) => {
 
         return (
             <div className={styles.optionsContainer} >
-                {i.multiply
-                    ? <div onClick={() => OnChangeOptionCheckBoxType(i)} className={findCheckedOption?.id === i.id ? styles.check : styles.options}>
+                {option.multiply
+                    ? <div onClick={() => OnChangeOptionCheckBoxType(option)} className={findCheckedOption?.id === option.id ? styles.check : styles.options}>
                         <div className={styles.imageAndNameContainer} >
-                            {i.img ? <img className={styles.img} src={i.img} alt="i.name" /> : <></>}
+                            {option.img ? <img className={styles.img} src={option.img} alt="i.name" /> : <></>}
                             <div>
-                                {i.name}
+                                {option.name}
                             </div>
                         </div>
                         <div className={styles.weightAndPriceContainer} >
                             <div className={styles.weight}>
-                                +{i.weight}g
+                                +{option.weight}g
                             </div>
                                 <div className={styles.price}>
-                                    ${i.price}
+                                    ${option.price}
                             </div>
                         </div>
                     </div>
-                    : <div onClick={() => OnChangeOptionRadioType(i)} className={i.id === checked ? styles.check : styles.options}>
+                    : <div onClick={() => OnChangeOptionRadioType(option)} className={option.id === checked ? styles.check : styles.options}>
                         <div className={styles.imageAndNameContainer} >
-                            {i.img ? <img className={styles.img} src={i.img} alt="i.name" /> : <></>}
+                            {option.img ? <img className={styles.img} src={option.img} alt="i.name" /> : <></>}
                             <div>
-                                {i.name}
+                                {option.name}
                             </div>
                         </div>
                         <div className={styles.weightAndPriceContainer} >
                             <div className={styles.weight}>
-                                {i.weight}g
+                                {option.weight}g
                             </div>
                                 <div className={styles.price}>
-                                    ${i.price === "" ? secondMenu.price : i.price + secondMenu.price}
+                                    ${option.price === 0 ? secondMenu.price : option.price + secondMenu.price}
                                 </div>
                         </div>
                     </div>
@@ -163,7 +171,7 @@ const MenuContainer = (props: any) => {
                 )}
             </div>
             <div className={styles.extraOption} >
-                <ModalWindow active={isOpen} setActive={() => OnCloseExtraOptions()} closeBtn={() => OnCloseExtraOptions()} >
+                <ModalWindow isOpen={isOpen} setClose={() => OnCloseExtraOptions()}  >
                     <ModalItem
                         img={secondMenu.img}
                         name={secondMenu.name}
@@ -171,9 +179,9 @@ const MenuContainer = (props: any) => {
                         price={FixPriceDecimals(pricer)}
                         AddToCartBtn={() => AddToCart(secondMenu)}
                         option={secondMenu.ownOption
-                            ? secondMenu.ownOption.map((i: OptionType) => <div key={i.id} > <Option MenuObject={i} /> </div>)
+                            ? secondMenu.ownOption.map((i: OptionType) => <div key={i.id} > <Option option={i} /> </div>)
                             : extraMenu
-                                ? extraMenu.map((i: OptionType) => <div key={i.id}> <Option MenuObject={i} /></div>)
+                                ? extraMenu.map((i: OptionType) => <div key={i.id}> <Option option={i} /></div>)
                                 : <></>
                         }
                     />

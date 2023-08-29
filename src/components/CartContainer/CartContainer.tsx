@@ -7,14 +7,11 @@ import { actions } from "../../reducer/cartReducer";
 import { CartItem } from "./CartItem/CartItem";
 
 
-
-
 type PropsType = {
     cartItems: Array<OrderType>
 }
 
 export const CartContainer: React.FC<PropsType> = ({ cartItems }) => {
-    const menu = cartItems
     const dispatch = useDispatch()
     const alert = useAlert()
 
@@ -29,8 +26,7 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems }) => {
         alert.show("Cart Is Clean Up")
     }
 
-    const Option = (props: any) => {
-        const option = props.Option
+    const Option = ({option}: any) => {
 
         return (
             <div>
@@ -40,20 +36,20 @@ export const CartContainer: React.FC<PropsType> = ({ cartItems }) => {
     }
 
     return (
-        <div className={style.food}>
-            {menu.map((i: OrderType) =>
+        <div className={style.itemsContainer}>
+            {cartItems.map((i: OrderType) =>
                 <div key={i.id} className={style.items} >
                     <CartItem
                         name={i.name}
                         weight={i.weight}
                         price={i.price}
-                        options={i.option ? i.option.map((i: any) => <div key={i.id} ><Option Option={i} /></div>) : <></>}
+                        options={i.option ? i.option.map((i) => <div key={i.id} ><Option option={i} /></div>) : <></>}
                         CloseBtn={() => DeleteCartItem(i.id, i.name)}
                         img={i.img}
                     />
                 </div>
             )}
-            {menu[1] ? <div className={style.cleanCartBtn} onClick={() => CleanUp()} >Clean cart</div> : ""}
+            {cartItems[1] ? <div className={style.cleanCartBtn} onClick={() => CleanUp()} >Clean cart</div> : <></>}
         </div>
     )
 }

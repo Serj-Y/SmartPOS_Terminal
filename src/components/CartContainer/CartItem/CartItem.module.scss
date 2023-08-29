@@ -31,7 +31,7 @@
             }
         }
 
-        .itemName {
+        .name {
             font-size: xx-large;
             font-weight: 800;
             letter-spacing: 1px;
@@ -43,24 +43,24 @@
             }
         }
 
-        .itemWeight {
+        .weight {
             color: $secondTextColor;
             font-weight: 600;
             padding: 5px;
         }
 
-        .itemPrice {
-            @extend .itemName;
+        .price {
+            @extend .name;
             color: $accentColor
         }
 
-        .optionItem {
+        .options {
             div {
                 padding: 2px;
             }
         }
 
-        .deleteItem {
+        .deleteBtn {
             margin-top: 10px;
             margin-bottom: 10px;
             padding-top: 10px;

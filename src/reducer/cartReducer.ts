@@ -7,14 +7,14 @@ type InitialStateType =
         options: Array<OptionType>
     }
 
-const initialState = {
+const initialState: InitialStateType = {
     orders: [
 
     ],
     options: [
 
     ]
-} as InitialStateType;
+};
 
 type ActionsTypes = InferActionsTypes<typeof actions>
 

@@ -6,7 +6,7 @@ import { BurgerPage } from './pages/BurgerPage/BurgerPage';
 import { ColdDrinksPage } from './pages/ColdDrinksPage/ColdDrinksPage';
 import { HotDrinksPage } from './pages/HotDrinksPage/HotDrinksPage';
 import { CartPage } from './pages/CartPage/CartPage';
-import { Nav } from './components/Navigation/Nav';
+import { Nav } from './components/Navigation/Navigation';
 import { Header } from './components/Header/Header';
 
 
