@@ -16,7 +16,7 @@ export const ModalItem: React.FC<PropsType> = ({ name, img, weight, price, optio
         return (
             <div className={styles.itemContainer}>
                 <div className={styles.item}>
-                    <img src={img} alt={name} />
+                    <img className={styles.img} src={img} alt={name} />
                     <div className={styles.namePriceWeightContainer} >
                         <div className={styles.name} >{name}</div>
                         <div className={styles.weight} >{weight} g</div>

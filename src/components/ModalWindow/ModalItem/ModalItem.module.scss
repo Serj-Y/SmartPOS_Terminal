@@ -20,7 +20,7 @@
             justify-content: space-evenly;
         }
 
-        img {
+        .img {
             padding-top: 80px;
             max-width: 200px;
             height: 150px;
@@ -28,18 +28,21 @@
             @media screen and (max-width: 350px) {
                 max-width: 100px;
                 height: 75px;
+                padding-top: 10px;
             }
 
-            @media screen and (max-height: 600px) {
+            @media screen and (max-height: 700px) {
                 max-width: 100px;
-                height: 100px;
+                height: 75px;
                 padding-top: 10px;
             }
 
             @media screen and (max-height: 500px) {
                 width: 50px;
                 height: 50px;
+                padding: 10px;
             }
+           
         }
 
         .namePriceWeightContainer {
@@ -54,10 +57,13 @@
                     font-weight: 600;
                 }
 
-                @media screen and (max-height: 500px) {
+                @media screen and (max-height: 575px) {
                     font-size: large;
                     font-weight: 600;
                 }
+                @media screen and (max-height: 525px) {
+                   padding: 5px;
+                    }
             }
 
             .weight {
@@ -87,6 +93,11 @@
             font-size: medium;
             font-weight: 700;
             cursor: pointer;
+            @media screen and (max-height: 430px) {
+                margin-top: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                 }
             &:active {
                 transform: scale(0.98);
             }

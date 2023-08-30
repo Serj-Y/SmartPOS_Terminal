@@ -96,6 +96,9 @@
                 font-size: x-large;
                 padding-top: 45px;
                 color: rgb(210, 4, 45);
+                @media screen and (max-height: 500px) {
+                padding-bottom: 20px;
+                }
             }
 
             .item {
