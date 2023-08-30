@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/SmartPOS_Terminal/static/css/main.6a09e875.css",
+    "main.js": "/SmartPOS_Terminal/static/js/main.81124205.js",
+    "static/js/787.5ca225c4.chunk.js": "/SmartPOS_Terminal/static/js/787.5ca225c4.chunk.js",
+    "static/media/Cheeseburger.png": "/SmartPOS_Terminal/static/media/Cheeseburger.9c79fc6e7e2b375c8abb.png",
+    "static/media/BigJoh.png": "/SmartPOS_Terminal/static/media/BigJoh.d74043e3e0987a122655.png",
+    "static/media/meat.png": "/SmartPOS_Terminal/static/media/meat.7bde2e6465bf8a8b8e4c.png",
+    "static/media/cupSprite.png": "/SmartPOS_Terminal/static/media/cupSprite.2e649f9e04193fe5fe71.png",
+    "static/media/mugEspresso.png": "/SmartPOS_Terminal/static/media/mugEspresso.c96df5788d7a8e06cc92.png",
+    "static/media/bacon.png": "/SmartPOS_Terminal/static/media/bacon.8d0a18bdd1bc4b571937.png",
+    "static/media/cupCola.png": "/SmartPOS_Terminal/static/media/cupCola.13cf0dc8dabb1326b29d.png",
+    "static/media/cheese.png": "/SmartPOS_Terminal/static/media/cheese.94fc7e0fd6c605e8534c.png",
+    "static/media/HamburgerXL.png": "/SmartPOS_Terminal/static/media/HamburgerXL.86fc98b7608d7d02de53.png",
+    "static/media/cupLatte.png": "/SmartPOS_Terminal/static/media/cupLatte.51b1d48209ab818ceb6e.png",
+    "static/media/bottleAquaMinerale.png": "/SmartPOS_Terminal/static/media/bottleAquaMinerale.4129bd70206998e3152b.png",
+    "static/media/mugTea.png": "/SmartPOS_Terminal/static/media/mugTea.42ec3070c1ef42c1b831.png",
+    "static/media/mugCappuccino.png": "/SmartPOS_Terminal/static/media/mugCappuccino.b561977610b06d5d30d8.png",
+    "static/media/pitcherIcon.png": "/SmartPOS_Terminal/static/media/pitcherIcon.29b2ebc81404b3589b3a.png",
+    "static/media/cupFanta.png": "/SmartPOS_Terminal/static/media/cupFanta.5ba6f3ba5c791aef3b36.png",
+    "static/media/Hamburger.png": "/SmartPOS_Terminal/static/media/Hamburger.d5b16841cb2d268c1432.png",
+    "static/media/bottle.png": "/SmartPOS_Terminal/static/media/bottle.1dd1c5c368b8c2ea512e.png",
+    "static/media/coffeeBeans.png": "/SmartPOS_Terminal/static/media/coffeeBeans.89da34dd7c26539c23f2.png",
+    "index.html": "/SmartPOS_Terminal/index.html",
+    "main.6a09e875.css.map": "/SmartPOS_Terminal/static/css/main.6a09e875.css.map",
+    "main.81124205.js.map": "/SmartPOS_Terminal/static/js/main.81124205.js.map",
+    "787.5ca225c4.chunk.js.map": "/SmartPOS_Terminal/static/js/787.5ca225c4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a09e875.css",
+    "static/js/main.81124205.js"
+  ]
+}
