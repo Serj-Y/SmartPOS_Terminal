@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import styles from "./SearchForm.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -9,8 +9,8 @@ export const Search = () => {
     const [searchValue, setSearchValue] = useState("")
     const alert = useAlert()
 
-    const OnHandleChange = (e: any) => setSearchValue(e.target.value)
-    const OnHandleSubmit = (e: any) => {
+    const OnHandleChange = (e: ChangeEvent<HTMLInputElement>) => setSearchValue(e.target.value)
+    const OnHandleSubmit = (e: { preventDefault: () => void; }) => {
         if (searchValue) {
             alert.info( "Our input:"+searchValue)
             console.log(searchValue)

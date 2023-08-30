@@ -1,8 +1,5 @@
 import React from "react";
 import style from "./CartItem.module.scss"
-import { OptionType } from "../../MenuContainer/MenuContainer";
-
-
 
 
 type MenuItemType = {
@@ -10,9 +7,10 @@ type MenuItemType = {
     img: string;
     weight: number;
     price: number;
-    options?:  any;
+    options?: any;
     CloseBtn: () => void;
 };
+
 export const CartItem: React.FC<MenuItemType> = ({ name, img, weight, price, options, CloseBtn }) => {
 
     if (name) {

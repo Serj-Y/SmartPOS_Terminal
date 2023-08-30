@@ -9,9 +9,9 @@ export const Nav = () => {
         <div className={styles.nav }>
             <div className={styles.fullScreen} >
                 <div className={styles.items}>
-                    <div className={styles.storeName}>
-                        <FontAwesomeIcon className={styles.storeIcon} icon={faBagShopping} />
-                        <h2> Smart<span className={styles.storeNameAccent} >POS</span> </h2>
+                    <div className={styles.storeNameAndIconContainer}>
+                        <FontAwesomeIcon className={styles.icon} icon={faBagShopping} />
+                        <h2> Smart<span className={styles.nameAccent} >POS</span> </h2>
                     </div>
                     <div className={styles.item} >
                         <NavLink className={({ isActive }) => isActive ? styles.isActive : styles.isPending} to={"/home"} > <FontAwesomeIcon icon={faHouse} /> <div className={styles.link} >Home</div></NavLink>

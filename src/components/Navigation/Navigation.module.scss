@@ -28,17 +28,17 @@
             align-items: center;
             width: 90%;
 
-            .storeName {
+            .storeNameAndIconContainer {
                 display: flex;
                 padding-bottom: 20px;
                 align-items: center;
 
-                .storeIcon {
+                .icon {
                     font-size: x-large;
                     margin-right: 20px;
                 }
 
-                .storeNameAccent {
+                .nameAccent {
                     color: rgb(210, 4, 45);
                 }
             }
