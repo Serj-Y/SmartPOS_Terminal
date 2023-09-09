@@ -8,6 +8,8 @@ import { HotDrinksPage } from './pages/HotDrinksPage/HotDrinksPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { Nav } from './components/Navigation/Navigation';
 import { Header } from './components/Header/Header';
+import { Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
           <Route path="/cartPage" element={<CartPage />} />
         </Routes>
       </div>
+      <ToastContainer hideProgressBar transition={Slide} autoClose={1000} newestOnTop={true} theme={"colored"} />
     </div>
   );
 }

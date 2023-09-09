@@ -6,28 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { store } from './redux/store';
-import { transitions, positions, types, Provider as AlertProvider } from 'react-alert';
-//@ts-ignore
-import AlertTemplate from 'react-alert-template-basic';
 
-const options = {
-  position: positions.TOP_RIGHT,
-  timeout: 2000,
-  transition: transitions.FADE,
-  type: types.SUCCESS,
-}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <AlertProvider template={AlertTemplate} {...options}>
-    <HashRouter>
-      <Provider store={store} >
-        <App />
-      </Provider>
-    </HashRouter>
-  </AlertProvider>
+  <HashRouter>
+    <Provider store={store} >
+      <App />
+    </Provider>
+  </HashRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

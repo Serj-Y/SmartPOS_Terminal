@@ -3,6 +3,7 @@
         "fontawesome",
         "fortawesome",
         "Minerale",
-        "reduxjs"
+        "reduxjs",
+        "toastify"
     ]
 }

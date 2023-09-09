@@ -1,12 +1,12 @@
 import React, { ReactElement, useState } from "react";
 import styles from "./MenuContainer.module.scss"
 import { useDispatch } from "react-redux";
-import { useAlert } from "react-alert";
 import { v1 } from "uuid";
 import { MenuItem } from "../MenuItem/MenuItem";
 import { ModalWindow } from "../ModalWindow/Modal";
 import { ModalItem } from "../ModalWindow/ModalItem/ModalItem";
 import { actions } from "../../reducer/cartReducer";
+import { toast } from "react-toastify";
 
 
 export type OptionType = {
@@ -49,7 +49,6 @@ const MenuContainer: React.FC<PropsType> = (props) => {
     const [defaultCheckedOption, setDefaultCheckedOption] = useState(null)
 
     const dispatch = useDispatch()
-    const alert = useAlert()
 
     function OnOpenExtraOptions(i: OrderType) {
         const defaultCheckedOption = extraMenu?.find(({ id }: any) => id === "default")
@@ -74,7 +73,7 @@ const MenuContainer: React.FC<PropsType> = (props) => {
         setTotalItemWeight(secondMenu.weight)
         setChecked(defaultCheckedOption)
         setSelectedOption([])
-        alert.show(`Is Add: ${order.name}`)
+        toast.success(`Is Add: ${order.name}`)
     }
 
     function FixPriceDecimals(price: number) {
