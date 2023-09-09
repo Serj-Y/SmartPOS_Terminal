@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/SmartPOS_Terminal/static/css/main.d9d4b6ee.css",
-    "main.js": "/SmartPOS_Terminal/static/js/main.26f109d9.js",
+    "main.css": "/SmartPOS_Terminal/static/css/main.da3c5e9e.css",
+    "main.js": "/SmartPOS_Terminal/static/js/main.048e33c6.js",
     "static/js/787.5ca225c4.chunk.js": "/SmartPOS_Terminal/static/js/787.5ca225c4.chunk.js",
     "static/media/Cheeseburger.png": "/SmartPOS_Terminal/static/media/Cheeseburger.9c79fc6e7e2b375c8abb.png",
     "static/media/BigJoh.png": "/SmartPOS_Terminal/static/media/BigJoh.d74043e3e0987a122655.png",
@@ -22,12 +22,12 @@
     "static/media/bottle.png": "/SmartPOS_Terminal/static/media/bottle.1dd1c5c368b8c2ea512e.png",
     "static/media/coffeeBeans.png": "/SmartPOS_Terminal/static/media/coffeeBeans.89da34dd7c26539c23f2.png",
     "index.html": "/SmartPOS_Terminal/index.html",
-    "main.d9d4b6ee.css.map": "/SmartPOS_Terminal/static/css/main.d9d4b6ee.css.map",
-    "main.26f109d9.js.map": "/SmartPOS_Terminal/static/js/main.26f109d9.js.map",
+    "main.da3c5e9e.css.map": "/SmartPOS_Terminal/static/css/main.da3c5e9e.css.map",
+    "main.048e33c6.js.map": "/SmartPOS_Terminal/static/js/main.048e33c6.js.map",
     "787.5ca225c4.chunk.js.map": "/SmartPOS_Terminal/static/js/787.5ca225c4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d9d4b6ee.css",
-    "static/js/main.26f109d9.js"
+    "static/css/main.da3c5e9e.css",
+    "static/js/main.048e33c6.js"
   ]
 }
